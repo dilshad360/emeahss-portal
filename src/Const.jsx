@@ -30,6 +30,8 @@ export const initialValues  = {
     { subject: 'Maths', grade: '' },
     { subject: 'IT', grade: '' },
   ],
+  coursePreference1: "",
+  coursePreference2: "",
 };
 
 export const validationSchema = yup.object().shape({
@@ -69,7 +71,8 @@ export const validationSchema = yup.object().shape({
       subject: yup.string().required('Required'),
       grade: yup.string().required('Required'),
     })
-  )
+  ),
+  coursePreference1: yup.string().required('Course preference 1 is required'),
 });
  
  export const years = [];
@@ -124,5 +127,12 @@ export const gradesOptions = [
   { value: '2', label: 'D' },
   { value: '1', label: 'E' },
 ];
+
+export const courseOptions = [
+  { value: '01', label: '01 - Physics, Chemistry, Biology,Mathematics' },
+  { value: '11', label: '11 - History, Economics, Political Science, Sociology' },
+  { value: '35', label: '35 - Journalism, English Literature, Communicative English, Psychology' },
+  { value: '37', label: '37 - Business Studies, Accountancy, Economics,Statistics' }
+]
 
 

@@ -1,16 +1,17 @@
-import { Button } from '@mui/material'
+import { Button , Typography } from '@mui/material'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
 function Home() {
   return (
-    <div className=''>
-      <div className='flex justify-center items-center flex-col'>
-      <h1 className='text-3xl'>EMEA HSS</h1>
+    <div className='flex justify-center items-center flex-col h-screen gap-4'>  
+      <img className='w-20' src='/EMEAHSSlogo.png' alt='logo'></img>  
+      <Typography variant="h4">
+        EMEAHSS - Portal
+      </Typography>
       <Button variant='contained'>
         <Link to="/register">Register</Link>
       </Button>
-      </div>
     </div>
   )
 }

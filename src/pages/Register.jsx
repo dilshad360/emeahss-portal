@@ -18,6 +18,7 @@ import {
 } from "../Const";
 import { SelectInput } from "../components/common/SelectInput";
 import SubjectsGradeInput from "../components/SubjectsGradeInput";
+import CourseInput from "../components/CourseInput";
 
 const FormField = styled(Field)`
   & input::-webkit-outer-spin-button,
@@ -274,7 +275,7 @@ function RegistrationForm() {
           </Grid>
           <Divider className="py-4" />
           <SubjectsGradeInput/>
-    
+          <CourseInput/>
           <SubmitButton variant="contained" type="submit">
             Submit
           </SubmitButton>
