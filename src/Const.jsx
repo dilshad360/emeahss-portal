@@ -54,7 +54,7 @@ export const validationSchema = yup.object().shape({
   regNumber: yup
     .string()
     .matches(/^\d+$/, "Single Window number must be a valid number")
-    .required("Single Window number is required"),
+    .required("Register Number is required"),
   year: yup.string().required("Year is required"),
   schoolName: yup.string().required("Name of school is required"),
   gender: yup.string().required("Gender is required"),
