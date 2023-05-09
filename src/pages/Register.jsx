@@ -85,6 +85,7 @@ const validationSchema = yup.object().shape({
   schoolName: yup.string().required("Name of school is required"),
   gender: yup.string().required("Gender is required"),
   religion: yup.string().required("Religion is required"),
+  dateOfBirth: yup.string().required("Date of Birth is required"),
   motherName: yup.string().required("Name of Mother is required"),
   fatherName: yup.string().required("Name of Father is required"),
   houseName: yup.string().required("House Name is required"),
@@ -238,6 +239,22 @@ function RegistrationForm() {
             <Grid item xs={12}>
               <FormField
                 as={TextField}
+                name="dateOfBirth"
+                label="Date of Birth"
+                type="date"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                fullWidth
+                error={errors.dateOfBirth && touched.dateOfBirth}
+                helperText={
+                  errors.dateOfBirth && touched.dateOfBirth && errors.dateOfBirth
+                }
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <FormField
+                as={TextField}
                 name="motherName"
                 label="Name of Mother"
                 type="text"
@@ -307,7 +324,7 @@ function RegistrationForm() {
               />
             </Grid>
           </Grid>
-          <Divider className="py-5" >Marksheet </Divider>
+          <Divider className="py-4"/>
 
           <SubmitButton variant="contained" type="submit">
             Submit
