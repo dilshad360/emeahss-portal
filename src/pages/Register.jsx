@@ -7,16 +7,17 @@ import {
   Divider,
 } from "@mui/material";
 import { Formik, Form, Field } from "formik";
-import * as yup from "yup";
 import styled from "@emotion/styled";
 import {
+  initialValues,
+  validationSchema,
   years,
   genderOptions,
   religionOptions,
   panchayatOptions,
 } from "../Const";
 import { SelectInput } from "../components/common/SelectInput";
-import { SelectYear } from "../components/common/SelectYear";
+import SubjectsGradeInput from "../components/SubjectsGradeInput";
 
 const FormField = styled(Field)`
   & input::-webkit-outer-spin-button,
@@ -40,60 +41,6 @@ const FormContainer = styled(Form)`
   padding: 2rem 1rem 2rem 1rem;
 `;
 
-const initialValues = {
-  name: "",
-  mobileNumber: "",
-  whatsappNumber: "",
-  singleWindowNo: "",
-  examName: "",
-  regNumber: "",
-  year: "",
-  schoolName: "",
-  gender: "",
-  religion: "",
-  dateOfBirth: "",
-  motherName: "",
-  fatherName: "",
-  houseName: "",
-  postOffice: "",
-  panchayath: "",
-  ward: "",
-};
-
-const validationSchema = yup.object().shape({
-  name: yup.string().required("Name of Applicant is required"),
-  mobileNumber: yup
-    .string()
-    .matches(/^\d+$/, "Mobile number must be a valid number")
-    .min(10, "Mobile number must be at least 10 digits")
-    .required("Mobile number is required"),
-  whatsappNumber: yup
-    .string()
-    .matches(/^\d+$/, "Whatsapp number must be a valid number")
-    .min(10, "Whatsapp number must be at least 10 digits")
-    .required("Whatsapp number is required"),
-  singleWindowNo: yup
-    .string()
-    .matches(/^\d+$/, "Single Window number must be a valid number")
-    .required("Single Window number is required"),
-  examName: yup.string().required("Name of qualifying examination is required"),
-  regNumber: yup
-    .string()
-    .matches(/^\d+$/, "Single Window number must be a valid number")
-    .required("Single Window number is required"),
-  year: yup.string().required("Year is required"),
-  schoolName: yup.string().required("Name of school is required"),
-  gender: yup.string().required("Gender is required"),
-  religion: yup.string().required("Religion is required"),
-  dateOfBirth: yup.string().required("Date of Birth is required"),
-  motherName: yup.string().required("Name of Mother is required"),
-  fatherName: yup.string().required("Name of Father is required"),
-  houseName: yup.string().required("House Name is required"),
-  postOffice: yup.string().required("Post Office is required"),
-  panchayath: yup.string().required("Panchayath is required"),
-  ward: yup.string().required("Ward is required"),
-});
-
 function RegistrationForm() {
   return (
     <Formik
@@ -101,6 +48,7 @@ function RegistrationForm() {
       validationSchema={validationSchema}
       onSubmit={(values) => {
         alert(JSON.stringify(values, null, 2));
+        console.table(values)
       }}
     >
       {({ errors, touched }) => (
@@ -200,7 +148,7 @@ function RegistrationForm() {
               />
             </Grid>
             <Grid item xs={3}>
-              <SelectYear
+              <SelectInput
                 name="year"
                 label="Year"
                 options={years}
@@ -324,8 +272,9 @@ function RegistrationForm() {
               />
             </Grid>
           </Grid>
-          <Divider className="py-4"/>
-
+          <Divider className="py-4" />
+          <SubjectsGradeInput/>
+    
           <SubmitButton variant="contained" type="submit">
             Submit
           </SubmitButton>
