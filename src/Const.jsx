@@ -137,6 +137,23 @@ export const courseOptions = [
   { value: '37', label: '37 - Business Studies, Accountancy, Economics,Statistics' }
 ]
 
+export const codeToCourse = {
+  '01': '01 - Physics, Chemistry, Biology,Mathematics',
+  '11': '11 - History, Economics, Political Science, Sociology',
+  '35': '35 - Journalism, English Literature, Communicative English, Psychology',
+  '37': '37 - Business Studies, Accountancy, Economics,Statistics'
+}
+
+export const markToGrade = {
+  '9':'A+',
+  '8':'A',
+  '7':'B+',
+  '6':'B',
+  '5':'C+',
+  '4':'C',
+  '3':'D+',
+}
+
 
 
 export const handleSubmit = async (values) => {

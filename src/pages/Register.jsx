@@ -15,11 +15,14 @@ import {
   genderOptions,
   religionOptions,
   panchayatOptions,
+  codeToCourse,
+  subjects,
+  markToGrade,
+  handleSubmit
 } from "../Const";
 import { SelectInput } from "../components/common/SelectInput";
 import SubjectsGradeInput from "../components/SubjectsGradeInput";
 import CourseInput from "../components/CourseInput";
-import { handleSubmit, subjects } from '../Const'
 import { Page, Text, Document, StyleSheet, View, PDFDownloadLink } from "@react-pdf/renderer";
 import { useState } from "react";
 
@@ -52,12 +55,10 @@ function RegistrationForm() {
     page: {
       display: 'flex',
       backgroundColor: '#E4E4E4',
-      padding: '20px',
       alignItems: 'center',
       justifyContent: 'center',
     },
     section: {
-      margin: '10px',
       padding: '10px',
       flexGrow: 1,
       backgroundColor: '#FFFFFF',
@@ -86,11 +87,15 @@ function RegistrationForm() {
       marginLeft: '20px',
     },
     tableHeader: {
+      width:'100%',
       display: 'flex',
       flexDirection: 'row',
       backgroundColor: '#EEEEEE',
       padding: '5px 0',
       borderBottom: '1px solid #CCCCCC',
+    },
+    span:{
+      marginRight:'10px'
     },
     tableRow: {
       display: 'flex',
@@ -111,21 +116,21 @@ function RegistrationForm() {
     <Document>
       <Page size="A4" style={styles.page}>
         <View style={styles.section}>
-          <Text style={styles.header}>Application for PlusOne Admission 2023-24 (Management Quota)</Text>
+          <Text style={styles.header}>EMEA HSS Application for PlusOne Admission 2023-24 (Management Quota)</Text>
           <View style={styles.field}>
-            <Text>Name: {formValues.Name}</Text>
+            <Text><Text style={styles.span}>Name:</Text> {formValues.Name}</Text>
           </View>
           <View style={styles.field}>
-            <Text>Mobile Number: {formValues.MobileNumber}</Text>
+            <Text><Text style={styles.span}>Mobile Number: </Text>{formValues.MobileNumber}</Text>
           </View>
           <View style={styles.field}>
-            <Text>WhatsappNo: {formValues.WhatsappNumber}</Text>
+            <Text><Text style={styles.span}>WhatsappNo: </Text>{formValues.WhatsappNumber}</Text>
           </View>
           <View style={styles.field}>
             <Text>DateofBirth: {formValues.DateOfBirth}</Text>
           </View>
           <View style={styles.field}>
-            <Text>Exam Name: {formValues.ExamName}</Text>
+            <Text><Text>Exam Name: </Text>{formValues.ExamName}</Text>
           </View>
           <View style={styles.field}>
             <Text>Register Number: {formValues.RegNumber}</Text>
@@ -162,15 +167,18 @@ function RegistrationForm() {
             {formValues.subjectsMarks.map((subject, index) => (
               <View key={index} style={styles.tableRow}>
                 <Text style={styles.tableCell}>{subject.subject}</Text>
-                <Text style={styles.tableCell}>{subject.grade}</Text>
+                <Text style={styles.tableCell}>{markToGrade[subject.grade]}</Text>
               </View>
             ))}
           </View>
-          <View style={styles.field}>
-            <Text>Course Preference 1: {formValues.coursePreference1}</Text>
+          <View style={styles.tableContainer}>
+            <View>Course Preference</View>
           </View>
           <View style={styles.field}>
-            <Text>Course Preference 2: {formValues.coursePreference2}</Text>
+            <Text>Course Preference 1: {codeToCourse[formValues.coursePreference1]}</Text>
+          </View>
+          <View style={styles.field}>
+            <Text>Course Preference 2: {codeToCourse[formValues.coursePreference2]}</Text>
           </View>
 
         </View>
@@ -202,7 +210,7 @@ function RegistrationForm() {
               color: "#006666",
             }}
           >
-            Application for PlusOne Admission 2023-24 (Management Quota)
+           EMEA HSS Application for PlusOne Admission 2023-24 (Management Quota)
           </Typography>
           <Grid container spacing={1.5}>
             <Grid item xs={12}>
