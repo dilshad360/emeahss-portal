@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Grid,
-  TextField,
-  Button,
-  Typography,
-  Divider,
-} from "@mui/material";
+import { Grid, TextField, Button, Typography, Divider } from "@mui/material";
 import { Formik, Form, Field } from "formik";
 import styled from "@emotion/styled";
 import {
@@ -18,12 +12,20 @@ import {
   codeToCourse,
   subjects,
   markToGrade,
-  handleSubmit
+  handleSubmit,
+  examOptions,
 } from "../Const";
 import { SelectInput } from "../components/common/SelectInput";
 import SubjectsGradeInput from "../components/SubjectsGradeInput";
 import CourseInput from "../components/CourseInput";
-import { Page, Text, Document, StyleSheet, View, PDFDownloadLink } from "@react-pdf/renderer";
+import {
+  Page,
+  Text,
+  Document,
+  StyleSheet,
+  View,
+  PDFDownloadLink,
+} from "@react-pdf/renderer";
 import { useState } from "react";
 
 const FormField = styled(Field)`
@@ -49,8 +51,7 @@ const FormContainer = styled(Form)`
 `;
 
 function RegistrationForm() {
-
-  const [formValues, setFormValues] = useState(initialValues)
+  const [formValues, setFormValues] = useState(initialValues);
   const styles = StyleSheet.create({
     page: {
       display:'flex',
@@ -109,13 +110,12 @@ function RegistrationForm() {
       padding: '5px 0',
       borderBottom: '1px solid #CCCCCC',
     },
-
-
+    
     tableRow: {
-      display: 'flex',
-      flexDirection: 'row',
-      padding: '5px 0',
-      borderBottom: '1px solid #CCCCCC',
+      display: "flex",
+      flexDirection: "row",
+      padding: "5px 0",
+      borderBottom: "1px solid #CCCCCC",
     },
 
 
@@ -125,8 +125,7 @@ function RegistrationForm() {
       textAlign: 'left',
       paddingLeft: '5px',
     },
-
-  })
+  });
 
   const MyDocument = () => (
     <Document>
@@ -209,7 +208,9 @@ function RegistrationForm() {
             {formValues.subjectsMarks.map((subject, index) => (
               <View key={index} style={styles.tableRow}>
                 <Text style={styles.tableCell}>{subject.subject}</Text>
-                <Text style={styles.tableCell}>{markToGrade[subject.grade]}</Text>
+                <Text style={styles.tableCell}>
+                  {markToGrade[subject.grade]}
+                </Text>
               </View>
             ))}
           </View>
@@ -227,8 +228,6 @@ function RegistrationForm() {
               <Text style={styles.tableCell}>{codeToCourse[formValues.coursePreference2]}</Text>
             </View>
           </View>
-
-
         </View>
       </Page>
     </Document>
@@ -240,11 +239,10 @@ function RegistrationForm() {
       validationSchema={validationSchema}
       //on submit section
       onSubmit={(values) => {
-        handleSubmit(values)
-        setFormValues(values)
+        handleSubmit(values);
+        setFormValues(values);
         console.log(values);
         alert(JSON.stringify(values, null, 2));
-
       }}
     >
       {({ errors, touched }) => (
@@ -258,9 +256,10 @@ function RegistrationForm() {
               color: "#006666",
             }}
           >
-           EMEA HSS Application for PlusOne Admission 2023-24 (Management Quota)
+            EMEA HSS Application for PlusOne Admission 2023-24 (Management
+            Quota)
           </Typography>
-          <Grid container spacing={1.5}>
+          <Grid container spacing={2}>
             <Grid item xs={12}>
               <FormField
                 as={TextField}
@@ -268,9 +267,8 @@ function RegistrationForm() {
                 label="Name of Applicant"
                 type="text"
                 fullWidth
-                error={errors.name && touched.name}
-                helperText={errors.name && touched.name && errors.name}
-                margin="dense"
+                error={errors.Name && touched.Name}
+                helperText={errors.Name && touched.Name && errors.Name}
               />
             </Grid>
             <Grid item xs={12}>
@@ -280,13 +278,12 @@ function RegistrationForm() {
                 label="Mobile Number"
                 type="number"
                 fullWidth
-                error={errors.mobileNumber && touched.mobileNumber}
+                error={errors.MobileNumber && touched.MobileNumber}
                 helperText={
-                  errors.mobileNumber &&
-                  touched.mobileNumber &&
-                  errors.mobileNumber
+                  errors.MobileNumber &&
+                  touched.MobileNumber &&
+                  errors.MobileNumber
                 }
-                margin="dense"
               />
             </Grid>
             <Grid item xs={12}>
@@ -296,13 +293,12 @@ function RegistrationForm() {
                 label="Whatsapp Number"
                 type="number"
                 fullWidth
-                error={errors.whatsappNumber && touched.whatsappNumber}
+                error={errors.WhatsappNumber && touched.WhatsappNumber}
                 helperText={
-                  errors.whatsappNumber &&
-                  touched.whatsappNumber &&
-                  errors.whatsappNumber
+                  errors.WhatsappNumber &&
+                  touched.WhatsappNumber &&
+                  errors.WhatsappNumber
                 }
-                margin="dense"
               />
             </Grid>
             <Grid item xs={12}>
@@ -312,27 +308,20 @@ function RegistrationForm() {
                 label="Single Window Appln. No."
                 type="number"
                 fullWidth
-                error={errors.singleWindowNo && touched.singleWindowNo}
+                error={errors.SingleWindowNo && touched.SingleWindowNo}
                 helperText={
-                  errors.singleWindowNo &&
-                  touched.singleWindowNo &&
-                  errors.singleWindowNo
+                  errors.SingleWindowNo &&
+                  touched.SingleWindowNo &&
+                  errors.SingleWindowNo
                 }
-                margin="dense"
               />
             </Grid>
             <Grid item xs={12}>
-              <FormField
-                as={TextField}
+              <SelectInput
                 name="ExamName"
                 label="Name of qualifying examination"
-                type="text"
-                fullWidth
-                error={errors.examName && touched.examName}
-                helperText={
-                  errors.examName && touched.examName && errors.examName
-                }
-                margin="dense"
+                options={examOptions}
+                error={errors.ExamName && touched.ExamName}
               />
             </Grid>
             <Grid item xs={12}>
@@ -342,11 +331,10 @@ function RegistrationForm() {
                 label="Register Number"
                 type="number"
                 fullWidth
-                error={errors.regNumber && touched.regNumber}
+                error={errors.RegNumber && touched.RegNumber}
                 helperText={
-                  errors.regNumber && touched.regNumber && errors.regNumber
+                  errors.RegNumber && touched.RegNumber && errors.RegNumber
                 }
-                margin="dense"
               />
             </Grid>
             <Grid item xs={3}>
@@ -354,7 +342,7 @@ function RegistrationForm() {
                 name="Year"
                 label="Year"
                 options={years}
-                error={errors.year && touched.year}
+                error={errors.Year && touched.Year}
               />
             </Grid>
             <Grid item xs={12}>
@@ -364,11 +352,10 @@ function RegistrationForm() {
                 label="Name of school in which studied"
                 type="text"
                 fullWidth
-                error={errors.schoolName && touched.schoolName}
+                error={errors.SchoolName && touched.SchoolName}
                 helperText={
-                  errors.schoolName && touched.schoolName && errors.schoolName
+                  errors.SchoolName && touched.SchoolName && errors.SchoolName
                 }
-                margin="dense"
               />
             </Grid>
             <Grid item xs={6}>
@@ -376,7 +363,7 @@ function RegistrationForm() {
                 name="Gender"
                 label="Gender"
                 options={genderOptions}
-                error={errors.gender && touched.gender}
+                error={errors.Gender && touched.Gender}
               />
             </Grid>
             <Grid item xs={6}>
@@ -384,7 +371,7 @@ function RegistrationForm() {
                 name="Religion"
                 label="Religion"
                 options={religionOptions}
-                error={errors.religion && touched.religion}
+                error={errors.Religion && touched.Religion}
               />
             </Grid>
             <Grid item xs={12}>
@@ -397,11 +384,12 @@ function RegistrationForm() {
                   shrink: true,
                 }}
                 fullWidth
-                error={errors.dateOfBirth && touched.dateOfBirth}
+                error={errors.DateOfBirth && touched.DateOfBirth}
                 helperText={
-                  errors.dateOfBirth && touched.dateOfBirth && errors.dateOfBirth
+                  errors.DateOfBirth &&
+                  touched.DateOfBirth &&
+                  errors.DateOfBirth
                 }
-                margin="dense"
               />
             </Grid>
             <Grid item xs={12}>
@@ -411,11 +399,10 @@ function RegistrationForm() {
                 label="Name of Father"
                 type="text"
                 fullWidth
-                error={errors.fatherName && touched.fatherName}
+                error={errors.FatherName && touched.FatherName}
                 helperText={
-                  errors.fatherName && touched.fatherName && errors.fatherName
+                  errors.FatherName && touched.FatherName && errors.FatherName
                 }
-                margin="dense"
               />
             </Grid>
             <Grid item xs={12}>
@@ -425,11 +412,10 @@ function RegistrationForm() {
                 label="Name of Mother"
                 type="text"
                 fullWidth
-                error={errors.motherName && touched.motherName}
+                error={errors.MotherName && touched.MotherName}
                 helperText={
-                  errors.motherName && touched.motherName && errors.motherName
+                  errors.MotherName && touched.MotherName && errors.MotherName
                 }
-                margin="dense"
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -439,11 +425,10 @@ function RegistrationForm() {
                 label="House Name"
                 type="text"
                 fullWidth
-                error={errors.houseName && touched.houseName}
+                error={errors.HouseName && touched.HouseName}
                 helperText={
-                  errors.houseName && touched.houseName && errors.houseName
+                  errors.HouseName && touched.HouseName && errors.HouseName
                 }
-                margin="dense"
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -453,11 +438,10 @@ function RegistrationForm() {
                 label="Post Office"
                 type="text"
                 fullWidth
-                error={errors.postOffice && touched.postOffice}
+                error={errors.PostOffice && touched.PostOffice}
                 helperText={
-                  errors.postOffice && touched.postOffice && errors.postOffice
+                  errors.PostOffice && touched.PostOffice && errors.PostOffice
                 }
-                margin="dense"
               />
             </Grid>
             <Grid item xs={6}>
@@ -465,8 +449,7 @@ function RegistrationForm() {
                 name="Panchayath"
                 label="Panchayath"
                 options={panchayatOptions}
-                error={errors.panchayath && touched.panchayath}
-
+                error={errors.Panchayath && touched.Panchayath}
               />
             </Grid>
             <Grid item xs={6}>
@@ -476,22 +459,28 @@ function RegistrationForm() {
                 label="Ward"
                 type="number"
                 fullWidth
-                error={errors.ward && touched.ward}
-                helperText={errors.ward && touched.ward && errors.ward}
-
+                error={errors.Ward && touched.Ward}
+                helperText={errors.Ward && touched.Ward && errors.Ward}
               />
             </Grid>
           </Grid>
           <Divider className="py-4" />
-          <SubjectsGradeInput subjects={subjects} label="Grades" name="subjectsMarks" />
+          <SubjectsGradeInput
+            subjects={subjects}
+            label="Grades"
+            name="subjectsMarks"
+          />
           <CourseInput />
           <SubmitButton variant="contained" type="submit">
             Submit
           </SubmitButton>
-          <PDFDownloadLink document={<MyDocument formValues={formValues} />} fileName='form_data.pdf'>
+          <PDFDownloadLink
+            document={<MyDocument formValues={formValues} />}
+            fileName="form_data.pdf"
+          >
             {({ blob, url, loading, error }) => {
               if (loading) {
-                return 'Loading document...';
+                return "Loading document...";
               } else if (error) {
                 return `Error: ${error.message}`;
               } else if (url) {

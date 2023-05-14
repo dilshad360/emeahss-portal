@@ -137,6 +137,11 @@ export const courseOptions = [
   { value: '37', label: '37 - Business Studies, Accountancy, Economics,Statistics' }
 ]
 
+export const examOptions = [
+  {value: 'SSLC', label: 'SSLC'},
+  {value: 'CBSE', label: 'CBSE'}
+]
+
 export const codeToCourse = {
   '01': '01 - Physics, Chemistry, Biology,Mathematics',
   '11': '11 - History, Economics, Political Science, Sociology',
