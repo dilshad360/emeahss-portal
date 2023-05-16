@@ -1,7 +1,5 @@
 import * as yup from "yup";
-import axios from "axios";
-
-
+/*
 export const initialValues = {
   Name: "",
   MobileNumber: "",
@@ -34,10 +32,90 @@ export const initialValues = {
   ],
   coursePreference1: "",
   coursePreference2: "",
+};*/
+
+
+
+/*
+export const initialValues = {
+  Name: "",
+  MobileNumber: "",
+  WhatsappNumber: "",
+  SingleWindowNo: "",
+  ExamName: "",
+  RegNumber: "",
+  Year: "",
+  SchoolName: "",
+  Gender: "",
+  Religion: "",
+  DateOfBirth: "",
+  MotherName: "",
+  FatherName: "",
+  HouseName: "",
+  PostOffice: "",
+  Panchayath: "",
+  Ward: "",
+  Language1:"",
+  Language2:"",
+  Hindi:"",
+  English:"",
+  SocialScience:"",
+  Science:"",
+  Maths:"",
+  Physics:"",
+  Chemistry:"",
+  Biology:"",
+  IT:"",
+  coursePreference1: "",
+  coursePreference2: "",
+};*/
+
+
+export const initialValues = {
+  Name: "",
+  MobileNumber: "",
+  WhatsappNumber: "",
+  SingleWindowNo: "",
+  ExamName: "",
+  RegNumber: "",
+  Year: "",
+  SchoolName: "",
+  Gender: "",
+  Religion: "",
+  DateOfBirth: "",
+  MotherName: "",
+  FatherName: "",
+  HouseName: "",
+  PostOffice: "",
+  Panchayath: "",
+  Ward: "",
+  statesubjectsMarks: [
+    { subject: 'Language1', grade: '' },
+    { subject: 'Language2', grade: '' },
+    { subject: 'English', grade: '' },
+    { subject: 'Hindi', grade: '' },
+    { subject: 'SocialScience', grade: '' },
+    { subject: 'Physics', grade: '' },
+    { subject: 'Chemistry', grade: '' },
+    { subject: 'Biology', grade: '' },
+    { subject: 'Maths', grade: '' },
+    { subject: 'IT', grade: '' },
+  ],
+  cbseMarks: [
+    { subject: 'Language2', grade: '' },
+    { subject: 'English', grade: '' },
+    { subject: 'Science', grade: '' },
+    { subject: 'SocialScience', grade: '' },
+    { subject: 'Maths', grade: '' },
+  ],
+  coursePreference1: "",
+  coursePreference2: "",
 };
 
+//Validation
 export const validationSchema = yup.object().shape({
   Name: yup.string().required("Name of Applicant is required"),
+  
   MobileNumber: yup
     .string()
     .matches(/^\d+$/, "Mobile number must be a valid number")
@@ -52,6 +130,7 @@ export const validationSchema = yup.object().shape({
     .string()
     .matches(/^\d+$/, "Single Window number must be a valid number")
     .required("Single Window number is required"),
+    
   ExamName: yup.string().required("Name of qualifying examination is required"),
   RegNumber: yup
     .string()
@@ -68,26 +147,43 @@ export const validationSchema = yup.object().shape({
   PostOffice: yup.string().required("Post Office is required"),
   Panchayath: yup.string().required("Panchayath is required"),
   Ward: yup.string().required("Ward is required"),
+/*
+  Language1:yup.string().required("this is required"),
+  Language2:yup.string().required("this is required"),
+  English:yup.string().required("this is required"),
+  Hindi:yup.string().required("this is required"),
+  SocialScience:yup.string().required("this is required"),
+  Physics:yup.string().required("this is required"),
+  Chemistry:yup.string().required("this is required"),
+  Biology:yup.string().required("this is required"),
+  Maths:yup.string().required("this is required"),
+  IT:yup.string().required("this is required"),
+  Science:yup.string().required("this is required"),
+*/
+  /*
   subjectsMarks: yup.array().of(
     yup.object().shape({
       subject: yup.string().required('Required'),
       grade: yup.string().required('Required'),
     })
-  ),
+  )*/
   coursePreference1: yup.string().required('Course preference 1 is required'),
 });
 
+//date
 export const years = [];
 for (let i = new Date().getFullYear(); i > 1900; i--) {
   years.push({ value: i, label: i });
 }
 
+//gender
 export const genderOptions = [
   { value: 'male', label: 'Male' },
   { value: 'female', label: 'Female' },
   { value: 'other', label: 'Other' },
 ];
 
+//religion
 export const religionOptions = [
   { value: 'islam', label: 'Islam' },
   { value: 'hinduism', label: 'Hinduism' },
@@ -97,6 +193,7 @@ export const religionOptions = [
   { value: 'other', label: 'Other' },
 ];
 
+//panchayat
 export const panchayatOptions = [
   { value: 'nilambur', label: 'Nilambur' },
   { value: 'wandoor', label: 'Wandoor' },
@@ -114,10 +211,16 @@ export const panchayatOptions = [
   { value: 'kalikavu', label: 'Kalikavu' },
 ]
 
-export const subjects = [
-  'Lang1', 'Lang2', 'Eng', 'Hindi', 'SS', 'Phy', 'Chem', 'Bio', 'Maths', 'IT'
+export const cbseSubjects = [
+  'Language2','English','SocialScience','Maths','Science'
 ]
 
+
+export const subjects = [
+  'Language1', 'Language2', 'English', 'Hindi', 'SocialScience', 'Physics', 'Chemistry', 'Biology', 'Maths', 'IT'
+]
+
+//grade
 export const gradesOptions = [
   { value: '9', label: 'A+' },
   { value: '8', label: 'A' },
@@ -126,9 +229,8 @@ export const gradesOptions = [
   { value: '5', label: 'C+' },
   { value: '4', label: 'C' },
   { value: '3', label: 'D+' },
-  { value: '2', label: 'D' },
-  { value: '1', label: 'E' },
 ];
+
 
 export const courseOptions = [
   { value: '01', label: '01 - Physics, Chemistry, Biology,Mathematics' },
@@ -137,10 +239,12 @@ export const courseOptions = [
   { value: '37', label: '37 - Business Studies, Accountancy, Economics,Statistics' }
 ]
 
+
 export const examOptions = [
   {value: 'SSLC', label: 'SSLC'},
   {value: 'CBSE', label: 'CBSE'}
 ]
+
 
 export const codeToCourse = {
   '01': '01 - Physics, Chemistry, Biology,Mathematics',
@@ -148,6 +252,7 @@ export const codeToCourse = {
   '35': '35 - Journalism, English Literature, Communicative English, Psychology',
   '37': '37 - Business Studies, Accountancy, Economics,Statistics'
 }
+
 
 export const markToGrade = {
   '9':'A+',
@@ -160,45 +265,3 @@ export const markToGrade = {
 }
 
 
-
-export const handleSubmit = async (values) => {
-  try {
-    const formattedValues = {
-      Name: values.Name,
-      MobileNumber: values.MobileNumber,
-      WhatsappNumber: values.WhatsappNumber,
-      SingleWindowNo: values.SingleWindowNo,
-      ExamName: values.ExamName,
-      RegNumber: values.RegNumber,
-      Year: values.Year,
-      SchoolName: values.SchoolName,
-      Gender: values.Gender,
-      Religion: values.Religion,
-      DateOfBirth: values.DateOfBirth,
-      MotherName: values.MotherName,
-      FatherName: values.FatherName,
-      HouseName: values.HouseName,
-      PostOffice: values.PostOffice,
-      Panchayath: values.Panchayath,
-      Ward: values.Ward,
-      Lang1: values.subjectsMarks[0].grade,
-      Lang2: values.subjectsMarks[1].grade,
-      Eng: values.subjectsMarks[2].grade,
-      Hindi: values.subjectsMarks[3].grade,
-      SS: values.subjectsMarks[4].grade,
-      Phy: values.subjectsMarks[5].grade,
-      Chem: values.subjectsMarks[6].grade,
-      Bio: values.subjectsMarks[7].grade,
-      Maths: values.subjectsMarks[8].grade,
-      IT: values.subjectsMarks[9].grade,
-      coursePreference1: values.coursePreference1,
-      coursePreference2: values.coursePreference2,
-    };
-    //Google sheet heading format
-    axios.post("https://sheet.best/api/sheets/2112eec1-f365-43b1-b918-287af866f358", formattedValues).then(response => {
-      console.log("response", response);
-    })
-  } catch (error) {
-    console.log(error);
-  }
-}
