@@ -7,12 +7,12 @@ import {
   TableCell,
   TableBody,
 } from "@mui/material";
-import { subjects, gradesOptions } from "../Const";
+import { subjects, gradesOptions, cbseSubjects, initialValues } from "../Const";
 import { SelectInput } from "./common/SelectInput";
 import { useFormikContext } from "formik";
 
 export default function SubjectsGradeInput(props) {
-  const { label, name, ...rest } = props;
+  const { label, name,syllabus,...rest } = props;
   const { errors, touched } = useFormikContext();
   return (
     <TableContainer component={Paper}>
@@ -25,13 +25,13 @@ export default function SubjectsGradeInput(props) {
             <TableCell style={{ fontWeight: "bold" }}>Grades</TableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
-          {subjects.map((subject, index) => (
+        {syllabus === 'CBSE'?<TableBody>
+          {cbseSubjects.map((subject, index) => (
             <TableRow key={index}>
               <TableCell style={{ width: "60%" }}>{subject}</TableCell>
               <TableCell>
                 <SelectInput
-                  name={`subjectsMarks[${index}].grade`}
+                  name={`cbseMarks[${index}].grade`}
                   label="Grade"
                   {...rest}
                   options={gradesOptions}
@@ -44,7 +44,28 @@ export default function SubjectsGradeInput(props) {
               </TableCell>
             </TableRow>
           ))}
-        </TableBody>
+        </TableBody>:<TableBody>
+          {subjects.map((subject, index) => (
+            <TableRow key={index}>
+              <TableCell style={{ width: "60%" }}>{subject}</TableCell>
+              <TableCell>
+                <SelectInput
+                  name={`statesubjectsMarks[${index}].grade`}
+                  label="Grade"
+                  {...rest}
+                  options={gradesOptions}
+                  error={
+                    touched.subjectsMarks &&
+                    touched.subjectsMarks[index] &&
+                    Boolean(errors.subjectsMarks?.[index]?.grade)
+                  }
+                  onChange={(value)=>{console.log('subjects',value);}}
+                />
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>}
+        
       </Table>
     </TableContainer>
   );
