@@ -23,6 +23,7 @@ export function SelectInput(props) {
           name={name}
           value={values[name]} // Use Formik's value
           onChange={handleChange}
+          defaultValue="" 
           {...rest}
         >
           {options.map((option) => (

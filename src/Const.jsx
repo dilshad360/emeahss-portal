@@ -147,26 +147,6 @@ export const validationSchema = yup.object().shape({
   PostOffice: yup.string().required("Post Office is required"),
   Panchayath: yup.string().required("Panchayath is required"),
   Ward: yup.string().required("Ward is required"),
-/*
-  Language1:yup.string().required("this is required"),
-  Language2:yup.string().required("this is required"),
-  English:yup.string().required("this is required"),
-  Hindi:yup.string().required("this is required"),
-  SocialScience:yup.string().required("this is required"),
-  Physics:yup.string().required("this is required"),
-  Chemistry:yup.string().required("this is required"),
-  Biology:yup.string().required("this is required"),
-  Maths:yup.string().required("this is required"),
-  IT:yup.string().required("this is required"),
-  Science:yup.string().required("this is required"),
-*/
-  /*
-  subjectsMarks: yup.array().of(
-    yup.object().shape({
-      subject: yup.string().required('Required'),
-      grade: yup.string().required('Required'),
-    })
-  )*/
   coursePreference1: yup.string().required('Course preference 1 is required'),
 });
 
