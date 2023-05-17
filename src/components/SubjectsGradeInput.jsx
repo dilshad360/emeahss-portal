@@ -7,7 +7,7 @@ import {
   TableCell,
   TableBody,
 } from "@mui/material";
-import { subjects, gradesOptions, cbseSubjects } from "../Const";
+import { subjects, gradesOptions, cbseSubjects, cbseGradesOptions } from "../Const";
 import { SelectInput } from "./common/SelectInput";
 import { useFormikContext } from "formik";
 
@@ -35,7 +35,7 @@ export default function SubjectsGradeInput(props) {
                   label="Grade"
                   required
                   {...rest}
-                  options={gradesOptions}
+                  options={cbseGradesOptions}
                   error={
                     touched.subjectsMarks &&
                     touched.subjectsMarks[index] &&

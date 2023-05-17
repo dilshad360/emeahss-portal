@@ -211,6 +211,17 @@ export const gradesOptions = [
   { value: '3', label: 'D+' },
 ];
 
+// cbse grades
+export const cbseGradesOptions = [
+  { value: '10', label: 'A1' },
+  { value: '9', label: 'A2' },
+  { value: '8', label: 'B1' },
+  { value: '7', label: 'B2' },
+  { value: '6', label: 'C1' },
+  { value: '5', label: 'C2' },
+  { value: '4', label: 'D' },
+];
+
 
 export const courseOptions = [
   { value: '01', label: '01 - Physics, Chemistry, Biology,Mathematics' },
