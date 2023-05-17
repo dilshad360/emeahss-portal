@@ -13,7 +13,6 @@ export default function CourseInput(params) {
               as={Select}
               label="Course Preference 1"
               variant="outlined"
-              margin="normal"
             >
               {courseOptions.map((option) => (
                 <MenuItem key={option.value} value={option.value}>
@@ -33,7 +32,6 @@ export default function CourseInput(params) {
                 label="Course Preference 2"
                 as={Select}
                 variant="outlined"
-                margin="normal"
                 disabled={values.coursePreference1 === ''}
               >
                 <MenuItem value="">None</MenuItem>

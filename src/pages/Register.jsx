@@ -99,18 +99,19 @@
       }
     }
 
-    const HandleExamChange = (value) => {
+    const HandleExamChange = (value, setFieldValue) => {
       setSyllabus(value)
+      setFieldValue('ExamName', value)
     }
 
     useEffect(() => {
       // Here you can perform actions based on the syllabus value
       if (syllabus === "CBSE") {
         // User selected CBSE
-        console.log("CBSE selected", syllabus);
+        console.log("selected", syllabus);
       } else if (syllabus === "SSLC") {
         // User selected State
-        console.log("State selected", syllabus);
+        console.log("selected", syllabus);
       }
     }, [syllabus]);
     return (
@@ -126,7 +127,7 @@
           alert("Application Form filled Successfully.'\n' Please Download the PDF.");
         }}
       >
-        {({ errors, touched }) => (
+        {({ errors, touched, setFieldValue }) => (
           <FormContainer>
             <Typography
               variant="h4"
@@ -203,7 +204,7 @@
                   label="Name of qualifying examination"
                   options={examOptions}
                   error={errors.ExamName && touched.ExamName}
-                  onChange={HandleExamChange}
+                  onChange={(e)=>{HandleExamChange(e, setFieldValue)}}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -338,7 +339,7 @@
                 <FormField
                   as={TextField}
                   name="Ward"
-                  label="Ward"
+                  label="Ward No"
                   type="number"
                   fullWidth
                   error={errors.Ward && touched.Ward}

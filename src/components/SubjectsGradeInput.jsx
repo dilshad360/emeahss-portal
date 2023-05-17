@@ -7,7 +7,7 @@ import {
   TableCell,
   TableBody,
 } from "@mui/material";
-import { subjects, gradesOptions, cbseSubjects, initialValues } from "../Const";
+import { subjects, gradesOptions, cbseSubjects, cbseGradesOptions } from "../Const";
 import { SelectInput } from "./common/SelectInput";
 import { useFormikContext } from "formik";
 
@@ -33,8 +33,9 @@ export default function SubjectsGradeInput(props) {
                 <SelectInput
                   name={`cbseMarks[${index}].grade`}
                   label="Grade"
+                  required
                   {...rest}
-                  options={gradesOptions}
+                  options={cbseGradesOptions}
                   error={
                     touched.subjectsMarks &&
                     touched.subjectsMarks[index] &&
@@ -50,14 +51,16 @@ export default function SubjectsGradeInput(props) {
               <TableCell style={{ width: "60%" }}>{subject}</TableCell>
               <TableCell>
                 <SelectInput
+                  defaultValue="" 
                   name={`statesubjectsMarks[${index}].grade`}
+                  required
                   label="Grade"
                   {...rest}
                   options={gradesOptions}
                   error={
-                    touched.subjectsMarks &&
-                    touched.subjectsMarks[index] &&
-                    Boolean(errors.subjectsMarks?.[index]?.grade)
+                    touched.statesubjectsMarks &&
+                    touched.statesubjectsMarks[index] &&
+                    Boolean(errors.statesubjectsMarks?.[index]?.grade)
                   }
                   onChange={(value)=>{console.log('subjects',value);}}
                 />
