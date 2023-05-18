@@ -1,8 +1,7 @@
   import React, { useEffect } from "react";
-  import { Grid, TextField, Button, Typography, Divider, Dialog, DialogActions, DialogContent, DialogTitle,  } from "@mui/material";
+  import { Grid, TextField, Button, Typography, Divider, Dialog, DialogActions, DialogContent, DialogTitle  } from "@mui/material";
   import CheckCircle from '@mui/icons-material/CheckCircle';
-  import { Formik, Form, Field } from "formik";
-  import styled from "@emotion/styled";
+  import { Formik, Field } from "formik";
   import {
     initialValues,
     validationSchema,
@@ -22,30 +21,9 @@
   import { useState } from "react";
   import PdfDocument from "../components/PdfDocument";
   import axios from "axios";
+  import { SubmitButton, FormContainer } from "../styles/FormStyle";
 
 
-
-  const FormField = styled(Field)`
-    & input::-webkit-outer-spin-button,
-    & input::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-
-    & input[type="number"] {
-      -moz-appearance: textfield;
-    }
-  `;
-
-  const SubmitButton = styled(Button)`
-    margin-top: 2rem;
-  `;
-
-  const FormContainer = styled(Form)`
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 2rem 1rem 2rem 1rem;
-  `;
 
   function RegistrationForm() {
     const [formValues, setFormValues] = useState(initialValues);
@@ -84,7 +62,6 @@
           PostOffice: values.PostOffice,
           Panchayath: values.Panchayath,
           Ward: values.Ward,
-          
           Language1:  values.statesubjectsMarks[0].grade,
           Language2: syllabus === 'CBSE'?values.cbseMarks[0].grade:values.statesubjectsMarks[1].grade,
           English: syllabus === 'CBSE'?values.cbseMarks[1].grade:values.statesubjectsMarks[2].grade,
@@ -154,7 +131,7 @@
             </Typography>
             <Grid container spacing={2}>
               <Grid item xs={12}>
-                <FormField
+                <Field
                   as={TextField}
                   name="Name"
                   label="Name of Applicant"
@@ -165,7 +142,7 @@
                 />
               </Grid>
               <Grid item xs={12}>
-                <FormField
+                <Field
                   as={TextField}
                   name="MobileNumber"
                   label="Mobile Number"
@@ -180,7 +157,7 @@
                 />
               </Grid>
               <Grid item xs={12}>
-                <FormField
+                <Field
                   as={TextField}
                   name="WhatsappNumber"
                   label="Whatsapp Number"
@@ -195,7 +172,7 @@
                 />
               </Grid>
               <Grid item xs={12}>
-                <FormField
+                <Field
                   as={TextField}
                   name="SingleWindowNo"
                   label="Single Window Appln. No."
@@ -219,7 +196,7 @@
                 />
               </Grid>
               <Grid item xs={12}>
-                <FormField
+                <Field
                   as={TextField}
                   name="RegNumber"
                   label="Register Number"
@@ -240,7 +217,7 @@
                 />
               </Grid>
               <Grid item xs={12}>
-                <FormField
+                <Field
                   as={TextField}
                   name="SchoolName"
                   label="Name of school in which studied"
@@ -269,7 +246,7 @@
                 />
               </Grid>
               <Grid item xs={12}>
-                <FormField
+                <Field
                   as={TextField}
                   name="DateOfBirth"
                   label="Date of Birth"
@@ -287,7 +264,7 @@
                 />
               </Grid>
               <Grid item xs={12}>
-                <FormField
+                <Field
                   as={TextField}
                   name="FatherName"
                   label="Name of Father"
@@ -300,7 +277,7 @@
                 />
               </Grid>
               <Grid item xs={12}>
-                <FormField
+                <Field
                   as={TextField}
                   name="MotherName"
                   label="Name of Mother"
@@ -313,7 +290,7 @@
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
-                <FormField
+                <Field
                   as={TextField}
                   name="HouseName"
                   label="House Name"
@@ -326,7 +303,7 @@
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
-                <FormField
+                <Field
                   as={TextField}
                   name="PostOffice"
                   label="Post Office"
@@ -347,7 +324,7 @@
                 />
               </Grid>
               <Grid item xs={6}>
-                <FormField
+                <Field
                   as={TextField}
                   name="Ward"
                   label="Ward No"
@@ -366,7 +343,7 @@
               syllabus={syllabus}
             />
             <CourseInput />
-            <SubmitButton variant="contained" type="submit">
+            <SubmitButton fullWidth variant="contained" type="submit">
               Submit
             </SubmitButton>
             <Dialog
