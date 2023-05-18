@@ -175,20 +175,21 @@ export const religionOptions = [
 
 //panchayat
 export const panchayatOptions = [
-  { value: 'nilambur', label: 'Nilambur' },
-  { value: 'wandoor', label: 'Wandoor' },
   { value: 'kondotty', label: 'Kondotty' },
-  { value: 'areekode', label: 'Areekode' },
-  { value: 'malappuram', label: 'Malappuram' },
-  { value: 'mankada', label: 'Mankada' },
-  { value: 'kuttippuram', label: 'Kuttippuram' },
-  { value: 'vengara', label: 'Vengara' },
-  { value: 'tirurangadi', label: 'Tirurangadi' },
-  { value: 'tanur', label: 'Tanur' },
-  { value: 'tirur', label: 'Tirur' },
-  { value: 'ponnani', label: 'Ponnani' },
-  { value: 'permpadappa', label: 'Permpadappa' },
-  { value: 'kalikavu', label: 'Kalikavu' },
+  { value: 'pulikkal', label: 'Pulikkal' },
+  { value: 'cherukavu', label: 'Cherukavu' },
+  { value: 'kuzhimanna', label: 'Kuzhimanna' },
+  { value: 'muthuvallur', label: 'Muthuvallur' },
+  { value: 'cheekode', label: 'Cheekode' },
+  { value: 'pallikkal', label: 'Pallikkal' },
+  { value: 'morayur', label: 'Morayur' },
+  { value: 'vazhakad', label: 'Vazhakad' },
+  { value: 'vazhayur', label: 'Vazhayur' },
+  { value: 'thenhipalam', label: 'Thenhipalam' },
+  { value: 'chelembra', label: 'Chelembra' },
+  { value: 'peruvallur', label: 'Peruvallur' },
+  { value: 'pookottur', label: 'Pookottur' },
+  { value: 'other', label: 'Other' },
 ]
 
 export const cbseSubjects = [
