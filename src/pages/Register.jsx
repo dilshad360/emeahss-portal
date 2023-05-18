@@ -1,5 +1,6 @@
   import React, { useEffect } from "react";
-  import { Grid, TextField, Button, Typography, Divider } from "@mui/material";
+  import { Grid, TextField, Button, Typography, Divider, Dialog, DialogActions, DialogContent, DialogTitle,  } from "@mui/material";
+  import CheckCircle from '@mui/icons-material/CheckCircle';
   import { Formik, Form, Field } from "formik";
   import styled from "@emotion/styled";
   import {
@@ -50,6 +51,18 @@
     const [formValues, setFormValues] = useState(initialValues);
     const [submit, setSubmit] = useState(false)
     const [syllabus, setSyllabus] = useState("");
+
+    const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+
     //handling submit
     const handleSubmit = async (values) => {
       try {
@@ -92,6 +105,7 @@
           console.log("response", response.data[0]);
           if (response.status === 200) {
             setSubmit(true)
+            handleClickOpen()
           }
         })
       } catch (error) {
@@ -101,7 +115,6 @@
 
     const HandleExamChange = (value, setFieldValue) => {
       setSyllabus(value)
-      setFieldValue('ExamName', value)
     }
 
     useEffect(() => {
@@ -120,14 +133,12 @@
         validationSchema={validationSchema}
         //on submit section
         onSubmit={(values) => {
-          console.log(initialValues.statesubjectsMarks[0]);
           handleSubmit(values);
           setFormValues(values);
           console.log(values);
-          alert("Application Form filled Successfully.'\n' Please Download the PDF.");
         }}
       >
-        {({ errors, touched, setFieldValue }) => (
+        {({ errors, touched }) => (
           <FormContainer>
             <Typography
               variant="h4"
@@ -204,7 +215,7 @@
                   label="Name of qualifying examination"
                   options={examOptions}
                   error={errors.ExamName && touched.ExamName}
-                  onChange={(e)=>{HandleExamChange(e, setFieldValue)}}
+                  onChange={HandleExamChange}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -358,7 +369,21 @@
             <SubmitButton variant="contained" type="submit">
               Submit
             </SubmitButton>
-            <PDFDownloadLink style={submit?{'display':'flex'}:{'display':'none'}}
+            <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+         <DialogTitle>
+          <CheckCircle color="primary" style={{ fontSize: 48 }} />
+        </DialogTitle>
+        <DialogContent>
+          <Typography>Application Form filled Successfully.</Typography>
+          <Typography>Please Download the PDF.</Typography>
+        </DialogContent>
+        <DialogActions>
+        <PDFDownloadLink style={submit?{'display':'flex'}:{'display':'none'}}
               document={<PdfDocument formValues={formValues} syllabus={syllabus}/>}
               fileName="form_data.pdf"
             >
@@ -380,6 +405,8 @@
                 }
               }}
             </PDFDownloadLink>
+        </DialogActions>
+      </Dialog>
           </FormContainer>
         )}
       </Formik>
