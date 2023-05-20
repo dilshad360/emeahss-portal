@@ -12,7 +12,7 @@ import PdfDownload from "../components/PdfDownload";
 
 const validationSchema = yup.object().shape({
   SingleWindowNo: yup.string().required("Single Window number is required"),
-  DateOfBirth: yup.date().required("Date of birth is required"),
+  DateOfBirth: yup.string().required("Date of birth is required"),
 });
 
 const initialValue = {
@@ -24,7 +24,7 @@ export default function Application() {
   const navigate = useNavigate();
   const [registered, setRegistered] = useState({});
   const [submit, setSubmit] = useState(false)
-  const [dateOfBirth, setDateOfBirth] = useState("")
+  const [, setDateOfBirth] = useState("")
   // Checking if the user is registered or not
 
 

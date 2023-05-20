@@ -10,7 +10,7 @@ export default function CourseInput(params) {
       option.value !== values.coursePreference2
   );
   return (
-    <div className="mt-6 flex flex-col gap-3">
+    <div className="flex flex-col gap-3">
       <FormControl fullWidth error={Boolean(errors.coursePreference1 && touched.coursePreference1)}>
         <InputLabel>Course Preference 1</InputLabel>
         <Field
@@ -29,15 +29,13 @@ export default function CourseInput(params) {
           <FormHelperText>{errors.coursePreference1}</FormHelperText>
         )}
       </FormControl>
-      {values.coursePreference1 && (
-        <FormControl fullWidth>
+        <FormControl fullWidth error={Boolean(errors.coursePreference2 && touched.coursePreference2)}>
           <InputLabel>Course Preference 2</InputLabel>
           <Field
             name="coursePreference2"
             label="Course Preference 2"
             as={Select}
             variant="outlined"
-            disabled={values.coursePreference1 === ''}
           >
             <MenuItem value="">None</MenuItem>
             {courseOptions
@@ -48,17 +46,17 @@ export default function CourseInput(params) {
                 </MenuItem>
               ))}
           </Field>
+          {errors.coursePreference2 && touched.coursePreference2 && (
+          <FormHelperText>{errors.coursePreference2}</FormHelperText>
+        )}
         </FormControl>
-      )}
-      {values.coursePreference1 && values.coursePreference2 && (
-        <FormControl fullWidth>
+        <FormControl fullWidth error={Boolean(errors.coursePreference3 && touched.coursePreference3)}>
           <InputLabel>Course Preference 3</InputLabel>
           <Field
             name="coursePreference3"
             label="Course Preference 3"
             as={Select}
             variant="outlined"
-            disabled={(values.coursePreference2 === '') && (values.coursePreference1 === '')}
           >
             <MenuItem value="">None</MenuItem>
             {filteredOptions
@@ -73,8 +71,10 @@ export default function CourseInput(params) {
                 </MenuItem>
               ))}
           </Field>
+          {errors.coursePreference3 && touched.coursePreference3 && (
+          <FormHelperText>{errors.coursePreference3}</FormHelperText>
+        )}
         </FormControl>
-      )}
     </div>
   )
 };
