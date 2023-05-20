@@ -9,11 +9,14 @@ import {
 
 import { markToGrade, codeToCourse, cbseMarkToGrade } from '../Const';
 
-const PdfDocument = (props) => {
-    const syllabus = props.syllabus
+const PdfDownload = (props) => {
+    console.log("Download PDF");
     const formValues = props.formValues
-    console.log(formValues.cbseMarks);
-    console.log("coursePreference1:",codeToCourse[formValues.coursePreference1]);
+    const syllabus = formValues.Board
+    console.log("Syllabus",syllabus);
+    console.log(formValues.coursePreference1);
+    console.log(codeToCourse[formValues.coursePreference1]);
+    console.log("formValues",cbseMarkToGrade[formValues.Science]);
     const styles = StyleSheet.create({
         page: {
             display: 'flex',
@@ -93,6 +96,10 @@ const PdfDocument = (props) => {
                 <View style={styles.section}>
                     <Text style={styles.header}>EMEA HSS KONDOTTY THURAKKAL PO {'\n'}APPLICATION FOR PLUS ONE ADMISSION 2023-24 {'\n'}(Management Quota)</Text>
                     <View style={styles.field}>
+                        <View style={styles.values}><Text>Application Number</Text></View>
+                        <View><Text>:{formValues.AppNo}</Text></View>
+                    </View>
+                    <View style={styles.field}>
                         <View style={styles.values}><Text>Name</Text></View>
                         <View><Text>:{formValues.Name}</Text></View>
                     </View>
@@ -165,21 +172,74 @@ const PdfDocument = (props) => {
                             <Text style={styles.tableCell}>Subject</Text>
                             <Text style={styles.tableCell}>Grade</Text>
                         </View>
-                        {syllabus === 'CBSE'? (
-                            formValues.cbseMarks.map((subject, index) => (
-                                <View key={index} style={styles.tableRow}>
-                                    <Text style={styles.tableCell}>{subject.subject}</Text>
-                                    <Text style={styles.tableCell}>{cbseMarkToGrade[subject.grade]}</Text>
+
+                        {syllabus === 'CBSE' ?
+                            (<View>
+                                <View style={styles.tableRow}>
+                                    <Text style={styles.tableCell}>Language</Text>
+                                    <Text style={styles.tableCell}>{cbseMarkToGrade[formValues.Language2]}</Text>
                                 </View>
-                            ))
-                        ) : (
-                            formValues.statesubjectsMarks.map((subject, index) => (
-                                <View key={index} style={styles.tableRow}>
-                                    <Text style={styles.tableCell}>{subject.subject}</Text>
-                                    <Text style={styles.tableCell}>{markToGrade[subject.grade]}</Text>
+                                <View style={styles.tableRow}>
+                                    <Text style={styles.tableCell}>English</Text>
+                                    <Text style={styles.tableCell}>{cbseMarkToGrade[formValues.English]}</Text>
                                 </View>
-                            ))
-                        )}
+                                <View style={styles.tableRow}>
+                                    <Text style={styles.tableCell}>Maths</Text>
+                                    <Text style={styles.tableCell}>{cbseMarkToGrade[formValues.Maths]}</Text>
+                                </View>
+                                <View style={styles.tableRow}>
+                                    <Text style={styles.tableCell}>Social Science</Text>
+                                    <Text style={styles.tableCell}>{cbseMarkToGrade[formValues.SocialScience]}</Text>
+                                </View>
+                                <View style={styles.tableRow}>
+                                    <Text style={styles.tableCell}>Science</Text>
+                                    <Text style={styles.tableCell}>{cbseMarkToGrade[formValues.Science]}</Text>
+                                </View>
+                            </View>) 
+                            : 
+                            (<View>
+                                <View style={styles.tableRow}>
+                                    <Text style={styles.tableCell}>Language1</Text>
+                                    <Text style={styles.tableCell}>{markToGrade[formValues.Language1]}</Text>
+                                </View>
+                                <View style={styles.tableRow}>
+                                    <Text style={styles.tableCell}>Language2</Text>
+                                    <Text style={styles.tableCell}>{markToGrade[formValues.Language2]}</Text>
+                                </View>
+                                <View style={styles.tableRow}>
+                                    <Text style={styles.tableCell}>English</Text>
+                                    <Text style={styles.tableCell}>{markToGrade[formValues.English]}</Text>
+                                </View>
+                                <View style={styles.tableRow}>
+                                    <Text style={styles.tableCell}>Hindi</Text>
+                                    <Text style={styles.tableCell}>{markToGrade[formValues.Hindi]}</Text>
+                                </View>
+                                <View style={styles.tableRow}>
+                                    <Text style={styles.tableCell}>Social Science</Text>
+                                    <Text style={styles.tableCell}>{markToGrade[formValues.SocialScience]}</Text>
+                                </View>
+                                <View style={styles.tableRow}>
+                                    <Text style={styles.tableCell}>Physics</Text>
+                                    <Text style={styles.tableCell}>{markToGrade[formValues.Physics]}</Text>
+                                </View>
+                                <View style={styles.tableRow}>
+                                    <Text style={styles.tableCell}>Biology</Text>
+                                    <Text style={styles.tableCell}>{markToGrade[formValues.Biology]}</Text>
+                                </View>
+                                <View style={styles.tableRow}>
+                                    <Text style={styles.tableCell}>Chemistry</Text>
+                                    <Text style={styles.tableCell}>{markToGrade[formValues.Chemistry]}</Text>
+                                </View>
+                                <View style={styles.tableRow}>
+                                    <Text style={styles.tableCell}>Maths</Text>
+                                    <Text style={styles.tableCell}>{markToGrade[formValues.Maths]}</Text>
+                                </View>
+                                <View style={styles.tableRow}>
+                                    <Text style={styles.tableCell}>Infromation Technology</Text>
+                                    <Text style={styles.tableCell}>{markToGrade[formValues.IT]}</Text>
+                                </View>
+                            </View>)
+                        }
                     </View>
                     <View style={styles.tableContainer}>
                         <View style={styles.tableHeader}>
@@ -188,15 +248,15 @@ const PdfDocument = (props) => {
                         </View>
                         <View style={styles.tableRow}>
                             <Text style={styles.tableCell}>1</Text>
-                            <Text style={styles.tableCell}>{codeToCourse[formValues.coursePreference1]}</Text>
+                            <Text style={styles.tableCell}>{formValues.coursePreference1}</Text>
                         </View>
                         <View style={styles.tableRow}>
                             <Text style={styles.tableCell}>2</Text>
-                            <Text style={styles.tableCell}>{codeToCourse[formValues.coursePreference2]}</Text>
+                            <Text style={styles.tableCell}>{formValues.coursePreference2}</Text>
                         </View>
                         <View style={styles.tableRow}>
                             <Text style={styles.tableCell}>3</Text>
-                            <Text style={styles.tableCell}>{codeToCourse[formValues.coursePreference3]}</Text>
+                            <Text style={styles.tableCell}>{formValues.coursePreference3}</Text>
                         </View>
                     </View>
                 </View>
@@ -205,4 +265,4 @@ const PdfDocument = (props) => {
     );
 }
 
-export default PdfDocument
+export default PdfDownload
