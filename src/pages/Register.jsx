@@ -4,12 +4,7 @@ import {
   TextField,
   Typography,
   Divider,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
 } from "@mui/material";
-import CheckCircle from "@mui/icons-material/CheckCircle";
 import { Formik, Field, isEmptyArray } from "formik";
 import {
   initialValues,
@@ -27,14 +22,17 @@ import CourseInput from "../components/CourseInput";
 import { useState } from "react";
 import axios from "axios";
 import { SubmitButton, FormContainer } from "../styles/FormStyle";
-import { Link } from "react-router-dom";
+import Loader from "../components/Loader";
+import SuccessDialog from "../components/Dialogs/SuccessDialog";
 
 function RegistrationForm() {
   const [formValues, setFormValues] = useState(initialValues);
-  const [submit, setSubmit] = useState(false);
+  const [, setSubmit] = useState(false);
   const [syllabus, setSyllabus] = useState("");
-  const [dateOfBirth, setDateOfBirth] = useState("");
+  const [dialogMessage, setDialogMesssage] = useState("")
+  // const [dateOfBirth, setDateOfBirth] = useState("");
   const [open, setOpen] = React.useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -44,16 +42,24 @@ function RegistrationForm() {
     setOpen(false);
   };
 
-  const handleChangeDate = (handleChange, event) => {
-    const { name, value } = event.target;
-    // Reformat the date value to MM/DD/YYYY format
-    const formattedDate = value.split("-").reverse().join("/");
-    setDateOfBirth(formattedDate);
-    handleChange({ target: { name, value: formattedDate } });
-  };
+  //To show successful dialog with custom message
+  const showSuccessDialog = (message) => {
+    handleClickOpen();
+    setDialogMesssage(message)
+  }
+
+
+  // const handleChangeDate = (handleChange, event) => {
+  //   const { name, value } = event.target;
+  //   // Reformat the date value to MM/DD/YYYY format
+  //   const formattedDate = value.split("-").reverse().join("/");
+  //   setDateOfBirth(formattedDate);
+  //   handleChange({ target: { name, value: formattedDate } });
+  // };
 
   //handling submit
   const handleSubmit = async (values) => {
+    setLoading(true)
     const formattedValues = {
       Name: values.Name,
       MobileNumber: values.MobileNumber,
@@ -123,9 +129,11 @@ function RegistrationForm() {
             console.log("response", response.data[0]);
           });
         setSubmit(true);
-        handleClickOpen();
+        showSuccessDialog("Application Form filled Successfully.")
+        setLoading(false)
       } else {
-        alert("You are already registered");
+        showSuccessDialog("You are already registered")
+        setLoading(false)
       }
     } catch (error) {
       console.log(error);
@@ -160,6 +168,7 @@ function RegistrationForm() {
     >
       {({ errors, touched }) => (
         <FormContainer>
+            <Loader open={loading}/>
           <Typography
             variant="h6"
             style={{
@@ -397,23 +406,7 @@ function RegistrationForm() {
           <SubmitButton fullWidth variant="contained" type="submit">
             Submit
           </SubmitButton>
-          <Dialog
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-          >
-            <DialogTitle>
-              <CheckCircle color="primary" style={{ fontSize: 48 }} />
-            </DialogTitle>
-            <DialogContent>
-              <Typography>Application Form filled Successfully.</Typography>
-              <Typography>Please Download the PDF.</Typography>
-            </DialogContent>
-            <DialogActions>
-              <Link to={"/application"}>Download PDF</Link>
-            </DialogActions>
-          </Dialog>
+          <SuccessDialog open={open} onClose={handleClose} message={dialogMessage} />
         </FormContainer>
       )}
     </Formik>
