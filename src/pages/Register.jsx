@@ -1,6 +1,15 @@
 import React, { useEffect } from "react";
-import { Grid, TextField, Typography, Divider, Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material";
-import CheckCircle from '@mui/icons-material/CheckCircle';
+import {
+  Grid,
+  TextField,
+  Typography,
+  Divider,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+} from "@mui/material";
+import CheckCircle from "@mui/icons-material/CheckCircle";
 import { Formik, Field, isEmptyArray } from "formik";
 import {
   initialValues,
@@ -39,14 +48,13 @@ function RegistrationForm() {
     const { name, value } = event.target;
     // Reformat the date value to MM/DD/YYYY format
     const formattedDate = value.split("-").reverse().join("/");
-    setDateOfBirth(formattedDate)
+    setDateOfBirth(formattedDate);
     handleChange({ target: { name, value: formattedDate } });
   };
 
   //handling submit
   const handleSubmit = async (values) => {
     const formattedValues = {
-
       Name: values.Name,
       MobileNumber: values.MobileNumber,
       WhatsappNumber: values.WhatsappNumber,
@@ -68,17 +76,29 @@ function RegistrationForm() {
       for state subjects which do not appear 
       in CBSE will null in if syllabus is CBSE */
       //grade section
-      Language1: syllabus === 'STATE' ? values.statesubjectsMarks[0].grade : '',
-      Language2: syllabus === 'CBSE' ? values.cbseMarks[0].grade : values.statesubjectsMarks[1].grade,
-      English: syllabus === 'CBSE' ? values.cbseMarks[1].grade : values.statesubjectsMarks[2].grade,
-      Hindi: syllabus === 'STATE' ? values.statesubjectsMarks[3].grade : '',
-      SocialScience: syllabus === 'CBSE' ? values.cbseMarks[3].grade : values.statesubjectsMarks[4].grade,
-      Physics: syllabus === 'STATE' ? values.statesubjectsMarks[5].grade : '',
-      Chemistry: syllabus === 'STATE' ? values.statesubjectsMarks[6].grade : '',
-      Biology: syllabus === 'STATE' ? values.statesubjectsMarks[7].grade : '',
-      Maths: syllabus === 'CBSE' ? values.cbseMarks[4].grade : values.statesubjectsMarks[8].grade,
-      IT: syllabus === 'STATE' ? values.statesubjectsMarks[9].grade : '',
-      Science: syllabus === 'CBSE' ? values.cbseMarks[2].grade : '',
+      Language1: syllabus === "STATE" ? values.statesubjectsMarks[0].grade : "",
+      Language2:
+        syllabus === "CBSE"
+          ? values.cbseMarks[0].grade
+          : values.statesubjectsMarks[1].grade,
+      English:
+        syllabus === "CBSE"
+          ? values.cbseMarks[1].grade
+          : values.statesubjectsMarks[2].grade,
+      Hindi: syllabus === "STATE" ? values.statesubjectsMarks[3].grade : "",
+      SocialScience:
+        syllabus === "CBSE"
+          ? values.cbseMarks[3].grade
+          : values.statesubjectsMarks[4].grade,
+      Physics: syllabus === "STATE" ? values.statesubjectsMarks[5].grade : "",
+      Chemistry: syllabus === "STATE" ? values.statesubjectsMarks[6].grade : "",
+      Biology: syllabus === "STATE" ? values.statesubjectsMarks[7].grade : "",
+      Maths:
+        syllabus === "CBSE"
+          ? values.cbseMarks[4].grade
+          : values.statesubjectsMarks[8].grade,
+      IT: syllabus === "STATE" ? values.statesubjectsMarks[9].grade : "",
+      Science: syllabus === "CBSE" ? values.cbseMarks[2].grade : "",
 
       //course selection
       coursePreference1: values.coursePreference1,
@@ -86,30 +106,35 @@ function RegistrationForm() {
       coursePreference3: values.coursePreference3,
     };
 
-    let singleWindowNo = values.SingleWindowNo
+    let singleWindowNo = values.SingleWindowNo;
     console.log(singleWindowNo);
     try {
-      const response = await axios.get(`https://sheet.best/api/sheets/2112eec1-f365-43b1-b918-287af866f358/search?SingleWindowNo=${singleWindowNo}`);
+      const response = await axios.get(
+        `https://sheet.best/api/sheets/2112eec1-f365-43b1-b918-287af866f358/search?SingleWindowNo=${singleWindowNo}`
+      );
       console.log(response.data);
       if (isEmptyArray(response.data)) {
-        await axios.post("https://sheet.best/api/sheets/2112eec1-f365-43b1-b918-287af866f358", formattedValues).then(response => {
-        console.log("response", response.data[0]);
-        })
-        setSubmit(true)
-        handleClickOpen()
+        await axios
+          .post(
+            "https://sheet.best/api/sheets/2112eec1-f365-43b1-b918-287af866f358",
+            formattedValues
+          )
+          .then((response) => {
+            console.log("response", response.data[0]);
+          });
+        setSubmit(true);
+        handleClickOpen();
+      } else {
+        alert("You are already registered");
       }
-      else {
-        alert("You are already registered")
-      }
-    }
-    catch (error) {
+    } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   const HandleExamChange = (value, setFieldValue) => {
-    setSyllabus(value)
-  }
+    setSyllabus(value);
+  };
 
   useEffect(() => {
     // Here you can perform actions based on the syllabus value
@@ -121,7 +146,6 @@ function RegistrationForm() {
       console.log("selected", syllabus);
     }
   }, [syllabus]);
-
 
   return (
     <Formik
@@ -137,9 +161,8 @@ function RegistrationForm() {
       {({ errors, touched }) => (
         <FormContainer>
           <Typography
-            variant="h4"
+            variant="h6"
             style={{
-              fontSize: "1.25rem",
               fontWeight: "bold",
               marginBottom: "1rem",
               color: "#006666",
@@ -147,6 +170,9 @@ function RegistrationForm() {
           >
             EMEA HSS Application for PlusOne Admission 2023-24 (Management
             Quota)
+          </Typography>
+          <Typography variant="subtitle1" gutterBottom>
+            Student's Details
           </Typography>
           <Grid container spacing={2}>
             <Grid item xs={12}>
@@ -354,13 +380,19 @@ function RegistrationForm() {
               />
             </Grid>
           </Grid>
-          <Divider className="py-4" />
+          <Typography variant="subtitle1" className="pt-4" gutterBottom>
+            Marksheet
+          </Typography>
+          <Divider />
           <SubjectsGradeInput
             subjects={subjects}
             label="Grades"
             name="subjectsMarks"
             syllabus={syllabus}
           />
+          <Typography variant="subtitle1" className="pt-4" gutterBottom>
+          Course Preferences
+          </Typography>
           <CourseInput />
           <SubmitButton fullWidth variant="contained" type="submit">
             Submit
@@ -379,7 +411,7 @@ function RegistrationForm() {
               <Typography>Please Download the PDF.</Typography>
             </DialogContent>
             <DialogActions>
-              <Link to={'/application'}>Download PDF</Link>
+              <Link to={"/application"}>Download PDF</Link>
             </DialogActions>
           </Dialog>
         </FormContainer>
