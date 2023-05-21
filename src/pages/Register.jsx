@@ -24,6 +24,7 @@ import axios from "axios";
 import { SubmitButton, FormContainer } from "../styles/FormStyle";
 import Loader from "../components/Loader";
 import SuccessDialog from "../components/Dialogs/SuccessDialog";
+import ErrorDialog from "../components/Dialogs/ErrorDialog";
 
 function RegistrationForm() {
   const [formValues, setFormValues] = useState(initialValues);
@@ -31,20 +32,25 @@ function RegistrationForm() {
   const [syllabus, setSyllabus] = useState("");
   const [dialogMessage, setDialogMesssage] = useState("")
   // const [dateOfBirth, setDateOfBirth] = useState("");
-  const [open, setOpen] = React.useState(false);
+  const [openSuccessDialog, setOpenSuccessDialog] = useState(false);
+  const [openErrorDialog, setOpenErrorDialog] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
 
   const handleClose = () => {
-    setOpen(false);
+    setOpenErrorDialog(false);
   };
 
   //To show successful dialog with custom message
   const showSuccessDialog = (message) => {
-    handleClickOpen();
+    // handleClickOpen();
+    setOpenSuccessDialog(true)
+    setDialogMesssage(message)
+  }
+
+  //To show error dialog with custom message
+  const showErrorDialog = (message) => {
+    setOpenErrorDialog(true)
     setDialogMesssage(message)
   }
 
@@ -129,14 +135,16 @@ function RegistrationForm() {
             console.log("response", response.data[0]);
           });
         setSubmit(true);
-        showSuccessDialog("Application Form filled Successfully.")
+        showSuccessDialog("Great! Application form filled successfully.")
         setLoading(false)
       } else {
         showSuccessDialog("You are already registered")
         setLoading(false)
       }
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
+      showErrorDialog(error.message)
+      setLoading(false)
     }
   };
 
@@ -406,7 +414,8 @@ function RegistrationForm() {
           <SubmitButton fullWidth variant="contained" type="submit">
             Submit
           </SubmitButton>
-          <SuccessDialog open={open} onClose={handleClose} message={dialogMessage} />
+          <SuccessDialog open={openSuccessDialog}  message={dialogMessage} />
+          <ErrorDialog open={openErrorDialog} onClose={handleClose} message={dialogMessage} />
         </FormContainer>
       )}
     </Formik>

@@ -1,10 +1,10 @@
 import React from 'react'
 import { Dialog, DialogTitle, DialogContent, DialogActions, Typography , Button } from '@mui/material'
-import CheckCircle from "@mui/icons-material/CheckCircle";
+import WarningIcon from '@mui/icons-material/Warning';
 import { Link } from "react-router-dom";
 
 
-function SuccessDialog(props) {
+function WarningDialog(props) {
   return (
     <Dialog
             open={props.open}
@@ -13,17 +13,16 @@ function SuccessDialog(props) {
             className='text-center'
           >
             <DialogTitle>
-              <CheckCircle color="primary" style={{ fontSize: 48 }} />
+              <WarningIcon color="warning" style={{ fontSize: 48 }} />
             </DialogTitle>
             <DialogContent>
               <Typography variant='h6'>{props.message}</Typography>
-              <Typography variant="subtitle2">Please Download the PDF.</Typography>
             </DialogContent>
             <DialogActions>
-            <Button><Link to={"/application"}>Download</Link></Button>
+            <Button><Link to={"/register"}>Register</Link></Button>
             </DialogActions>
           </Dialog>
   )
 }
 
-export default SuccessDialog
+export default WarningDialog
