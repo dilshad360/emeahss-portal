@@ -9,6 +9,7 @@ export const initialValues = {
   RegNumber: "",
   Year: "",
   SchoolName: "",
+  SchoolNameOthers:'',
   Gender: "",
   Religion: "",
   DateOfBirth: "",
@@ -18,6 +19,7 @@ export const initialValues = {
   PostOffice: "",
   Panchayath: "",
   Ward: "",
+  OtherWard:"",
   statesubjectsMarks: [
     { subject: 'Language1', grade: '' },
     { subject: 'Language2', grade: '' },
@@ -105,25 +107,25 @@ export const religionOptions = [
 
 //panchayat
 export const panchayatOptions = [
-  { value: 'kondotty', label: 'Kondotty' },
-  { value: 'pulikkal', label: 'Pulikkal' },
-  { value: 'cherukavu', label: 'Cherukavu' },
-  { value: 'kuzhimanna', label: 'Kuzhimanna' },
-  { value: 'muthuvallur', label: 'Muthuvallur' },
-  { value: 'cheekode', label: 'Cheekode' },
-  { value: 'pallikkal', label: 'Pallikkal' },
-  { value: 'morayur', label: 'Morayur' },
-  { value: 'vazhakad', label: 'Vazhakad' },
-  { value: 'vazhayur', label: 'Vazhayur' },
-  { value: 'thenhipalam', label: 'Thenhipalam' },
-  { value: 'chelembra', label: 'Chelembra' },
-  { value: 'peruvallur', label: 'Peruvallur' },
-  { value: 'pookottur', label: 'Pookottur' },
-  { value: 'other', label: 'Other' },
+  { value: 'Kondotty', label: 'Kondotty' },
+  { value: 'Pulikkal', label: 'Pulikkal' },
+  { value: 'Cherukavu', label: 'Cherukavu' },
+  { value: 'Kuzhimanna', label: 'Kuzhimanna' },
+  { value: 'Muthuvallur', label: 'Muthuvallur' },
+  { value: 'Cheekode', label: 'Cheekode' },
+  { value: 'Pallikkal', label: 'Pallikkal' },
+  { value: 'Morayur', label: 'Morayur' },
+  { value: 'Vazhakad', label: 'Vazhakad' },
+  { value: 'Vazhayur', label: 'Vazhayur' },
+  { value: 'Thenhipalam', label: 'Thenhipalam' },
+  { value: 'Chelembra', label: 'Chelembra' },
+  { value: 'Peruvallur', label: 'Peruvallur' },
+  { value: 'Pookottur', label: 'Pookottur' },
+  { value: 'Other', label: 'Other' },
 ]
 
 export const cbseSubjects = [
-  'Language(Hindi,Malayalam)', 'English', 'SocialScience', 'Maths', 'Science'
+  'Optional(Hindi,Malayalam)', 'English', 'SocialScience', 'Maths', 'Science'
 ]
 
 
@@ -193,6 +195,73 @@ export const schoolOptions = [
     { value:"Others", label:"Others" }
 ]
 
+export const kondottyWardOptions = [
+  { value: "NEETTANI", label: "NEETTANI" },
+  { value: "PANAYAMPARAMBU", label: "PANAYAMPARAMBU" },
+  { value: "CHEMMALAPARAMBU", label: "CHEMMALAPARAMBU" },
+  { value: "THURAKKAL", label: "THURAKKAL" },
+  { value: "MUNDAPPALAM", label: "MUNDAPPALAM" },
+  { value: "NEERADU", label: "NEERADU" },
+  { value: "CHEPPILIKKUNNU", label: "CHEPPILIKKUNNU" },
+  { value: "VATTAPPARAMBU", label: "VATTAPPARAMBU" },
+  { value: "PANDIKKADU", label: "PANDIKKADU" },
+  { value: "PAZHAYANGADI", label: "PAZHAYANGADI" },
+  { value: "KONDOTTY TOWN", label: "KONDOTTY TOWN" },
+  { value: "KALOTHU", label: "KALOTHU" },
+  { value: "KODANGADU", label: "KODANGADU" },
+  { value: "KUNNATHUMPOTTA", label: "KUNNATHUMPOTTA" },
+  { value: "KOTTUKKARA", label: "KOTTUKKARA" },
+  { value: "KARIMUKKU", label: "KARIMUKKU" },
+  { value: "POILIKKAVU", label: "POILIKKAVU" },
+  { value: "VAKKATHODI", label: "VAKKATHODI" },
+  { value: "CHEMBALA", label: "CHEMBALA" },
+  { value: "MUSLIARANGADI", label: "MUSLIARANGADI" },
+  { value: "MANATHODI", label: "MANATHODI" },
+  { value: "CHOLAMUKKU", label: "CHOLAMUKKU" },
+  { value: "PULLITHODI", label: "PULLITHODI" },
+  { value: "NH COLONY", label: "NH COLONY" },
+  { value: "MELEPARAMBU", label: "MELEPARAMBU" },
+  { value: "KIZHAKKECHUNKAM", label: "KIZHAKKECHUNKAM" },
+  { value: "KAITHAKKODE", label: "KAITHAKKODE" },
+  { value: "CHIRAYIL", label: "CHIRAYIL" },
+  { value: "ILANEERKKARA", label: "ILANEERKKARA" },
+  { value: "PALAKKAPPARAMBU", label: "PALAKKAPPARAMBU" },
+  { value: "MEKKADU", label: "MEKKADU" },
+  { value: "MELANGADI", label: "MELANGADI" },
+  { value: "ALUMKANDI", label: "ALUMKANDI" },
+  { value: "HIGH SCHOOLPADI", label: "HIGH SCHOOLPADI" },
+  { value: "PARAMBATTU", label: "PARAMBATTU" },
+  { value: "NAMBOLAMKUNNU", label: "NAMBOLAMKUNNU" },
+  { value: "KANJIRAPPARAMBA", label: "KANJIRAPPARAMBA" },
+  { value: "THACHATHUMPARAMBU", label: "THACHATHUMPARAMBU" },
+  { value: "KUMMINIPPARA", label: "KUMMINIPPARA" },
+  { value: "KOLATHUR", label: "KOLATHUR" }
+];
+
+
+export const pullikkalWardOptions = [
+  { value: "AROOR", label: "AROOR" },
+  { value: "OLIKKUMPURAM", label: "OLIKKUMPURAM" },
+  { value: "PUTHIYEDATHPARAMB", label: "PUTHIYEDATHPARAMB" },
+  { value: "PANACHIKAPALLIYALI", label: "PANACHIKAPALLIYALI" },
+  { value: "MANGATTUMURI", label: "MANGATTUMURI" },
+  { value: "CHERUMUTTAM", label: "CHERUMUTTAM" },
+  { value: "VALIYAPARAMBA", label: "VALIYAPARAMBA" },
+  { value: "NOONJALLUR", label: "NOONJALLUR" },
+  { value: "KALANGOD", label: "KALANGOD" },
+  { value: "PARAPPARA", label: "PARAPPARA" },
+  { value: "THALEKKARA", label: "THALEKKARA" },
+  { value: "ALPARAMB", label: "ALPARAMB" },
+  { value: "KODIKUTHIPARAMB", label: "KODIKUTHIPARAMB" },
+  { value: "PANDIYATTUPURAM", label: "PANDIYATTUPURAM" },
+  { value: "KOTTAPPURAM", label: "KOTTAPPURAM" },
+  { value: "UNNIYATHIPARAMB", label: "UNNIYATHIPARAMB" },
+  { value: "MUTTAYOOR", label: "MUTTAYOOR" },
+  { value: "PULIKKAL", label: "PULIKKAL" },
+  { value: "POURABAZAR", label: "POURABAZAR" },
+  { value: "ANDIYOORKUNNU", label: "ANDIYOORKUNNU" },
+  { value: "MAYAKKARA", label: "MAYAKKARA" }
+];
 
 
 //CBSE Mark grade
