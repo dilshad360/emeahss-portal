@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Formik, isEmptyArray } from "formik";
 import * as yup from "yup";
-import { TextField, Typography, Button } from "@mui/material";
+import { TextField, Typography } from "@mui/material";
 import { SubmitButton, FormContainer } from "../styles/FormStyle";
 import DescriptionIcon from "@mui/icons-material/Description";
 import axios from "axios";
-import { PDFDownloadLink } from "@react-pdf/renderer";
-import { useNavigate } from "react-router-dom";
-import PdfDownload from "../components/PdfDownload";
 import Loader from "../components/Loader";
 import ErrorDialog from "../components/Dialogs/ErrorDialog";
+import WarningDialog from "../components/Dialogs/WarningDialog";
+import PdfDialog from "../components/Dialogs/PdfDialog";
 
 const validationSchema = yup.object().shape({
   SingleWindowNo: yup.string().required("Single Window number is required"),
@@ -22,12 +21,12 @@ const initialValue = {
 };
 
 export default function Application() {
-  const navigate = useNavigate();
   const [registered, setRegistered] = useState({});
-  const [submit, setSubmit] = useState(false);
   const [, setDateOfBirth] = useState("");
   const [dialogMessage, setDialogMesssage] = useState("")
   const [openErrorDialog, setOpenErrorDialog] = useState(false);
+  const [openWarningDialog, setOpenWarningDialog] = useState(false);
+  const [openPdfDialog, setOpenPdfDialog] = useState(false);
   const [loading, setLoading] = useState(false);
   // Checking if the user is registered or not
 
@@ -41,12 +40,20 @@ export default function Application() {
 
   // To close error dialog
   const handleClose = () => {
+    setOpenPdfDialog(false);
     setOpenErrorDialog(false);
+    setOpenWarningDialog(false);
   };
 
   //To show error dialog with custom message
   const showErrorDialog = (message) => {
     setOpenErrorDialog(true)
+    setDialogMesssage(message)
+  }
+
+  //To show warning for not registered users
+  const showWarningDialog = (message) => {
+    setOpenWarningDialog(true)
     setDialogMesssage(message)
   }
 
@@ -60,14 +67,12 @@ export default function Application() {
         `https://sheet.best/api/sheets/2112eec1-f365-43b1-b918-287af866f358/search?SingleWindowNo=${singleWindowNo}&DateOfBirth=${dateOfBirth}`
       );
       if (isEmptyArray(response.data)) {
-        // alert("You are not registered");
-        showErrorDialog("You are not registered")
-        // navigate("/register");
+        showWarningDialog("You are not registered")
         setLoading(false);
       } else {
         console.log(response.data[0]);
         setRegistered(response.data[0]);
-        setSubmit(true);
+        setOpenPdfDialog(true)
         setLoading(false);
       }
     } catch (error) {
@@ -135,35 +140,9 @@ export default function Application() {
             >
               Submit
             </SubmitButton>
-            <PDFDownloadLink
-              style={submit ? { display: "flex" } : { display: "none" }}
-              document={
-                <PdfDownload
-                  formValues={registered}
-                  syllabus={registered[0]?.Board}
-                />
-              }
-              fileName="form_data.pdf"
-            >
-              {({ blob, url, loading, error }) => {
-                if (loading) {
-                  return "Loading document...";
-                } else if (error) {
-                  return `Error: ${error.message}`;
-                } else if (url) {
-                  return (
-                    <div>
-                      <Button component="a" href={url} download="form_data.pdf">
-                        Download PDF
-                      </Button>
-                    </div>
-                  );
-                } else {
-                  return null;
-                }
-              }}
-            </PDFDownloadLink>
+          <PdfDialog open={openPdfDialog} onClose={handleClose} registered={registered} />
           <ErrorDialog open={openErrorDialog} onClose={handleClose} message={dialogMessage} />
+          <WarningDialog open={openWarningDialog} onClose={handleClose}  message={dialogMessage} />
           </FormContainer>
         )}
       </Formik>

@@ -135,7 +135,7 @@ function RegistrationForm() {
             console.log("response", response.data[0]);
           });
         setSubmit(true);
-        showSuccessDialog("Application Form filled Successfully.")
+        showSuccessDialog("Great! Application form filled successfully.")
         setLoading(false)
       } else {
         showSuccessDialog("You are already registered")
