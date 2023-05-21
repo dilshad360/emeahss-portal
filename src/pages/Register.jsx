@@ -24,44 +24,64 @@ import axios from "axios";
 import { SubmitButton, FormContainer } from "../styles/FormStyle";
 import Loader from "../components/Loader";
 import SuccessDialog from "../components/Dialogs/SuccessDialog";
-import ErrorDialog from "../components/Dialogs/ErrorDialog";
+import { schoolOptions, kondottyWardOptions, pullikkalWardOptions } from "../Const";
+
+
 
 function RegistrationForm() {
-  const [formValues, setFormValues] = useState(initialValues);
+
   const [, setSubmit] = useState(false);
   const [syllabus, setSyllabus] = useState("");
-  const [dialogMessage, setDialogMesssage] = useState("")
-  // const [dateOfBirth, setDateOfBirth] = useState("");
-  const [openSuccessDialog, setOpenSuccessDialog] = useState(false);
-  const [openErrorDialog, setOpenErrorDialog] = useState(false);
+  const [dialogMessage, setDialogMesssage] = useState("");
+  const [school, setSchool] = useState(false)
+  const [open, setOpen] = React.useState(false);
   const [loading, setLoading] = useState(false);
+  const [kward, setKward] = useState(false);
+  const [pward, setPward] = useState(false)
+
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
 
   const handleClose = () => {
-    setOpenErrorDialog(false);
+    setOpen(false);
   };
+
 
   //To show successful dialog with custom message
   const showSuccessDialog = (message) => {
-    // handleClickOpen();
-    setOpenSuccessDialog(true)
-    setDialogMesssage(message)
-  }
-
-  //To show error dialog with custom message
-  const showErrorDialog = (message) => {
-    setOpenErrorDialog(true)
+    handleClickOpen();
     setDialogMesssage(message)
   }
 
 
-  // const handleChangeDate = (handleChange, event) => {
-  //   const { name, value } = event.target;
-  //   // Reformat the date value to MM/DD/YYYY format
-  //   const formattedDate = value.split("-").reverse().join("/");
-  //   setDateOfBirth(formattedDate);
-  //   handleChange({ target: { name, value: formattedDate } });
-  // };
+  const HandleExamChange = (value) => {
+    setSyllabus(value);
+  };
+
+
+  const HandleSchoolChange = (value) => {
+    if (value === 'Others') {
+      setSchool(true)
+    }
+  }
+
+
+  const HandlePanchayathChange = (value) => {
+    if (value === 'Kondotty') {
+      setKward(true)
+    }
+    else if (value === 'Pulikkal') {
+      setPward(true)
+    }
+    else{
+      setKward(false)
+      setPward(false)
+    }
+  }
+
 
   //handling submit
   const handleSubmit = async (values) => {
@@ -74,7 +94,7 @@ function RegistrationForm() {
       Board: values.Board,
       RegNumber: values.RegNumber,
       Year: values.Year,
-      SchoolName: values.SchoolName,
+      SchoolName: school ? values.SchoolNameOthers : values.SchoolName,
       Gender: values.Gender,
       Religion: values.Religion,
       DateOfBirth: values.DateOfBirth,
@@ -122,46 +142,36 @@ function RegistrationForm() {
     console.log(singleWindowNo);
     try {
       const response = await axios.get(
-        `https://sheet.best/api/sheets/2112eec1-f365-43b1-b918-287af866f358/search?SingleWindowNo=${singleWindowNo}`
+        `${process.env.REACT_APP_BASE_URL}/search?SingleWindowNo=${singleWindowNo}`
       );
       console.log(response.data);
       if (isEmptyArray(response.data)) {
         await axios
           .post(
-            "https://sheet.best/api/sheets/2112eec1-f365-43b1-b918-287af866f358",
+            `${process.env.REACT_APP_BASE_URL}`,
             formattedValues
           )
           .then((response) => {
             console.log("response", response.data[0]);
           });
         setSubmit(true);
-        showSuccessDialog("Great! Application form filled successfully.")
+        showSuccessDialog("Application Form filled Successfully.")
         setLoading(false)
       } else {
         showSuccessDialog("You are already registered")
         setLoading(false)
       }
     } catch (error) {
-      console.log(error.message);
-      showErrorDialog(error.message)
-      setLoading(false)
+      console.log(error);
     }
   };
 
-  const HandleExamChange = (value, setFieldValue) => {
-    setSyllabus(value);
-  };
 
   useEffect(() => {
-    // Here you can perform actions based on the syllabus value
-    if (syllabus === "CBSE") {
-      // User selected CBSE
-      console.log("selected", syllabus);
-    } else if (syllabus === "SSLC") {
-      // User selected State
-      console.log("selected", syllabus);
-    }
-  }, [syllabus]);
+    console.log(school);
+    console.log(process.env.REACT_APP_BASE_URL);
+  });
+
 
   return (
     <Formik
@@ -170,13 +180,12 @@ function RegistrationForm() {
       //on submit section
       onSubmit={(values) => {
         handleSubmit(values);
-        setFormValues(values);
-        console.log(formValues.DateOfBirth);
+        console.log("OtherName", values.SchoolNameOthers);
       }}
     >
       {({ errors, touched }) => (
         <FormContainer>
-            <Loader open={loading}/>
+          <Loader open={loading} />
           <Typography
             variant="h6"
             style={{
@@ -279,18 +288,25 @@ function RegistrationForm() {
               />
             </Grid>
             <Grid item xs={12}>
-              <Field
-                as={TextField}
+              <SelectInput
                 name="SchoolName"
-                label="Name of school in which studied"
-                type="text"
-                fullWidth
+                label="Name of school studied"
+                options={schoolOptions}
                 error={errors.SchoolName && touched.SchoolName}
-                helperText={
-                  errors.SchoolName && touched.SchoolName && errors.SchoolName
-                }
+                onChange={HandleSchoolChange}
               />
             </Grid>
+            {school ? <Grid item xs={12}>
+              <Field
+                as={TextField}
+                name="SchoolNameOthers"
+                label="Name of school studied"
+                type="text"
+                fullWidth
+                error={errors.SchoolNameOthers && touched.SchoolNameOthers}
+                helperText={errors.SchoolNameOthers && touched.SchoolNameOthers && errors.SchoolNameOthers}
+              />
+            </Grid> : ''}
             <Grid item xs={6}>
               <SelectInput
                 name="Gender"
@@ -381,21 +397,39 @@ function RegistrationForm() {
               <SelectInput
                 name="Panchayath"
                 label="Panchayath"
+                onChange={HandlePanchayathChange}
                 options={panchayatOptions}
                 error={errors.Panchayath && touched.Panchayath}
               />
             </Grid>
-            <Grid item xs={6}>
-              <Field
-                as={TextField}
-                name="Ward"
-                label="Ward No"
-                type="number"
-                fullWidth
-                error={errors.Ward && touched.Ward}
-                helperText={errors.Ward && touched.Ward && errors.Ward}
-              />
-            </Grid>
+            {kward ?
+              <Grid item xs={6}>
+                <SelectInput
+                  name="Ward"
+                  label="Ward"
+                  options={kondottyWardOptions}
+                  error={errors.Ward && touched.Ward}
+                />
+              </Grid> : pward ? <Grid item xs={6}>
+                <SelectInput
+                  name="Ward"
+                  label="Ward"
+                  options={pullikkalWardOptions}
+                  error={errors.Ward && touched.Ward}
+                />
+              </Grid> :
+                <Grid item xs={6}>
+                  <Field
+                    as={TextField}
+                    name="Ward"
+                    label="Ward No"
+                    type="number"
+                    fullWidth
+                    error={errors.Ward && touched.Ward}
+                    helperText={errors.Ward && touched.Ward && errors.Ward}
+                  />
+                </Grid>
+            }
           </Grid>
           <Typography variant="subtitle1" className="pt-4" gutterBottom>
             Marksheet
@@ -408,14 +442,13 @@ function RegistrationForm() {
             syllabus={syllabus}
           />
           <Typography variant="subtitle1" className="pt-4" gutterBottom>
-          Course Preferences
+            Course Preferences
           </Typography>
           <CourseInput />
           <SubmitButton fullWidth variant="contained" type="submit">
             Submit
           </SubmitButton>
-          <SuccessDialog open={openSuccessDialog}  message={dialogMessage} />
-          <ErrorDialog open={openErrorDialog} onClose={handleClose} message={dialogMessage} />
+          <SuccessDialog open={open} onClose={handleClose} message={dialogMessage} />
         </FormContainer>
       )}
     </Formik>
