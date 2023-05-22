@@ -52,11 +52,13 @@ export const validationSchema = yup.object().shape({
     .string()
     .matches(/^\d+$/, "Mobile number must be a valid number")
     .min(10, "Mobile number must be at least 10 digits")
+    .max(10, "Whatsapp number can be maximum 10 digits")
     .required("Mobile number is required"),
   WhatsappNumber: yup
     .string()
     .matches(/^\d+$/, "Whatsapp number must be a valid number")
     .min(10, "Whatsapp number must be at least 10 digits")
+    .max(10, "Whatsapp number can be maximum 10 digits")
     .required("Whatsapp number is required"),
   SingleWindowNo: yup
     .string()
