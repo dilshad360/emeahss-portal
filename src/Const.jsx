@@ -1,5 +1,7 @@
 import * as yup from "yup";
 
+
+/**************************************** Management Form *****************************************/ 
 export const initialValues = {
   Name: "",
   MobileNumber: "",
@@ -289,3 +291,159 @@ export const markToGrade = {
 }
 
 
+
+
+
+/*************************************************** Community Form *****************************************/
+
+export const communityInitialValues = {
+  Name: "",
+  MobileNumber: "",
+  WhatsappNumber: "",
+  SingleWindowNo: "",
+  Board: "",
+  RegNumber: "",
+  Year: "",
+  SchoolName: "",
+  SchoolNameOthers:'',
+  Gender: "",
+  Religion: "",
+  DateOfBirth: "",
+  MotherName: "",
+  FatherName: "",
+  HouseName: "",
+  PostOffice: "",
+  Panchayath: "",
+  Ward: "",
+  OtherWard:"",
+  statesubjectsMarks: [
+    { subject: 'Language1', grade: '' },
+    { subject: 'Language2', grade: '' },
+    { subject: 'English', grade: '' },
+    { subject: 'Hindi', grade: '' },
+    { subject: 'SocialScience', grade: '' },
+    { subject: 'Physics', grade: '' },
+    { subject: 'Chemistry', grade: '' },
+    { subject: 'Biology', grade: '' },
+    { subject: 'Maths', grade: '' },
+    { subject: 'IT', grade: '' },
+  ],
+  cbseMarks: [
+    { subject: 'Language2', grade: '' },
+    { subject: 'English', grade: '' },
+    { subject: 'Science', grade: '' },
+    { subject: 'SocialScience', grade: '' },
+    { subject: 'Maths', grade: '' },
+  ],
+  coursePreference1: "",
+  coursePreference2: "",
+  coursePreference3: "",  
+  ExtraCurricular: "",
+  SportDistrict:[
+    { grade:'A', count:'' },
+    { grade:'B', count:'' },
+    { grade:'C', count:'' }, 
+    { grade:'Participation',count:'' }
+  ],
+  ArtsDistrict:[
+    { grade:'A', count:'' },
+    { grade:'B', count:'' },
+    { grade:'C', count:'' }, 
+    { grade:'Participation',count:'' }
+  ],
+  NationalStateLevelExamination:"",
+  StateScienceFair:[
+    { grade:'A', count:'' },
+    { grade:'B', count:'' },
+    { grade:'C', count:'' }, 
+    { grade:'D', count:'' }, 
+    { grade:'E', count:'' }, 
+  ],
+  StateSocialFair:[
+    { grade:'A', count:'' },
+    { grade:'B', count:'' },
+    { grade:'C', count:'' }, 
+    { grade:'D', count:'' }, 
+    { grade:'E', count:'' }, 
+  ],
+  StateMathsFair:[
+    { grade:'A', count:'' },
+    { grade:'B', count:'' },
+    { grade:'C', count:'' }, 
+    { grade:'D', count:'' }, 
+    { grade:'E', count:'' }, 
+  ],
+  StateITFest:[
+    { grade:'A', count:'' },
+    { grade:'B', count:'' },
+    { grade:'C', count:'' }, 
+    { grade:'D', count:'' }, 
+    { grade:'E', count:'' }, 
+  ],
+  StateWorkExperienceFair:[
+    { grade:'A', count:'' },
+    { grade:'B', count:'' },
+    { grade:'C', count:'' }, 
+    { grade:'D', count:'' }, 
+    { grade:'E', count:'' }, 
+  ],
+  Club:""
+
+};
+
+//Validation
+export const communityValidationSchema = yup.object().shape({
+  Name: yup.string().required("Name of Applicant is required"),
+  MobileNumber: yup
+    .string()
+    .matches(/^\d+$/, "Mobile number must be a valid number")
+    .min(10, "Mobile number must be at least 10 digits")
+    .max(10, "Whatsapp number can be maximum 10 digits")
+    .required("Mobile number is required"),
+  WhatsappNumber: yup
+    .string()
+    .matches(/^\d+$/, "Whatsapp number must be a valid number")
+    .min(10, "Whatsapp number must be at least 10 digits")
+    .max(10, "Whatsapp number can be maximum 10 digits")
+    .required("Whatsapp number is required"),
+  SingleWindowNo: yup
+    .string()
+    .matches(/^\d+$/, "Single Window number must be a valid number")
+    .required("Single Window number is required"),
+
+  Board: yup.string().required("Name of qualifying examination is required"),
+  RegNumber: yup
+    .string()
+    .matches(/^\d+$/, "Single Window number must be a valid number")
+    .required("Register Number is required"),
+  Year: yup.string().required("Year is required"),
+  SchoolName: yup.string().required("Name of school is required"),
+  Gender: yup.string().required("Gender is required"),
+  Religion: yup.string().required("Religion is required"),
+  DateOfBirth: yup.string().required("Date of Birth is required"),
+  MotherName: yup.string().required("Name of Mother is required"),
+  FatherName: yup.string().required("Name of Father is required"),
+  HouseName: yup.string().required("House Name is required"),
+  PostOffice: yup.string().required("Post Office is required"),
+  Panchayath: yup.string().required("Panchayath is required"),
+  Ward: yup.string().required("Ward is required"),
+  coursePreference1: yup.string().required('Course preference 1 is required'),
+  coursePreference2: yup.string().required('Course preference 2 is required'),
+  coursePreference3: yup.string().required('Course preference 3 is required'),
+});
+
+
+export const YesNo = 
+[
+  { value:"Yes",label:"Yes" },
+  { value:"No", label:"No" }
+]
+
+
+export const coCurriculars = [
+  "StateScienceFair",
+  "StateSocialFair",
+  "StateMathsFair",
+  "StateITFEST",
+  "StateWorkExperience Fair"
+]

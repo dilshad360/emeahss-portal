@@ -25,7 +25,10 @@ function Home() {
         EMEAHSS - Portal
       </Typography>
       <Button variant="contained">
-        <Link to="/register">Register</Link>
+        <Link to="/management-form">Management</Link>
+      </Button>
+      <Button variant="contained">
+        <Link to="/community-form">Community</Link>
       </Button>
       <Button variant="contained">
         <Link to="/application">Download Application</Link>
