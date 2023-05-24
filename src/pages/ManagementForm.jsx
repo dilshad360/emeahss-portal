@@ -29,7 +29,7 @@ import ErrorDialog from "../components/Dialogs/ErrorDialog";
 
 
 
-function RegistrationForm() {
+function ManagementForm() {
 
   const [, setSubmit] = useState(false);
   const [syllabus, setSyllabus] = useState("");
@@ -458,4 +458,4 @@ function RegistrationForm() {
   );
 }
 
-export default RegistrationForm;
+export default ManagementForm;

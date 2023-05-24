@@ -195,7 +195,7 @@ const CommunityForm = () => {
                             color: "#006666",
                         }}
                     >
-                        EMEA HSS Application for PlusOne Admission 2023-24 (Management
+                        EMEA HSS Application for PlusOne Admission 2023-24 (Community
                         Quota)
                     </Typography>
                     <Typography variant="subtitle1" gutterBottom>
