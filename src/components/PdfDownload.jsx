@@ -1,16 +1,11 @@
 import React from "react";
 import { Page, Text, Document, StyleSheet, View } from "@react-pdf/renderer";
 
-import { markToGrade, codeToCourse, cbseMarkToGrade } from "../Const";
+import { markToGrade, cbseMarkToGrade } from "../Const";
 
 const PdfDownload = (props) => {
-  console.log("Download PDF");
   const formValues = props.formValues;
   const syllabus = formValues.Board;
-  console.log("Syllabus", syllabus);
-  console.log(formValues.coursePreference1);
-  console.log(codeToCourse[formValues.coursePreference1]);
-  console.log("formValues", cbseMarkToGrade[formValues.Science]);
   const styles = StyleSheet.create({
     page: {
       display: "flex",
