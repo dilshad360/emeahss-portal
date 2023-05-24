@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Formik, isEmptyArray } from "formik";
 import * as yup from "yup";
 import { TextField, Typography } from "@mui/material";
@@ -64,27 +64,23 @@ export default function Application() {
     let singleWindowNo = values.SingleWindowNo;
     try {
       const response = await axios.get(
-        `https://sheet.best/api/sheets/2112eec1-f365-43b1-b918-287af866f358/search?SingleWindowNo=${singleWindowNo}&DateOfBirth=${dateOfBirth}`
+        `${process.env.REACT_APP_BASE_URL}/search?SingleWindowNo=${singleWindowNo}&DateOfBirth=${dateOfBirth}`
       );
       if (isEmptyArray(response.data)) {
         showWarningDialog("You are not registered")
         setLoading(false);
       } else {
-        console.log(response.data[0]);
         setRegistered(response.data[0]);
         setOpenPdfDialog(true)
         setLoading(false);
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       showErrorDialog(error.message)
       setLoading(false);
     }
   };
 
-  useEffect(() => {
-    console.log(registered);
-  }, [registered]);
 
   return (
     <div className="flex justify-center items-center flex-col h-screen">

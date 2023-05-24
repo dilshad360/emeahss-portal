@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   Grid,
   TextField,
@@ -25,6 +25,7 @@ import { SubmitButton, FormContainer } from "../styles/FormStyle";
 import Loader from "../components/Loader";
 import SuccessDialog from "../components/Dialogs/SuccessDialog";
 import { schoolOptions, kondottyWardOptions, pullikkalWardOptions } from "../Const";
+import ErrorDialog from "../components/Dialogs/ErrorDialog";
 
 
 
@@ -38,6 +39,8 @@ function RegistrationForm() {
   const [loading, setLoading] = useState(false);
   const [kward, setKward] = useState(false);
   const [pward, setPward] = useState(false)
+  const [openErrorDialog, setOpenErrorDialog] = useState(false);
+
 
 
   const handleClickOpen = () => {
@@ -47,12 +50,19 @@ function RegistrationForm() {
 
   const handleClose = () => {
     setOpen(false);
+    setOpenErrorDialog(false);
   };
 
 
   //To show successful dialog with custom message
   const showSuccessDialog = (message) => {
     handleClickOpen();
+    setDialogMesssage(message)
+  }
+
+  //To show error dialog with custom message
+  const showErrorDialog = (message) => {
+    setOpenErrorDialog(true)
     setDialogMesssage(message)
   }
 
@@ -139,12 +149,10 @@ function RegistrationForm() {
     };
 
     let singleWindowNo = values.SingleWindowNo;
-    console.log(singleWindowNo);
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_BASE_URL}/search?SingleWindowNo=${singleWindowNo}`
       );
-      console.log(response.data);
       if (isEmptyArray(response.data)) {
         await axios
           .post(
@@ -152,25 +160,20 @@ function RegistrationForm() {
             formattedValues
           )
           .then((response) => {
-            console.log("response", response.data[0]);
+            showSuccessDialog("Application Form filled Successfully.")
           });
         setSubmit(true);
-        showSuccessDialog("Application Form filled Successfully.")
         setLoading(false)
       } else {
         showSuccessDialog("You are already registered")
         setLoading(false)
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      showErrorDialog(error.message)
+      setLoading(false)
     }
   };
-
-
-  useEffect(() => {
-    console.log(school);
-    console.log(process.env.REACT_APP_BASE_URL);
-  });
 
 
   return (
@@ -180,7 +183,6 @@ function RegistrationForm() {
       //on submit section
       onSubmit={(values) => {
         handleSubmit(values);
-        console.log("OtherName", values.SchoolNameOthers);
       }}
     >
       {({ errors, touched }) => (
@@ -449,6 +451,7 @@ function RegistrationForm() {
             Submit
           </SubmitButton>
           <SuccessDialog open={open} onClose={handleClose} message={dialogMessage} />
+          <ErrorDialog open={openErrorDialog} onClose={handleClose} message={dialogMessage} />
         </FormContainer>
       )}
     </Formik>
