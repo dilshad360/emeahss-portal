@@ -432,6 +432,7 @@ export const communityValidationSchema = yup.object().shape({
   coursePreference1: yup.string().required('Course preference 1 is required'),
   coursePreference2: yup.string().required('Course preference 2 is required'),
   coursePreference3: yup.string().required('Course preference 3 is required'),
+  
 });
 
 

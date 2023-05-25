@@ -7,7 +7,7 @@ import {
   YesNo,
 } from "../Const";
 import ErrorDialog from "../components/Dialogs/ErrorDialog";
-import React from "react";
+import React, { useEffect } from "react";
 import { Grid, TextField, Typography, Divider } from "@mui/material";
 import { Formik, Field, isEmptyArray } from "formik";
 import {
@@ -27,6 +27,7 @@ import { useState } from "react";
 import axios from "axios";
 import { SubmitButton, FormContainer } from "../styles/FormStyle";
 import Cocurricular from "../components/Co-curricular";
+import { json } from "react-router-dom";
 
 const CommunityForm = () => {
   const [, setSubmit] = useState(false);
@@ -81,10 +82,14 @@ const CommunityForm = () => {
     }
   };
 
+  useEffect(()=>{
+    console.log(process.env.REACT_APP_COMMUNITY_LINK);
+  })
+
   //handling submit
   const handleSubmit = async (values) => {
     setLoading(true);
-    console.log(values);
+    console.log("Sports State Level:",values.SportsStateLevel);
     const formattedValues = {
       Name: values.Name,
       MobileNumber: values.MobileNumber,
@@ -135,17 +140,55 @@ const CommunityForm = () => {
       coursePreference1: values.coursePreference1,
       coursePreference2: values.coursePreference2,
       coursePreference3: values.coursePreference3,
-    };
+      ExtraCurricular: values.ExtraCurricular,
+      SportsStateLevel: values.SportsStateLevel,
+      SportsDistrictA: values.SportDistrict[0].count,
+      SportsDistrictB:values.SportDistrict[1].count,
+      SportsDistrictC:values.SportDistrict[2].count,
+      SportsDistrictParticipation:values.SportDistrict[3].count,
+      KalotsavamStateLevel: values.KalotsavamStateLevel,
+      ArtsDistrictA:values.ArtsDistrict[0].count,
+      ArtsDistrictB:values.ArtsDistrict[1].count,
+      ArtsDistrictC:values.ArtsDistrict[2].count,
+      ArtsDistrictParticipation:values.ArtsDistrict[3].count,
+      NationalOrStateLevelExamination:values.NationalStateLevelExamination,
+      StateScienceFairA:values.StateScienceFair[0].count,
+      StateScienceFairB:values.StateScienceFair[1].count,
+      StateScienceFairC:values.StateScienceFair[2].count,
+      StateScienceFairD:values.StateScienceFair[3].count,
+      StateScienceFairE:values.StateScienceFair[4].count,
+      StateSocialFairA:values.StateSocialFair[0].count,
+      StateSocialFairB:values.StateSocialFair[1].count,
+      StateSocialFairC:values.StateSocialFair[2].count,
+      StateSocialFairD:values.StateSocialFair[3].count,
+      StateSocialFairE:values.StateSocialFair[4].count,
+      StateMathsFairA:values.StateMathsFair[0].count,
+      StateMathsFairB:values.StateMathsFair[1].count,
+      StateMathsFairC:values.StateMathsFair[2].count,
+      StateMathsFairD:values.StateMathsFair[3].count,
+      StateMathsFairE:values.StateMathsFair[4].count,
+      StateITFestA:values.StateITFest[0].count,
+      StateITFestB:values.StateITFest[1].count,
+      StateITFestC:values.StateITFest[2].count,
+      StateITFestD:values.StateITFest[3].count,
+      StateITFestE:values.StateITFest[4].count,
+      StateWorkExperienceFairA:values.StateWorkExperienceFair[0].count,
+      StateWorkExperienceFairB:values.StateWorkExperienceFair[1].count,
+      StateWorkExperienceFairC:values.StateWorkExperienceFair[2].count,
+      StateWorkExperienceFairD:values.StateWorkExperienceFair[3].count,
+      StateWorkExperienceFairE:values.StateWorkExperienceFair[4].count,
+      Club:values.Club
 
+    };
     let singleWindowNo = values.SingleWindowNo;
     try {
       const response = await axios
         .get
-        // `${process.env.REACT_APP_BASE_URL}/search?SingleWindowNo=${singleWindowNo}`
-        ();
+        ( `${process.env.REACT_APP_COMMUNITY_LINK}/search?SingleWindowNo=${singleWindowNo}`
+        );
       if (isEmptyArray(response.data)) {
         await axios
-          .post(`${process.env.REACT_APP_BASE_URL}`, formattedValues)
+          .post(`${process.env.REACT_APP_COMMUNITY_LINK}`, formattedValues)
           .then((response) => {
             showSuccessDialog("Application Form filled Successfully.");
           });
