@@ -1,11 +1,17 @@
-import { Button, Typography, Paper, Box, Divider, ButtonGroup } from "@mui/material";
+import {
+  Button,
+  Typography,
+  Paper,
+  Box,
+  Divider,
+  ButtonGroup,
+} from "@mui/material";
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import backgroundImage from "../assets/schoolbg.jpg";
 import logo from "../assets/emea_logo.jpeg";
 
 function Home() {
-
   const navigate = useNavigate();
 
   return (
@@ -34,20 +40,39 @@ function Home() {
             EMEAHSS - Portal
           </Typography>
           <Divider className="font-semibold">Registration</Divider>
-          <ButtonGroup
-        orientation="vertical"
-        variant="outlined"
-      >
-            <Button onClick={()=>{navigate('/management-form')}}>Management</Button>
-            <Button onClick={()=>{navigate('/community-form')}}>Community</Button>
-        </ButtonGroup>
+          <ButtonGroup orientation="vertical" variant="outlined">
+            <Button
+              onClick={() => {
+                navigate("/management-form");
+              }}
+            >
+              Management
+            </Button>
+            <Button
+              onClick={() => {
+                navigate("/community-form");
+              }}
+            >
+              Community
+            </Button>
+          </ButtonGroup>
           <Divider className="font-semibold">Download Application</Divider>
-          <Link to="/management-application">
-            <Button variant="outlined">Download  Management Application</Button>
-          </Link>
-          <Link to="/community-application">
-            <Button variant="outlined">Download  Community Application</Button>
-          </Link>
+          <ButtonGroup orientation="vertical" variant="outlined">
+            <Button
+              onClick={() => {
+                navigate("/management-application");
+              }}
+            >
+              Management
+            </Button>
+            <Button
+              onClick={() => {
+                navigate("/community-applicatio");
+              }}
+            >
+              Community
+            </Button>
+          </ButtonGroup>
         </Paper>
       </Box>
     </div>

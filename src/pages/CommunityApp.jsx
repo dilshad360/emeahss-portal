@@ -103,7 +103,7 @@ const CommunityApp = () => {
                 color: "#006666",
               }}
             >
-              EMEA HSS PlusOne Admission Application Download
+              EMEA HSS Admission Application Download (Community)
             </Typography>
             <TextField
               fullWidth

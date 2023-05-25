@@ -103,7 +103,7 @@ export default function Application() {
                 color: "#006666",
               }}
             >
-              EMEA HSS PlusOne Admission Application Download
+              EMEA HSS Admission Application Download (Management)
             </Typography>
             <TextField
               fullWidth
