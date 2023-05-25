@@ -1,7 +1,7 @@
 import React from "react";
 import { Page, Text, Document, StyleSheet, View } from "@react-pdf/renderer";
 
-import { markToGrade, cbseMarkToGrade } from "../Const";
+import { markToGrade,cbseMarkToGrade } from "../../Const";
 
 const PdfDownload = (props) => {
   const formValues = props.formValues;

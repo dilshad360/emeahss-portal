@@ -12,9 +12,7 @@ import {
     Typography
 } from "@mui/material";
 import { Field } from 'formik';
-import { subjects, gradesOptions, cbseSubjects, cbseGradesOptions, coCurriculars } from "../Const";
-import { SelectInput } from "./common/SelectInput";
-import { useFormikContext } from "formik";
+import { coCurriculars } from "../Const";
 const Cocurricular = () => {
     return (
         <TableContainer component={Paper} className='my-4'>

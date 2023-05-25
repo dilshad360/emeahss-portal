@@ -27,7 +27,7 @@ import { useState } from "react";
 import axios from "axios";
 import { SubmitButton, FormContainer } from "../styles/FormStyle";
 import Cocurricular from "../components/Co-curricular";
-import { json } from "react-router-dom";
+
 
 const CommunityForm = () => {
   const [, setSubmit] = useState(false);

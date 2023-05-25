@@ -20,15 +20,15 @@ const initialValue = {
   DateOfBirth: "",
 };
 
-export default function Application() {
-  const [registered, setRegistered] = useState({});
+const CommunityApp = () => {
+    const [ community ] = useState(true)
+    const [registered, setRegistered] = useState({});
   const [, setDateOfBirth] = useState("");
   const [dialogMessage, setDialogMesssage] = useState("")
   const [openErrorDialog, setOpenErrorDialog] = useState(false);
   const [openWarningDialog, setOpenWarningDialog] = useState(false);
   const [openPdfDialog, setOpenPdfDialog] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [ community ] = useState(false)
   // Checking if the user is registered or not
 
   const handleChangeDate = (handleChange, event) => {
@@ -59,13 +59,14 @@ export default function Application() {
   }
 
   const handleSubmit = async (values) => {
+    console.log("registered",registered);
     setLoading(true);
     let dateOfBirth = values.DateOfBirth;
     setDateOfBirth(dateOfBirth);
     let singleWindowNo = values.SingleWindowNo;
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/search?SingleWindowNo=${singleWindowNo}&DateOfBirth=${dateOfBirth}`
+        `${process.env.REACT_APP_COMMUNITY_LINK}/search?SingleWindowNo=${singleWindowNo}&DateOfBirth=${dateOfBirth}`
       );
       if (isEmptyArray(response.data)) {
         showWarningDialog("You are not registered")
@@ -81,7 +82,6 @@ export default function Application() {
       setLoading(false);
     }
   };
-
 
   return (
     <div className="flex justify-center items-center flex-col h-screen">
@@ -144,5 +144,7 @@ export default function Application() {
         )}
       </Formik>
     </div>
-  );
+  )
 }
+
+export default CommunityApp

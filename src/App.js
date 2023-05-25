@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import ManagementForm from './pages/ManagementForm';
 import Application from './pages/Application';
 import CommunityForm from './pages/CommunityForm';
+import CommunityApp from './pages/CommunityApp';
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
       <Route path='/' element={<Home/>} />
       <Route path='/management-form' element={<ManagementForm/>} />
       <Route path='/community-form' element={<CommunityForm/>} />
-      <Route path='/application' element={<Application/>} />
+      <Route path='/community-application' element={<CommunityApp/>} />
+      <Route path='/management-application' element={<Application/>} />
     </Routes>
     </div>
   );

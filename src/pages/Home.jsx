@@ -42,8 +42,11 @@ function Home() {
             <Button onClick={()=>{navigate('/community-form')}}>Community</Button>
         </ButtonGroup>
           <Divider className="font-semibold">Download Application</Divider>
-          <Link to="/application">
-            <Button variant="outlined">Download Application</Button>
+          <Link to="/management-application">
+            <Button variant="outlined">Download  Management Application</Button>
+          </Link>
+          <Link to="/community-application">
+            <Button variant="outlined">Download  Community Application</Button>
           </Link>
         </Paper>
       </Box>
