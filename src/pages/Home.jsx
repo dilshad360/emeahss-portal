@@ -1,10 +1,13 @@
-import { Button, Typography, Paper, Box, Divider } from "@mui/material";
+import { Button, Typography, Paper, Box, Divider, ButtonGroup } from "@mui/material";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import backgroundImage from "../assets/schoolbg.jpg";
 import logo from "../assets/emea_logo.jpeg";
 
 function Home() {
+
+  const navigate = useNavigate();
+
   return (
     <div
       className="flex justify-center items-center h-screen"
@@ -30,16 +33,17 @@ function Home() {
           >
             EMEAHSS - Portal
           </Typography>
-          <Divider>Registration</Divider>
-          <Link to="/management-form">
-            <Button variant="contained">Management</Button>
-          </Link>
-          <Link to="/community-form">
-            <Button variant="contained">Community</Button>
-          </Link>
-          <Divider>Download Application</Divider>
+          <Divider className="font-semibold">Registration</Divider>
+          <ButtonGroup
+        orientation="vertical"
+        variant="outlined"
+      >
+            <Button onClick={()=>{navigate('/management-form')}}>Management</Button>
+            <Button onClick={()=>{navigate('/community-form')}}>Community</Button>
+        </ButtonGroup>
+          <Divider className="font-semibold">Download Application</Divider>
           <Link to="/application">
-            <Button variant="contained">Download Application</Button>
+            <Button variant="outlined">Download Application</Button>
           </Link>
         </Paper>
       </Box>

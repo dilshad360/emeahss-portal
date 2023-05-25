@@ -8,7 +8,8 @@ import {
     TableCell,
     TableBody,
     Grid,
-    TextField
+    TextField,
+    Typography
 } from "@mui/material";
 import { Field } from 'formik';
 import { subjects, gradesOptions, cbseSubjects, cbseGradesOptions, coCurriculars } from "../Const";
@@ -16,8 +17,11 @@ import { SelectInput } from "./common/SelectInput";
 import { useFormikContext } from "formik";
 const Cocurricular = () => {
     return (
-        <TableContainer component={Paper}>
-            <Table aria-label='table variants'>
+        <TableContainer component={Paper} className='my-4'>
+            <Typography variant="subtitle2" className="px-2 pt-3" textAlign={'start'} gutterBottom>
+                        Participation in Co-curricular activities. Write the number of grades won in the relevant boxes.
+            </Typography>
+            <Table aria-label='table variants'> 
                 <TableHead>
                     <TableRow>
                         <TableCell style={{ width: '25%', fontWeight: 'bold', textAlign: 'center' }}>
@@ -40,6 +44,7 @@ const Cocurricular = () => {
                         </TableCell>
                     </TableRow>
                 </TableHead>
+                <TableBody>
                 {coCurriculars.map((coCurricular, index)=>(
                 <TableRow key={index}>
                     <TableCell style={{ width: '25%', fontWeight: 'bold', textAlign: 'start' }}>
@@ -49,8 +54,7 @@ const Cocurricular = () => {
                         <Grid item width={'100%'}>
                             <Field
                                 as={TextField}
-                                name="AgradeCocurricular"
-                                label="Number of participation"
+                                name={`${coCurricular}[0].count`}
                                 type="number"
                                 fullWidth
                             />
@@ -60,8 +64,7 @@ const Cocurricular = () => {
                         <Grid item width={'100%'}>
                             <Field
                                 as={TextField}
-                                name="BgradeCocurricular"
-                                label="Number of participation"
+                                name={`${coCurricular}[1].count`}
                                 type="number"
                                 fullWidth
                             />
@@ -71,8 +74,7 @@ const Cocurricular = () => {
                         <Grid item width={'100%'}>
                             <Field
                                 as={TextField}
-                                name="CgradeCocurricular"
-                                label="Number of participation"
+                                name={`${coCurricular}[2].count`}
                                 type="number"
                                 fullWidth
                             />
@@ -82,8 +84,7 @@ const Cocurricular = () => {
                         <Grid item width={'100%'}>
                             <Field
                                 as={TextField}
-                                name="DgradeCocurricular"
-                                label="Number of participation"
+                                name={`${coCurricular}[3].count`}
                                 type="number"
                                 fullWidth
                             />
@@ -93,8 +94,7 @@ const Cocurricular = () => {
                         <Grid item width={'100%'}>
                             <Field
                                 as={TextField}
-                                name="EgradeCocurricular"
-                                label="Number of participation"
+                                name={`${coCurricular}[4].count`}
                                 type="number"
                                 fullWidth
                             />
@@ -102,7 +102,7 @@ const Cocurricular = () => {
                     </TableCell>
                 </TableRow>
                 ))}
-
+            </TableBody>
             </Table>
         </TableContainer >
     )
