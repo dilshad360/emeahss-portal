@@ -20,7 +20,7 @@ function SuccessDialog(props) {
               <Typography variant="subtitle2">Please Download the PDF.</Typography>
             </DialogContent>
             <DialogActions>
-            <Button><Link to={"/application"}>Download</Link></Button>
+            <Button><Link to={"#"}>Download</Link></Button>
             </DialogActions>
           </Dialog>
   )

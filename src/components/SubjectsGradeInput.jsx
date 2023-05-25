@@ -15,6 +15,7 @@ export default function SubjectsGradeInput(props) {
   const { label, name,syllabus,...rest } = props;
   const { errors, touched } = useFormikContext();
   return (
+    
     <TableContainer component={Paper}>
       <Table aria-label="table variants">
         <TableHead>
@@ -71,5 +72,5 @@ export default function SubjectsGradeInput(props) {
         
       </Table>
     </TableContainer>
-  );
+     );
 }

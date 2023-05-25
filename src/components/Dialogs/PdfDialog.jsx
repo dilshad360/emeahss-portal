@@ -2,10 +2,12 @@ import React from 'react'
 import { Dialog, DialogTitle, DialogContent, DialogActions, Typography , Button } from '@mui/material'
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import { PDFDownloadLink } from "@react-pdf/renderer";
-import PdfDownload from "../PdfDownload";
+import PdfDownload from '../PDF/PdfDownload';
+import CommunityPDF from '../PDF/CommunityPDF';
 
 
 function PdfDialog(props) {
+  let community = props.community
   return (
     <Dialog
             open={props.open}
@@ -21,7 +23,7 @@ function PdfDialog(props) {
             </DialogContent>
             <DialogActions>
             <PDFDownloadLink
-              document={
+              document={community?<CommunityPDF formValues={props.registered} syllabus={props.registered[0]?.Board}/>:
                 <PdfDownload
                   formValues={props.registered}
                   syllabus={props.registered[0]?.Board}
