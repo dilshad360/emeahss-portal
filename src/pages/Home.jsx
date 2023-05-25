@@ -67,7 +67,7 @@ function Home() {
             </Button>
             <Button
               onClick={() => {
-                navigate("/community-applicatio");
+                navigate("/community-application");
               }}
             >
               Community
