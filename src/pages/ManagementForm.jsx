@@ -450,7 +450,7 @@ function ManagementForm() {
           <SubmitButton fullWidth variant="contained" type="submit">
             Submit
           </SubmitButton>
-          <SuccessDialog open={open} onClose={handleClose} message={dialogMessage} />
+          <SuccessDialog open={open} onClose={handleClose} message={dialogMessage} link='/management-application' />
           <ErrorDialog open={openErrorDialog} onClose={handleClose} message={dialogMessage} />
         </FormContainer>
       )}

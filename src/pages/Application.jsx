@@ -139,7 +139,7 @@ export default function Application() {
             </SubmitButton>
           <PdfDialog open={openPdfDialog} onClose={handleClose} registered={registered} community={community} />
           <ErrorDialog open={openErrorDialog} onClose={handleClose} message={dialogMessage} />
-          <WarningDialog open={openWarningDialog} onClose={handleClose}  message={dialogMessage} />
+          <WarningDialog open={openWarningDialog} onClose={handleClose}  message={dialogMessage} link='/management-form' />
           </FormContainer>
         )}
       </Formik>

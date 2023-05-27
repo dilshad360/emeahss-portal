@@ -662,6 +662,7 @@ const CommunityForm = () => {
             open={open}
             onClose={handleClose}
             message={dialogMessage}
+            link='/community-application'
           />
           <ErrorDialog
             open={openErrorDialog}

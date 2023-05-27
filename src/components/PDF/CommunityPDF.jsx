@@ -103,6 +103,18 @@ const CommunityPDF = (props) => {
             borderBottom: "1px solid #CCCCCC",
         },
 
+        tableCellh: {
+            flex: 2,
+            fontSize: "11px",
+            textAlign: "left",
+            paddingLeft: "5px",
+            borderBottom: "1px solid #CCCCCC",
+            backgroundColor:'#EEEEEE',
+        },
+
+       
+
+
         tableContainerCourse: {
             marginTop: "5px",
             marginBottom: "15px",
@@ -154,145 +166,145 @@ const CommunityPDF = (props) => {
                     />
                     <View style={styles.field}>
                         <View style={styles.values}>
-                            <Text>Application Number</Text>
+                            <Text style={{marginBottom:'5px'}}>Application Number</Text>
                         </View>
                         <View>
-                            <Text>: {formValues.AppNo}</Text>
+                            <Text style={{marginBottom:'5px'}}>:{' '}{' '}{' '}{' '} {formValues.AppNo}</Text>
                         </View>
                     </View>
 
                     <View style={styles.field}>
                         <View style={styles.values}>
-                            <Text>Name</Text>
+                            <Text style={{marginBottom:'5px'}}>Name</Text>
                         </View>
                         <View>
-                            <Text>: {formValues.Name}</Text>
+                            <Text style={{marginBottom:'5px'}}>: {' '}{' '}{' '}{' '} {formValues.Name}</Text>
                         </View>
                     </View>
 
                     <View style={styles.field}>
                         <View style={styles.values}>
-                            <Text>Mobile Number</Text>
+                            <Text style={{marginBottom:'5px'}}>Mobile Number</Text>
                         </View>
                         <View>
-                            <Text>: {formValues.MobileNumber}</Text>
+                            <Text style={{marginBottom:'5px'}}>:{' '}{' '}{' '}{' '}  {formValues.MobileNumber}</Text>
                         </View>
                     </View>
 
                     <View style={styles.field}>
                         <View style={styles.values}>
-                            <Text>Whatsapp No</Text>
+                            <Text style={{marginBottom:'5px'}}>Whatsapp No</Text>
                         </View>
                         <View>
-                            <Text>: {formValues.WhatsappNumber}</Text>
+                            <Text style={{marginBottom:'5px'}}>: {' '}{' '}{' '}{' '} {formValues.WhatsappNumber}</Text>
                         </View>
                     </View>
 
                     <View style={styles.field}>
                         <View style={styles.values}>
-                            <Text>Single Window Appln No</Text>
+                            <Text style={{marginBottom:'5px'}}>Single Window Appln No</Text>
                         </View>
                         <View>
-                            <Text>: {formValues.SingleWindowNo}</Text>
+                            <Text style={{marginBottom:'5px'}}>:{' '}{' '}{' '}{' '}  {formValues.SingleWindowNo}</Text>
                         </View>
                     </View>
 
                     <View style={styles.field}>
                         <View style={styles.values}>
-                            <Text>Date of Birth</Text>
+                            <Text style={{marginBottom:'5px'}}>Date of Birth</Text>
                         </View>
                         <View>
-                            <Text>: {formValues.DateOfBirth}</Text>
+                            <Text style={{marginBottom:'5px'}}>:{' '}{' '}{' '}{' '}  {formValues.DateOfBirth}</Text>
                         </View>
                     </View>
 
                     <View style={styles.field}>
                         <View style={styles.values}>
-                            <Text>Gender</Text>
+                            <Text style={{marginBottom:'5px'}}>Gender</Text>
                         </View>
                         <View>
-                            <Text>: {formValues.Gender}</Text>
+                            <Text style={{marginBottom:'5px'}}>: {' '}{' '}{' '}{' '} {formValues.Gender}</Text>
                         </View>
                     </View>
 
                     <View style={styles.field}>
                         <View style={styles.values}>
-                            <Text>Religion</Text>
+                            <Text style={{marginBottom:'5px'}}>Religion</Text>
                         </View>
                         <View>
-                            <Text>: {formValues.Religion}</Text>
+                            <Text style={{marginBottom:'5px'}}>:{' '}{' '}{' '}{' '}  {formValues.Religion}</Text>
                         </View>
                     </View>
 
                     <View style={styles.field}>
                         <View style={styles.values}>
-                            <Text>Board of Examination</Text>
+                            <Text style={{marginBottom:'5px'}}>Board of Examination</Text>
                         </View>
                         <View>
-                            <Text>: {formValues.Board}</Text>
+                            <Text style={{marginBottom:'5px'}}>:{' '}{' '}{' '}{' '}  {formValues.Board}</Text>
                         </View>
                     </View>
 
                     <View style={styles.field}>
                         <View style={styles.values}>
-                            <Text>Register Number</Text>
+                            <Text style={{marginBottom:'5px'}}>Register Number</Text>
                         </View>
                         <View>
-                            <Text>: {formValues.RegNumber}</Text>
+                            <Text style={{marginBottom:'5px'}}>: {' '}{' '}{' '}{' '} {formValues.RegNumber}</Text>
                         </View>
                     </View>
 
                     <View style={styles.field}>
                         <View style={styles.values}>
-                            <Text>Year</Text>
+                            <Text style={{marginBottom:'5px'}}>Year</Text>
                         </View>
                         <View>
-                            <Text>: {formValues.Year}</Text>
+                            <Text style={{marginBottom:'5px'}}>:{' '}{' '}{' '}{' '}  {formValues.Year}</Text>
                         </View>
                     </View>
 
                     <View style={styles.field}>
                         <View style={styles.values}>
-                            <Text>School Name</Text>
+                            <Text style={{marginBottom:'5px'}}>School Name</Text>
                         </View>
                         <View>
-                            <Text>: {formValues.SchoolName}</Text>
+                            <Text style={{marginBottom:'5px'}}>:{' '}{' '}{' '}{' '}  {formValues.SchoolName}</Text>
                         </View>
                     </View>
 
                     <View style={styles.field}>
                         <View style={styles.values}>
-                            <Text>Father Name</Text>
+                            <Text style={{marginBottom:'5px'}}>Father Name</Text>
                         </View>
                         <View>
-                            <Text>: {formValues.FatherName}</Text>
+                            <Text style={{marginBottom:'5px'}}>: {' '}{' '}{' '}{' '} {formValues.FatherName}</Text>
                         </View>
                     </View>
 
                     <View style={styles.field}>
                         <View style={styles.values}>
-                            <Text>Mother Name</Text>
+                            <Text style={{marginBottom:'5px'}}>Mother Name</Text>
                         </View>
                         <View>
-                            <Text>: {formValues.MotherName}</Text>
+                            <Text style={{marginBottom:'5px'}}>: {' '}{' '}{' '}{' '} {formValues.MotherName}</Text>
                         </View>
                     </View>
 
                     <View style={styles.valuer}>
                         <View style={styles.fieldg}>
                             <View style={{ width: "54%" }}>
-                                <Text>House Name</Text>
+                                <Text style={{marginBottom:'5px'}}>House Name</Text>
                             </View>
                             <View>
-                                <Text>: {formValues.HouseName}</Text>
+                                <Text style={{marginBottom:'5px'}}>: {' '}{' '}{' '}{' '} {formValues.HouseName}</Text>
                             </View>
                         </View>
                         <View style={styles.fieldg}>
                             <View style={{ width: "54%" }}>
-                                <Text>Post Office</Text>
+                                <Text style={{marginBottom:'5px'}}>Post Office</Text>
                             </View>
                             <View>
-                                <Text>: {formValues.PostOffice}</Text>
+                                <Text style={{marginBottom:'5px'}}>: {' '}{' '}{' '}{' '} {formValues.PostOffice}</Text>
                             </View>
                         </View>
                     </View>
@@ -300,18 +312,18 @@ const CommunityPDF = (props) => {
                     <View style={styles.valuer}>
                         <View style={styles.fieldg}>
                             <View style={{ width: "54%" }}>
-                                <Text>Panchayath</Text>
+                                <Text style={{marginBottom:'5px'}}>Panchayath</Text>
                             </View>
                             <View>
-                                <Text>: {formValues.Panchayath}</Text>
+                                <Text style={{marginBottom:'5px'}}>: {' '}{' '}{' '}{' '} {formValues.Panchayath}</Text>
                             </View>
                         </View>
                         <View style={styles.fieldg}>
                             <View style={{ width: "54%" }}>
-                                <Text>Ward</Text>
+                                <Text style={{marginBottom:'5px'}}>Ward</Text>
                             </View>
                             <View>
-                                <Text>: {formValues.Ward}</Text>
+                                <Text style={{marginBottom:'5px'}}>: {' '}{' '}{' '}{' '} {formValues.Ward}</Text>
                             </View>
                         </View>
                     </View>
@@ -319,10 +331,10 @@ const CommunityPDF = (props) => {
                         style={{
                             borderBottomColor: "black",
                             borderBottomWidth: 1,
-                            marginTop: "5px",
+                            marginTop: "20px",
                         }}
                     />
-
+                    <View style={{marginBottom:'20px'}} />
                     <View style={styles.tableContainer}>
                         <View style={styles.tableHeader}>
                             <Text style={styles.tableCell}>Subject</Text>
@@ -430,6 +442,7 @@ const CommunityPDF = (props) => {
                             </View>
                         )}
                     </View>
+                    <View style={{marginTop:'20px',marginBottom:'50px'}}>
                     <View style={styles.tableContainerCourse}>
                         <View style={styles.tableHeaderCourse}>
                             <Text style={styles.tableCellCourse1}>Preference</Text>
@@ -454,65 +467,42 @@ const CommunityPDF = (props) => {
                             </Text>
                         </View>
                     </View>
-                    <View style={styles.valuer}>
-                        <Text style={{ width: "50%", fontSize: "11px", marginTop: "10px" }}>
-                            Signature of the Parent :
-                        </Text>
-                        <Text style={{ fontSize: "11px", marginTop: "10px" }}>
-                            Signature of the Applicant :
-                        </Text>
                     </View>
-                    <View
-                        style={{
-                            borderBottomColor: "black",
-                            borderBottomWidth: 1,
-                            marginBottom: "10px",
-                            marginTop: "10px",
-                        }}
-                    />
-                    <View>
-                        <Text style={{ fontSize: "11px", marginBottom: "10px" }}>
-                            Name and Signature of the Management Committe Member
-                        </Text>
-                        <View style={styles.valuer}>
-                            <Text style={{ width: "50%", fontSize: "11px" }}>Name :</Text>
-                            <Text style={{ fontSize: "11px" }}>Signature :</Text>
-                        </View>
-                    </View>
+              
                     {/***********************        Next Page        **************************/}
-                    <View>
-                        <Text style={{ fontSize: "11px", marginTop: '50px', marginBottom: "10px" }}>19. Whether the applicant is eligible for bonus points under the following category:</Text>
-                        <View>{formValues.ExtraCurricular}</View>
+                    <View style={{paddingLeft:'20px',marginTop:'30px'}}>
+                        <Text style={{ fontSize: "11px", marginTop: '10px', marginBottom: "5px" }}>19. Whether the applicant is eligible for bonus points under the following category :{' '}</Text>
+                        <Text style={{fontSize:'11px',marginBottom:'10px'}}>{formValues.ExtraCurricular}</Text>
                     </View>
-                    <View>
-                        <Text style={{ fontSize: "11px", marginBottom: "10px" }}>20. Participation in Sports</Text>
-                        <View>State Level Participation(Write the number of items participated):{formValues.StateLevelParticipation}</View>
+                    <View style={{paddingLeft:'20px'}}>
+                        <Text style={{ fontSize: "11px", marginBottom: "5px",fontWeight:'900' }}>20. Participation in Sports</Text>
+                        <View><Text style={{fontSize:'10px',marginBottom:'5px',paddingLeft:'5px'}}>State Level Participation(Write the number of items participated) :{' '}{formValues.StateLevelParticipation}</Text></View>
                     </View>
-                    <View>District Level(Write the number of grades won in the relevant boxes)</View>
+                    <View><Text  style={{fontSize:'10px', paddingLeft:'25px',marginBottom:'10px'}}>District Level(Write the number of grades won in the relevant boxes)</Text></View>
 
 
                     {/***************   District Level Sports              ********************/}
-                    <View style={{ display: "flex", flexDirection: "row" }}>
+                    <View style={{ display: "flex", flexDirection: "row" , paddingLeft:'20px' }}>
                         <View style={styles.tableColumn}>
-                            <Text style={styles.tableCell}>A Grade</Text>
+                            <Text style={styles.tableCellh}>A Grade</Text>
                             <Text style={styles.tableCell}>
                                 {formValues.SportsDistrictA}
                             </Text>
                         </View>
                         <View style={styles.tableColumn}>
-                            <Text style={styles.tableCell}>B Grade</Text>
+                            <Text style={styles.tableCellh}>B Grade</Text>
                             <Text style={styles.tableCell}>
                                 {formValues.SportsDistrictB}
                             </Text>
                         </View>
                         <View style={styles.tableColumn}>
-                            <Text style={styles.tableCell}>C Grade</Text>
+                            <Text style={styles.tableCellh}>C Grade</Text>
                             <Text style={styles.tableCell}>
                                 {formValues.SportsDistrictC}
                             </Text>
                         </View>
                         <View style={styles.tableColumn}>
-                            <Text style={styles.tableCell}>Participation</Text>
+                            <Text style={styles.tableCellh}>Participation</Text>
                             <Text style={styles.tableCell}>
                                 {formValues.SportsDistrictParticipation}
                             </Text>
@@ -521,33 +511,33 @@ const CommunityPDF = (props) => {
 
 
                     {/**********************************     Arts section           *****************************/}
-                    <View>
-                        <Text style={{ fontSize: "11px", marginBottom: "10px" }}>21. Participation in Kerala School Kalotsavam</Text>
-                        <View>State Level Participation(Write the number of items participated):{formValues.KalotsavamStateLevel}</View>
+                    <View style={{paddingLeft:'20px'}}>
+                        <Text style={{ fontSize: "11px", marginBottom: "5px",marginTop:'20px' }}>21. Participation in Kerala School Kalotsavam</Text>
+                        <View><Text style={{fontSize:'10px',marginBottom:'5px',paddingLeft:'5px'}}>State Level Participation(Write the number of items participated) :{' '}{formValues.KalotsavamStateLevel}</Text></View>
                     </View>
-                    <View>District Level(Write the number of grades won in the relevant boxes)</View>
+                    <View><Text style={{fontSize:'10px', paddingLeft:'25px',marginBottom:'10px'}}>District Level(Write the number of grades won in the relevant boxes)</Text></View>
                     {/***************   District Level Sports              ********************/}
-                    <View style={{ display: "flex", flexDirection: "row" }}>
+                    <View style={{ display: "flex", flexDirection: "row" , paddingLeft:'20px' }}>
                         <View style={styles.tableColumn}>
-                            <Text style={styles.tableCell}>A Grade</Text>
+                            <Text style={styles.tableCellh}>A Grade</Text>
                             <Text style={styles.tableCell}>
                                 {formValues.ArtsDistrictA}
                             </Text>
                         </View>
                         <View style={styles.tableColumn}>
-                            <Text style={styles.tableCell}>B Grade</Text>
+                            <Text style={styles.tableCellh}>B Grade</Text>
                             <Text style={styles.tableCell}>
                                 {formValues.ArtsDistrictB}
                             </Text>
                         </View>
                         <View style={styles.tableColumn}>
-                            <Text style={styles.tableCell}>C Grade</Text>
+                            <Text style={styles.tableCellh}>C Grade</Text>
                             <Text style={styles.tableCell}>
                                 {formValues.ArtsDistrictC}
                             </Text>
                         </View>
                         <View style={styles.tableColumn}>
-                            <Text style={styles.tableCell}>Participation</Text>
+                            <Text style={styles.tableCellh}>Participation</Text>
                             <Text style={styles.tableCell}>
                                 {formValues.ArtsDistrictParticipation}
                             </Text>
@@ -556,11 +546,11 @@ const CommunityPDF = (props) => {
 
 
                     {/***************************   NationalOrStateLevelExamination   ***************************/}
-                    <Text style={{ fontSize: "11px", marginBottom: "10px" }}>22. Whether qualified in the National/State Level Test for the National Talent Search Examination:{formValues.NationalOrStateLevelExamination}</Text>
+                    <Text style={{ fontSize: "11px", marginBottom: "10px" , paddingLeft:'20px',marginTop:'20px' }}>22. Whether qualified in the National/State Level Test for the National Talent Search Examination :{' '}{formValues.NationalOrStateLevelExamination}</Text>
 
 
                     {/*************************    Co-curricular activities          ******************** */}
-                    <Text style={{ fontSize: "11px", marginBottom: "10px" }}>(a) Details of participation in co-curricular activites. Write the number of grades won in the relevant boxes.</Text>
+                    <Text style={{ fontSize: "11px", marginBottom: "10px" , paddingLeft:'20px' }}>(a) Details of participation in co-curricular activites. Write the number of grades won in the relevant boxes.</Text>
                     <View style={styles.tableContainer}>
                         {/* Table header */}
                         <View style={styles.tableHeader}>
@@ -619,12 +609,42 @@ const CommunityPDF = (props) => {
                             <Text style={styles.tableCell}>{formValues.StateWorkExperienceFairE}</Text>
                         </View>
                     </View>
-                    <Text style={{ fontSize: "11px", marginBottom: "10px" }}>(b) Relevant</Text>
-                    <Text style={{ fontSize: "11px", marginBottom: "10px" }}>{formValues.Club}</Text>
-                    <Text style={{ fontSize: '15px', marginBottom: '10px' }}>Declaration</Text>
-                    <Text style={{ fontSize: '11px' }}>We do hereby declare that the information furnished above is true and correct to the best of my knowledge
+                    
+            
+                
+                    <Text style={{ fontSize: "11px", marginBottom: "10px" ,marginTop:'10px', paddingLeft:'20px',width:'20%' }}>(b) Relevant</Text>
+                    <Text style={{ fontSize: "11px", marginBottom: "10px", paddingLeft:'20px' }}>{formValues.Club}</Text>
+                    
+                
+                    <Text style={{ fontSize: '15px', marginBottom: '10px', paddingLeft:'20px' }}>Declaration</Text>
+                    <Text style={{ fontSize: '11px' , paddingLeft:'20px'}}>We do hereby declare that the information furnished above is true and correct to the best of my knowledge
                         and belief. We know that faulty information may lead to the cancellation of the canidate.</Text>
 
+                          <View style={styles.valuer}>
+                        <Text style={{ width: "50%", fontSize: "11px", marginTop: "30px" , paddingLeft:'20px' }}>
+                            Signature of the Parent :
+                        </Text>
+                        <Text style={{ fontSize: "11px", marginTop: "30px" }}>
+                            Signature of the Applicant :
+                        </Text>
+                    </View>
+                    <View
+                        style={{
+                            borderBottomColor: "black",
+                            borderBottomWidth: 1,
+                            marginBottom: "20px",
+                            marginTop: "20px",
+                        }}
+                    />
+                    <View>
+                        <Text style={{ fontSize: "11px", marginBottom: "20px" , paddingLeft:'20px'}}>
+                            Name and Signature of the Management Committe Member
+                        </Text>
+                        <View style={styles.valuer}>
+                            <Text style={{ width: "50%", fontSize: "11px" , paddingLeft:'20px' }}>Name :</Text>
+                            <Text style={{ fontSize: "11px" }}>Signature :</Text>
+                        </View>
+                    </View>
                 </View>
             </Page>
         </Document>

@@ -139,7 +139,7 @@ const CommunityApp = () => {
             </SubmitButton>
           <PdfDialog open={openPdfDialog} onClose={handleClose} registered={registered} community={community} />
           <ErrorDialog open={openErrorDialog} onClose={handleClose} message={dialogMessage} />
-          <WarningDialog open={openWarningDialog} onClose={handleClose}  message={dialogMessage} />
+          <WarningDialog open={openWarningDialog} onClose={handleClose}  message={dialogMessage} link='/community-form' />
           </FormContainer>
         )}
       </Formik>

@@ -19,7 +19,7 @@ function WarningDialog(props) {
               <Typography variant='h6'>{props.message}</Typography>
             </DialogContent>
             <DialogActions>
-            <Button><Link to={"/register"}>Register</Link></Button>
+            <Button><Link to={props.link}>Register</Link></Button>
             </DialogActions>
           </Dialog>
   )
