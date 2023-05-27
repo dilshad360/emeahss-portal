@@ -1,17 +1,20 @@
 import React from 'react'
-import { Page, Text, Document, StyleSheet, View } from "@react-pdf/renderer";
+import { Page, Text, Document, StyleSheet, View, Image } from "@react-pdf/renderer";
+import logo from "../../assets/emea_logo.jpeg";
 
 import { markToGrade, cbseMarkToGrade } from "../../Const";
 
+const watermarkLogo = (
+    <Image src={logo} style={{ width: '300px', height: '400px' }} />
+  );
+
 const CommunityPDF = (props) => {
-    console.log("From community PDF.");
     const formValues = props.formValues;
     const syllabus = formValues.Board;
     const styles = StyleSheet.create({
         page: {
             display: "flex",
             backgroundColor: "#e4e4e4",
-
             alignItems: "center",
             justifyContent: "center",
         },
@@ -29,8 +32,7 @@ const CommunityPDF = (props) => {
             marginBottom: "5px",
             color: "#000000",
             textAlign: "center",
-            fontWeight: "bold",
-
+            fontFamily: "Helvetica-Bold",
             height: "64px",
             padding: "5px",
         },
@@ -58,6 +60,7 @@ const CommunityPDF = (props) => {
 
         values: {
             width: "26%",
+            fontFamily: "Helvetica-Bold"
         },
 
         valuer: {
@@ -83,6 +86,7 @@ const CommunityPDF = (props) => {
             borderLeft: "1px solid #CCCCCC",
             width: "85px",
             height: "90px",
+            fontFamily: "Helvetica-Bold"
         },
 
         tableColumn: {
@@ -128,6 +132,7 @@ const CommunityPDF = (props) => {
             backgroundColor: "#EEEEEE",
             padding: "5px 0",
             borderBottom: "1px solid #CCCCCC",
+            fontFamily: "Helvetica-Bold"
         },
 
         tableRow: {
@@ -148,14 +153,25 @@ const CommunityPDF = (props) => {
             textAlign: "left",
             paddingLeft: "5px",
         },
+        watermark: {
+            position: 'absolute',
+            opacity: 0.1,
+            width: '50%',
+            height: '50%',
+            top: '23%',
+            left: '25%',
+            },
     });
     return (
         <Document>
             <Page size="A4" style={styles.page}>
                 <View style={styles.section}>
+                <View style={styles.watermark}>
+        {watermarkLogo}
+        </View>
                     <Text style={styles.header}>
                         EMEA HSS KONDOTTY THURAKKAL PO {"\n"}APPLICATION FOR PLUS ONE
-                        ADMISSION 2023-24 {"\n"}(Management Quota)
+                        ADMISSION 2023-24 {"\n"}(Community Quota)
                     </Text>
                     <View
                         style={{
@@ -292,7 +308,7 @@ const CommunityPDF = (props) => {
 
                     <View style={styles.valuer}>
                         <View style={styles.fieldg}>
-                            <View style={{ width: "54%" }}>
+                            <View style={{ width: "54%" , fontFamily: "Helvetica-Bold" }}>
                                 <Text style={{marginBottom:'5px'}}>House Name</Text>
                             </View>
                             <View>
@@ -300,7 +316,7 @@ const CommunityPDF = (props) => {
                             </View>
                         </View>
                         <View style={styles.fieldg}>
-                            <View style={{ width: "54%" }}>
+                            <View style={{ width: "54%" , fontFamily: "Helvetica-Bold" }}>
                                 <Text style={{marginBottom:'5px'}}>Post Office</Text>
                             </View>
                             <View>
@@ -311,7 +327,7 @@ const CommunityPDF = (props) => {
 
                     <View style={styles.valuer}>
                         <View style={styles.fieldg}>
-                            <View style={{ width: "54%" }}>
+                            <View style={{ width: "54%" ,fontFamily: "Helvetica-Bold" }}>
                                 <Text style={{marginBottom:'5px'}}>Panchayath</Text>
                             </View>
                             <View>
@@ -319,7 +335,7 @@ const CommunityPDF = (props) => {
                             </View>
                         </View>
                         <View style={styles.fieldg}>
-                            <View style={{ width: "54%" }}>
+                            <View style={{ width: "54%", fontFamily: "Helvetica-Bold" }}>
                                 <Text style={{marginBottom:'5px'}}>Ward</Text>
                             </View>
                             <View>

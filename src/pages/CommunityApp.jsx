@@ -59,7 +59,6 @@ const CommunityApp = () => {
   }
 
   const handleSubmit = async (values) => {
-    console.log("registered",registered);
     setLoading(true);
     let dateOfBirth = values.DateOfBirth;
     setDateOfBirth(dateOfBirth);
