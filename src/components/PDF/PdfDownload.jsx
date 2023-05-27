@@ -1,7 +1,14 @@
 import React from "react";
-import { Page, Text, Document, StyleSheet, View } from "@react-pdf/renderer";
+import { Page, Text, Document, StyleSheet, View , Image } from "@react-pdf/renderer";
+import logo from "../../assets/emea_logo.jpeg";
+
 
 import { markToGrade,cbseMarkToGrade } from "../../Const";
+
+const watermarkLogo = (
+  <Image src={logo} style={{ width: '300px', height: '400px' }} />
+);
+
 
 const PdfDownload = (props) => {
   const formValues = props.formValues;
@@ -10,7 +17,6 @@ const PdfDownload = (props) => {
     page: {
       display: "flex",
       backgroundColor: "#e4e4e4",
-
       alignItems: "center",
       justifyContent: "center",
     },
@@ -28,8 +34,7 @@ const PdfDownload = (props) => {
       marginBottom: "5px",
       color: "#000000",
       textAlign: "center",
-      fontWeight: "bold",
-
+      fontFamily: "Helvetica-Bold",
       height: "64px",
       padding: "5px",
     },
@@ -57,6 +62,7 @@ const PdfDownload = (props) => {
 
     values: {
       width: "26%",
+      fontFamily: "Helvetica-Bold",
     },
 
     valuer: {
@@ -82,6 +88,7 @@ const PdfDownload = (props) => {
       borderLeft: "1px solid #CCCCCC",
       width: "85px",
       height: "90px",
+      fontFamily: "Helvetica-Bold",
     },
 
     tableColumn: {
@@ -115,6 +122,7 @@ const PdfDownload = (props) => {
       backgroundColor: "#EEEEEE",
       padding: "5px 0",
       borderBottom: "1px solid #CCCCCC",
+      fontFamily: "Helvetica-Bold",
     },
 
     tableRow: {
@@ -135,11 +143,22 @@ const PdfDownload = (props) => {
       textAlign: "left",
       paddingLeft: "5px",
     },
+    watermark: {
+    position: 'absolute',
+    opacity: 0.1,
+    width: '50%',
+    height: '50%',
+    top: '23%',
+    left: '25%',
+    },
   });
   return (
     <Document>
       <Page size="A4" style={styles.page}>
         <View style={styles.section}>
+        <View style={styles.watermark}>
+        {watermarkLogo}
+        </View>
           <Text style={styles.header}>
             EMEA HSS KONDOTTY THURAKKAL PO {"\n"}APPLICATION FOR PLUS ONE
             ADMISSION 2023-24 {"\n"}(Management Quota)
@@ -279,7 +298,7 @@ const PdfDownload = (props) => {
 
           <View style={styles.valuer}>
             <View style={styles.fieldg}>
-              <View style={{ width: "54%" }}>
+              <View style={{ width: "54%", fontFamily: "Helvetica-Bold" }}>
                 <Text>House Name</Text>
               </View>
               <View>
@@ -287,7 +306,7 @@ const PdfDownload = (props) => {
               </View>
             </View>
             <View style={styles.fieldg}>
-              <View style={{ width: "54%" }}>
+              <View style={{ width: "54%", fontFamily: "Helvetica-Bold" }}>
                 <Text>Post Office</Text>
               </View>
               <View>
@@ -298,7 +317,7 @@ const PdfDownload = (props) => {
 
           <View style={styles.valuer}>
             <View style={styles.fieldg}>
-              <View style={{ width: "54%" }}>
+              <View style={{ width: "54%" , fontFamily: "Helvetica-Bold" }}>
                 <Text>Panchayath</Text>
               </View>
               <View>
@@ -306,7 +325,7 @@ const PdfDownload = (props) => {
               </View>
             </View>
             <View style={styles.fieldg}>
-              <View style={{ width: "54%" }}>
+              <View style={{ width: "54%" , fontFamily: "Helvetica-Bold" }}>
                 <Text>Ward</Text>
               </View>
               <View>
