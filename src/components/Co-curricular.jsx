@@ -55,6 +55,7 @@ const Cocurricular = () => {
                                 name={`${coCurricular}[0].count`}
                                 type="number"
                                 fullWidth
+                                size="small"
                             />
                         </Grid>
                     </TableCell>
@@ -65,6 +66,7 @@ const Cocurricular = () => {
                                 name={`${coCurricular}[1].count`}
                                 type="number"
                                 fullWidth
+                                size="small"
                             />
                         </Grid>
                     </TableCell>
@@ -75,6 +77,7 @@ const Cocurricular = () => {
                                 name={`${coCurricular}[2].count`}
                                 type="number"
                                 fullWidth
+                                size="small"
                             />
                         </Grid>
                     </TableCell>
@@ -85,6 +88,7 @@ const Cocurricular = () => {
                                 name={`${coCurricular}[3].count`}
                                 type="number"
                                 fullWidth
+                                size="small"
                             />
                         </Grid>
                     </TableCell>
@@ -95,6 +99,7 @@ const Cocurricular = () => {
                                 name={`${coCurricular}[4].count`}
                                 type="number"
                                 fullWidth
+                                size="small"
                             />
                         </Grid>
                     </TableCell>

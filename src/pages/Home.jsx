@@ -73,6 +73,12 @@ function Home() {
               Community
             </Button>
           </ButtonGroup>
+          <div className="w-full"> 
+          <Divider className="text-green-700 font-semibold underline pb-3">Help Desk</Divider>
+          <Typography variant="subtitle2">Sham K: 9447552750</Typography>
+          <Typography variant="subtitle2">Mansoor: 9961441149</Typography>
+          <Typography variant="subtitle2">Muhammed K: 9539142919</Typography>
+          </div>
         </Paper>
       </Box>
     </div>
