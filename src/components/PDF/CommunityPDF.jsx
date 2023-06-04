@@ -114,6 +114,7 @@ const CommunityPDF = (props) => {
             paddingLeft: "5px",
             borderBottom: "1px solid #CCCCCC",
             backgroundColor:'#EEEEEE',
+            fontFamily: "Helvetica-Bold"
         },
 
        
@@ -334,14 +335,6 @@ const CommunityPDF = (props) => {
                                 <Text style={{marginBottom:'5px'}}>: {' '}{' '}{' '}{' '} {formValues.Panchayath}</Text>
                             </View>
                         </View>
-                        <View style={styles.fieldg}>
-                            <View style={{ width: "54%", fontFamily: "Helvetica-Bold" }}>
-                                <Text style={{marginBottom:'5px'}}>Ward</Text>
-                            </View>
-                            <View>
-                                <Text style={{marginBottom:'5px'}}>: {' '}{' '}{' '}{' '} {formValues.Ward}</Text>
-                            </View>
-                        </View>
                     </View>
                     <View
                         style={{
@@ -487,11 +480,11 @@ const CommunityPDF = (props) => {
               
                     {/***********************        Next Page        **************************/}
                     <View style={{paddingLeft:'20px',marginTop:'30px'}}>
-                        <Text style={{ fontSize: "11px", marginTop: '10px', marginBottom: "5px" }}>19. Whether the applicant is eligible for bonus points under the following category :{' '}</Text>
+                        <Text style={{ fontSize: "11px", marginTop: '10px', marginBottom: "5px",fontFamily: "Helvetica-Bold" }}>19. Whether the applicant is eligible for bonus points under the following category :{' '}</Text>
                         <Text style={{fontSize:'11px',marginBottom:'10px'}}>{formValues.ExtraCurricular}</Text>
                     </View>
                     <View style={{paddingLeft:'20px'}}>
-                        <Text style={{ fontSize: "11px", marginBottom: "5px",fontWeight:'900' }}>20. Participation in Sports</Text>
+                        <Text style={{ fontSize: "11px", marginBottom: "5px",fontWeight:'900',fontFamily: "Helvetica-Bold" }}>20. Participation in Sports</Text>
                         <View><Text style={{fontSize:'10px',marginBottom:'5px',paddingLeft:'5px'}}>State Level Participation(Write the number of items participated) :{' '}{formValues.StateLevelParticipation}</Text></View>
                     </View>
                     <View><Text  style={{fontSize:'10px', paddingLeft:'25px',marginBottom:'10px'}}>District Level(Write the number of grades won in the relevant boxes)</Text></View>
@@ -528,7 +521,7 @@ const CommunityPDF = (props) => {
 
                     {/**********************************     Arts section           *****************************/}
                     <View style={{paddingLeft:'20px'}}>
-                        <Text style={{ fontSize: "11px", marginBottom: "5px",marginTop:'20px' }}>21. Participation in Kerala School Kalotsavam</Text>
+                        <Text style={{ fontSize: "11px", marginBottom: "5px",marginTop:'20px',fontFamily: "Helvetica-Bold" }}>21. Participation in Kerala School Kalotsavam</Text>
                         <View><Text style={{fontSize:'10px',marginBottom:'5px',paddingLeft:'5px'}}>State Level Participation(Write the number of items participated) :{' '}{formValues.KalotsavamStateLevel}</Text></View>
                     </View>
                     <View><Text style={{fontSize:'10px', paddingLeft:'25px',marginBottom:'10px'}}>District Level(Write the number of grades won in the relevant boxes)</Text></View>

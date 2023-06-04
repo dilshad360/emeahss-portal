@@ -103,7 +103,7 @@ export const genderOptions = [
 
 //religion
 export const religionOptions = [
-  { value: 'Islam', label: 'Islam' },
+  { value: 'Muslim', label: 'Muslim' },
   { value: 'Hinduism', label: 'Hinduism' },
   { value: 'Christianity ', label: 'Christianity' },
   { value: 'other', label: 'Other' },
@@ -170,7 +170,8 @@ export const courseOptions = [
 
 export const examOptions = [
   { value: 'STATE', label: 'STATE' },
-  { value: 'CBSE', label: 'CBSE' }
+  { value: 'CBSE', label: 'CBSE' },
+  { value: 'Other', label:'Other' }
 ]
 
 
@@ -183,19 +184,7 @@ export const codeToCourse = {
 
 //School options
 export const schoolOptions = [
-    { value:"GHSS Kottappuram", label:"GHSS Kottappuram" },
-    { value:"GVHSS Melengadi,Kondotty", label:"GVHSS Melengadi,Kondotty" },
-    { value:"PPMMHSS Kottukkara", label:"PPMMHSS Kottukkara" },
-    { value:"GHSS Kuzhimanna", label:"GHSS Kuzhimanna" },
-    { value:"GHSS Muthuvallur", label:"GHSS Muthuvallur" },
-    { value:"VPKMMHSS,Puthoor Pallikkal", label:"VPKMMHSS,Puthoor Pallikkal" },
-    { value:"Morayoor,VHMSS", label:"Morayoor,VHMSS" },
-    { value:"Markaz School, Ekkaparamba", label:"Markaz School, Ekkaparamba" },
-    { value:"Ozhukur Crescent HSS", label:"Ozhukur Crescent HSS" },
-    { value:"GHSS Thadathilparamb", label:"GHSS Thadathilparamb" },
-    { value:"HIOHS Olavattur", label:"HIOHS Olavattur" },
-    { value:"GVHSS Arimbra", label:"GVHSS Arimbra" },
-    { value:"AMMHS Pulikkal", label:"AMMHS Pulikkal" },
+    { value:"EMEA HighSchool", label:"EMEA HighSchool" },
     { value:"Others", label:"Others" }
 ]
 
@@ -314,7 +303,6 @@ export const communityInitialValues = {
   HouseName: "",
   PostOffice: "",
   Panchayath: "",
-  Ward: "",
   OtherWard:"",
   statesubjectsMarks: [
     { subject: 'Language1', grade: '' },
@@ -393,6 +381,8 @@ export const communityInitialValues = {
 
 };
 
+
+
 //Validation
 export const communityValidationSchema = yup.object().shape({
   Name: yup.string().required("Name of Applicant is required"),
@@ -435,6 +425,9 @@ export const communityValidationSchema = yup.object().shape({
   
 });
 
+export const communityReligion = [{
+  value:"Muslim",label:"Muslim"
+}]
 
 export const YesNo = 
 [

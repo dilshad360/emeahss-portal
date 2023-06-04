@@ -2,8 +2,7 @@ import Loader from "../components/Loader";
 import SuccessDialog from "../components/Dialogs/SuccessDialog";
 import {
   schoolOptions,
-  kondottyWardOptions,
-  pullikkalWardOptions,
+  communityReligion,
   YesNo,
 } from "../Const";
 import ErrorDialog from "../components/Dialogs/ErrorDialog";
@@ -15,7 +14,6 @@ import {
   communityValidationSchema,
   years,
   genderOptions,
-  religionOptions,
   panchayatOptions,
   subjects,
   examOptions,
@@ -36,8 +34,7 @@ const CommunityForm = () => {
   const [school, setSchool] = useState(false);
   const [open, setOpen] = React.useState(false);
   const [loading, setLoading] = useState(false);
-  const [kward, setKward] = useState(false);
-  const [pward, setPward] = useState(false);
+  
   const [openErrorDialog, setOpenErrorDialog] = useState(false);
 
   const handleClickOpen = () => {
@@ -71,17 +68,6 @@ const CommunityForm = () => {
     }
   };
 
-  const HandlePanchayathChange = (value) => {
-    if (value === "Kondotty") {
-      setKward(true);
-    } else if (value === "Pulikkal") {
-      setPward(true);
-    } else {
-      setKward(false);
-      setPward(false);
-    }
-  };
-
   useEffect(()=>{
     console.log(process.env.REACT_APP_COMMUNITY_LINK);
   })
@@ -107,7 +93,6 @@ const CommunityForm = () => {
       HouseName: values.HouseName,
       PostOffice: values.PostOffice,
       Panchayath: values.Panchayath,
-      Ward: values.Ward,
       /*
             for state subjects which do not appear 
             in CBSE will null in if syllabus is CBSE */
@@ -356,7 +341,7 @@ const CommunityForm = () => {
               <SelectInput
                 name="Religion"
                 label="Religion"
-                options={religionOptions}
+                options={communityReligion}
                 error={errors.Religion && touched.Religion}
               />
             </Grid>
@@ -434,42 +419,10 @@ const CommunityForm = () => {
               <SelectInput
                 name="Panchayath"
                 label="Panchayath"
-                onChange={HandlePanchayathChange}
                 options={panchayatOptions}
                 error={errors.Panchayath && touched.Panchayath}
               />
             </Grid>
-            {kward ? (
-              <Grid item xs={6}>
-                <SelectInput
-                  name="Ward"
-                  label="Ward"
-                  options={kondottyWardOptions}
-                  error={errors.Ward && touched.Ward}
-                />
-              </Grid>
-            ) : pward ? (
-              <Grid item xs={6}>
-                <SelectInput
-                  name="Ward"
-                  label="Ward"
-                  options={pullikkalWardOptions}
-                  error={errors.Ward && touched.Ward}
-                />
-              </Grid>
-            ) : (
-              <Grid item xs={6}>
-                <Field
-                  as={TextField}
-                  name="Ward"
-                  label="Ward No"
-                  type="number"
-                  fullWidth
-                  error={errors.Ward && touched.Ward}
-                  helperText={errors.Ward && touched.Ward && errors.Ward}
-                />
-              </Grid>
-            )}
           </Grid>
           <Typography variant="subtitle1" className="pt-4" gutterBottom>
             Marksheet
