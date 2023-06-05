@@ -108,7 +108,7 @@ const CommunityApp = () => {
               fullWidth
               name="SingleWindowNo"
               label="Single Window Appln. No"
-              type="number"
+              type="text"
               onChange={handleChange}
               error={touched.SingleWindowNo && Boolean(errors.SingleWindowNo)}
               helperText={touched.SingleWindowNo && errors.SingleWindowNo}

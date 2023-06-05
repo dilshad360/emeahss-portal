@@ -34,7 +34,9 @@ const CommunityForm = () => {
   const [school, setSchool] = useState(false);
   const [open, setOpen] = React.useState(false);
   const [loading, setLoading] = useState(false);
-  
+  const [quota,setQuota] = useState("");
+  const [registered,setRegistered] = useState(false)
+
   const [openErrorDialog, setOpenErrorDialog] = useState(false);
 
   const handleClickOpen = () => {
@@ -68,14 +70,14 @@ const CommunityForm = () => {
     }
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log(process.env.REACT_APP_COMMUNITY_LINK);
   })
 
   //handling submit
   const handleSubmit = async (values) => {
     setLoading(true);
-    console.log("Sports State Level:",values.SportsStateLevel);
+    console.log("Sports State Level:", values.SportsStateLevel);
     const formattedValues = {
       Name: values.Name,
       MobileNumber: values.MobileNumber,
@@ -128,54 +130,55 @@ const CommunityForm = () => {
       ExtraCurricular: values.ExtraCurricular,
       SportsStateLevel: values.SportsStateLevel,
       SportsDistrictA: values.SportDistrict[0].count,
-      SportsDistrictB:values.SportDistrict[1].count,
-      SportsDistrictC:values.SportDistrict[2].count,
-      SportsDistrictParticipation:values.SportDistrict[3].count,
+      SportsDistrictB: values.SportDistrict[1].count,
+      SportsDistrictC: values.SportDistrict[2].count,
+      SportsDistrictParticipation: values.SportDistrict[3].count,
       KalotsavamStateLevel: values.KalotsavamStateLevel,
-      ArtsDistrictA:values.ArtsDistrict[0].count,
-      ArtsDistrictB:values.ArtsDistrict[1].count,
-      ArtsDistrictC:values.ArtsDistrict[2].count,
-      ArtsDistrictParticipation:values.ArtsDistrict[3].count,
-      NationalOrStateLevelExamination:values.NationalStateLevelExamination,
-      StateScienceFairA:values.StateScienceFair[0].count,
-      StateScienceFairB:values.StateScienceFair[1].count,
-      StateScienceFairC:values.StateScienceFair[2].count,
-      StateScienceFairD:values.StateScienceFair[3].count,
-      StateScienceFairE:values.StateScienceFair[4].count,
-      StateSocialFairA:values.StateSocialFair[0].count,
-      StateSocialFairB:values.StateSocialFair[1].count,
-      StateSocialFairC:values.StateSocialFair[2].count,
-      StateSocialFairD:values.StateSocialFair[3].count,
-      StateSocialFairE:values.StateSocialFair[4].count,
-      StateMathsFairA:values.StateMathsFair[0].count,
-      StateMathsFairB:values.StateMathsFair[1].count,
-      StateMathsFairC:values.StateMathsFair[2].count,
-      StateMathsFairD:values.StateMathsFair[3].count,
-      StateMathsFairE:values.StateMathsFair[4].count,
-      StateITFestA:values.StateITFest[0].count,
-      StateITFestB:values.StateITFest[1].count,
-      StateITFestC:values.StateITFest[2].count,
-      StateITFestD:values.StateITFest[3].count,
-      StateITFestE:values.StateITFest[4].count,
-      StateWorkExperienceFairA:values.StateWorkExperienceFair[0].count,
-      StateWorkExperienceFairB:values.StateWorkExperienceFair[1].count,
-      StateWorkExperienceFairC:values.StateWorkExperienceFair[2].count,
-      StateWorkExperienceFairD:values.StateWorkExperienceFair[3].count,
-      StateWorkExperienceFairE:values.StateWorkExperienceFair[4].count,
-      Club:values.Club
+      ArtsDistrictA: values.ArtsDistrict[0].count,
+      ArtsDistrictB: values.ArtsDistrict[1].count,
+      ArtsDistrictC: values.ArtsDistrict[2].count,
+      ArtsDistrictParticipation: values.ArtsDistrict[3].count,
+      NationalOrStateLevelExamination: values.NationalStateLevelExamination,
+      StateScienceFairA: values.StateScienceFair[0].count,
+      StateScienceFairB: values.StateScienceFair[1].count,
+      StateScienceFairC: values.StateScienceFair[2].count,
+      StateScienceFairD: values.StateScienceFair[3].count,
+      StateScienceFairE: values.StateScienceFair[4].count,
+      StateSocialFairA: values.StateSocialFair[0].count,
+      StateSocialFairB: values.StateSocialFair[1].count,
+      StateSocialFairC: values.StateSocialFair[2].count,
+      StateSocialFairD: values.StateSocialFair[3].count,
+      StateSocialFairE: values.StateSocialFair[4].count,
+      StateMathsFairA: values.StateMathsFair[0].count,
+      StateMathsFairB: values.StateMathsFair[1].count,
+      StateMathsFairC: values.StateMathsFair[2].count,
+      StateMathsFairD: values.StateMathsFair[3].count,
+      StateMathsFairE: values.StateMathsFair[4].count,
+      StateITFestA: values.StateITFest[0].count,
+      StateITFestB: values.StateITFest[1].count,
+      StateITFestC: values.StateITFest[2].count,
+      StateITFestD: values.StateITFest[3].count,
+      StateITFestE: values.StateITFest[4].count,
+      StateWorkExperienceFairA: values.StateWorkExperienceFair[0].count,
+      StateWorkExperienceFairB: values.StateWorkExperienceFair[1].count,
+      StateWorkExperienceFairC: values.StateWorkExperienceFair[2].count,
+      StateWorkExperienceFairD: values.StateWorkExperienceFair[3].count,
+      StateWorkExperienceFairE: values.StateWorkExperienceFair[4].count,
+      Club: values.Club
 
     };
     let singleWindowNo = values.SingleWindowNo;
     try {
       const response = await axios
         .get
-        ( `${process.env.REACT_APP_COMMUNITY_LINK}/search?SingleWindowNo=${singleWindowNo}`
+        (`${process.env.REACT_APP_COMMUNITY_LINK}/search?SingleWindowNo=${singleWindowNo}`
         );
       if (isEmptyArray(response.data)) {
         await axios
           .post(`${process.env.REACT_APP_COMMUNITY_LINK}`, formattedValues)
           .then((response) => {
-            showSuccessDialog("Application Form filled Successfully.");
+            setQuota("community")
+            setRegistered(true)
           });
         setSubmit(true);
         setLoading(false);
@@ -261,7 +264,7 @@ const CommunityForm = () => {
                 as={TextField}
                 name="SingleWindowNo"
                 label="Single Window Appln. No."
-                type="number"
+                type="text"
                 fullWidth
                 error={errors.SingleWindowNo && touched.SingleWindowNo}
                 helperText={
@@ -613,7 +616,9 @@ const CommunityForm = () => {
           </SubmitButton>
           <SuccessDialog
             open={open}
+            registered={registered}
             onClose={handleClose}
+            quota={quota}
             message={dialogMessage}
             link='/community-application'
           />

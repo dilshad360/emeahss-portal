@@ -46,6 +46,23 @@ export default function SubjectsGradeInput(props) {
               </TableCell>
             </TableRow>
           ))}
+        </TableBody>:
+        syllabus === 'Others' ?
+        <TableBody>
+          {subjects.map((subject, index) => (
+            <TableRow key={index}>
+              <TableCell style={{ width: "60%" }}>{subject}</TableCell>
+              <TableCell>
+                <SelectInput
+                  defaultValue="" 
+                  name={`statesubjectsMarks[${index}].grade`}
+                  label="Grade"
+                  {...rest}
+                  options={gradesOptions}
+                />
+              </TableCell>
+            </TableRow>
+          ))}
         </TableBody>:<TableBody>
           {subjects.map((subject, index) => (
             <TableRow key={index}>

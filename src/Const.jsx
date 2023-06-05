@@ -64,7 +64,6 @@ export const validationSchema = yup.object().shape({
     .required("Whatsapp number is required"),
   SingleWindowNo: yup
     .string()
-    .matches(/^\d+$/, "Single Window number must be a valid number")
     .required("Single Window number is required"),
 
   Board: yup.string().required("Name of qualifying examination is required"),
@@ -146,6 +145,7 @@ export const gradesOptions = [
   { value: '5', label: 'C+' },
   { value: '4', label: 'C' },
   { value: '3', label: 'D+' },
+  { value: ' ', label: 'None' },
 ];
 
 // cbse grades
@@ -184,7 +184,7 @@ export const codeToCourse = {
 
 //School options
 export const schoolOptions = [
-    { value:"EMEA HighSchool", label:"EMEA HighSchool" },
+    { value:"EMEA Higher Secondary School", label:"EMEA Higher Secondary School" },
     { value:"Others", label:"Others" }
 ]
 

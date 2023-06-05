@@ -40,8 +40,8 @@ function ManagementForm() {
   const [kward, setKward] = useState(false);
   const [pward, setPward] = useState(false)
   const [openErrorDialog, setOpenErrorDialog] = useState(false);
-
-
+  const [quota,setQuota] = useState("");
+  const [registered,setRegistered] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -161,9 +161,11 @@ function ManagementForm() {
           )
           .then((response) => {
             showSuccessDialog("Application Form filled Successfully.")
+            setSubmit(true);
+            setQuota("management")
+            setRegistered(true)
+            setLoading(false)
           });
-        setSubmit(true);
-        setLoading(false)
       } else {
         showSuccessDialog("You are already registered")
         setLoading(false)
@@ -182,6 +184,7 @@ function ManagementForm() {
       validationSchema={validationSchema}
       //on submit section
       onSubmit={(values) => {
+        console.log(process.env.REACT_APP_BASE_URL);
         handleSubmit(values);
       }}
     >
@@ -249,7 +252,7 @@ function ManagementForm() {
                 as={TextField}
                 name="SingleWindowNo"
                 label="Single Window Appln. No."
-                type="number"
+                type="text"
                 fullWidth
                 error={errors.SingleWindowNo && touched.SingleWindowNo}
                 helperText={
@@ -450,7 +453,7 @@ function ManagementForm() {
           <SubmitButton fullWidth variant="contained" type="submit">
             Submit
           </SubmitButton>
-          <SuccessDialog open={open} onClose={handleClose} message={dialogMessage} link='/management-application' />
+          <SuccessDialog open={open} onClose={handleClose} message={dialogMessage} registered={registered} quota={quota} link='/management-application' />
           <ErrorDialog open={openErrorDialog} onClose={handleClose} message={dialogMessage} />
         </FormContainer>
       )}
