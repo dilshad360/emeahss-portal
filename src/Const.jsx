@@ -324,8 +324,7 @@ export const communityInitialValues = {
     { subject: 'Maths', grade: '' },
   ],
   coursePreference1: "",
-  coursePreference2: "",
-  coursePreference3: "",  
+  coursePreference2: "", 
   ExtraCurricular: "",
   SportsStateLevel: "0",
   SportDistrict:[
@@ -398,11 +397,7 @@ export const communityValidationSchema = yup.object().shape({
     .min(10, "Whatsapp number must be at least 10 digits")
     .max(10, "Whatsapp number can be maximum 10 digits")
     .required("Whatsapp number is required"),
-  SingleWindowNo: yup
-    .string()
-    .matches(/^\d+$/, "Single Window number must be a valid number")
-    .required("Single Window number is required"),
-
+  SingleWindowNo: yup.string().required("Single Window number is required"),
   Board: yup.string().required("Name of qualifying examination is required"),
   RegNumber: yup
     .string()
@@ -418,10 +413,7 @@ export const communityValidationSchema = yup.object().shape({
   HouseName: yup.string().required("House Name is required"),
   PostOffice: yup.string().required("Post Office is required"),
   Panchayath: yup.string().required("Panchayath is required"),
-  Ward: yup.string().required("Ward is required"),
   coursePreference1: yup.string().required('Course preference 1 is required'),
-  coursePreference2: yup.string().required('Course preference 2 is required'),
-  coursePreference3: yup.string().required('Course preference 3 is required'),
   
 });
 

@@ -21,10 +21,10 @@ const initialValue = {
 };
 
 const CommunityApp = () => {
-    const [ community ] = useState(true)
-    const [registered, setRegistered] = useState({});
+  const [community] = useState(true);
+  const [registered, setRegistered] = useState({});
   const [, setDateOfBirth] = useState("");
-  const [dialogMessage, setDialogMesssage] = useState("")
+  const [dialogMessage, setDialogMesssage] = useState("");
   const [openErrorDialog, setOpenErrorDialog] = useState(false);
   const [openWarningDialog, setOpenWarningDialog] = useState(false);
   const [openPdfDialog, setOpenPdfDialog] = useState(false);
@@ -49,15 +49,15 @@ const CommunityApp = () => {
 
   //To show error dialog with custom message
   const showErrorDialog = (message) => {
-    setOpenErrorDialog(true)
-    setDialogMesssage(message)
-  }
+    setOpenErrorDialog(true);
+    setDialogMesssage(message);
+  };
 
   //To show warning for not registered users
   const showWarningDialog = (message) => {
-    setOpenWarningDialog(true)
-    setDialogMesssage(message)
-  }
+    setOpenWarningDialog(true);
+    setDialogMesssage(message);
+  };
 
   const handleSubmit = async (values) => {
     setLoading(true);
@@ -69,16 +69,16 @@ const CommunityApp = () => {
         `${process.env.REACT_APP_COMMUNITY_LINK}/search?SingleWindowNo=${singleWindowNo}&DateOfBirth=${dateOfBirth}`
       );
       if (isEmptyArray(response.data)) {
-        showWarningDialog("You are not registered")
+        showWarningDialog("You are not registered");
         setLoading(false);
       } else {
         setRegistered(response.data[0]);
-        setOpenPdfDialog(true)
+        setOpenPdfDialog(true);
         setLoading(false);
       }
     } catch (error) {
       // console.log(error);
-      showErrorDialog(error.message)
+      showErrorDialog(error.message);
       setLoading(false);
     }
   };
@@ -137,14 +137,28 @@ const CommunityApp = () => {
             >
               Submit
             </SubmitButton>
-          <PdfDialog open={openPdfDialog} onClose={handleClose} registered={registered} community={community} />
-          <ErrorDialog open={openErrorDialog} onClose={handleClose} message={dialogMessage} />
-          <WarningDialog open={openWarningDialog} onClose={handleClose}  message={dialogMessage} link='/community-form' />
+            <PdfDialog
+              open={openPdfDialog}
+              onClose={handleClose}
+              registered={registered}
+              community={community}
+            />
+            <ErrorDialog
+              open={openErrorDialog}
+              onClose={handleClose}
+              message={dialogMessage}
+            />
+            <WarningDialog
+              open={openWarningDialog}
+              onClose={handleClose}
+              message={dialogMessage}
+              link="/community-form"
+            />
           </FormContainer>
         )}
       </Formik>
     </div>
-  )
-}
+  );
+};
 
-export default CommunityApp
+export default CommunityApp;

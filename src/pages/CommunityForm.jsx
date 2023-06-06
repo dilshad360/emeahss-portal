@@ -192,7 +192,7 @@ const CommunityForm = () => {
   return (
     <Formik
       initialValues={communityInitialValues}
-      communityValidationSchema={communityValidationSchema}
+      validationSchema={communityValidationSchema}
       //on submit section
       onSubmit={(values) => {
         handleSubmit(values);
