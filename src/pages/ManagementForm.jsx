@@ -184,7 +184,6 @@ function ManagementForm() {
       validationSchema={validationSchema}
       //on submit section
       onSubmit={(values) => {
-        console.log(process.env.REACT_APP_BASE_URL);
         handleSubmit(values);
       }}
     >

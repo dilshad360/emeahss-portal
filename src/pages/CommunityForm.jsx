@@ -176,9 +176,9 @@ const CommunityForm = () => {
           .then((response) => {
             setQuota("community")
             setRegistered(true)
+            setSubmit(true);
+            setLoading(false);
           });
-        setSubmit(true);
-        setLoading(false);
       } else {
         showSuccessDialog("You are already registered");
         setLoading(false);
