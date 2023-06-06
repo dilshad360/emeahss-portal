@@ -24,7 +24,7 @@ function SuccessDialog(props) {
       </DialogTitle>
       {/***********************  Community Quota Section      ************************/}
 
-      {quota === "community" && registered ?
+      {quota === "community" ?
         <DialogContent>
           <Typography variant='h6' style={{ textAlign: 'start', padding: '5px', marginTop: '2px' }}>1. കമ്മ്യൂണിറ്റി quota യിലേക്കും മാനേജ്മെന്റ് കോട്ടയിലേക്കും വെവ്വേറെ അപേക്ഷകൾ സമർപ്പിക്കേണ്ടതാണ്.
           </Typography>

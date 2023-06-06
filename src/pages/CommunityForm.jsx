@@ -6,7 +6,7 @@ import {
   YesNo,
 } from "../Const";
 import ErrorDialog from "../components/Dialogs/ErrorDialog";
-import React, { useEffect } from "react";
+import React from "react";
 import { Grid, TextField, Typography, Divider } from "@mui/material";
 import { Formik, Field, isEmptyArray } from "formik";
 import {
@@ -70,9 +70,6 @@ const CommunityForm = () => {
     }
   };
 
-  useEffect(() => {
-    console.log(process.env.REACT_APP_COMMUNITY_LINK);
-  })
 
   //handling submit
   const handleSubmit = async (values) => {
