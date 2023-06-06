@@ -145,13 +145,12 @@ function ManagementForm() {
       //course selection
       coursePreference1: values.coursePreference1,
       coursePreference2: values.coursePreference2,
-      coursePreference3: values.coursePreference3,
     };
 
-    let singleWindowNo = values.SingleWindowNo;
+    let RegNumber = values.RegNumber;
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/search?SingleWindowNo=${singleWindowNo}`
+        `${process.env.REACT_APP_BASE_URL}/search?RegNumber=${RegNumber}`
       );
       if (isEmptyArray(response.data)) {
         await axios

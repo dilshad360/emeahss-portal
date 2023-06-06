@@ -11,12 +11,12 @@ import WarningDialog from "../components/Dialogs/WarningDialog";
 import PdfDialog from "../components/Dialogs/PdfDialog";
 
 const validationSchema = yup.object().shape({
-  SingleWindowNo: yup.string().required("Single Window number is required"),
+  RegNumber: yup.string().required("Register number is required"),
   DateOfBirth: yup.string().required("Date of birth is required"),
 });
 
 const initialValue = {
-  SingleWindowNo: "",
+  RegNumber: "",
   DateOfBirth: "",
 };
 
@@ -62,10 +62,10 @@ export default function Application() {
     setLoading(true);
     let dateOfBirth = values.DateOfBirth;
     setDateOfBirth(dateOfBirth);
-    let singleWindowNo = values.SingleWindowNo;
+    let RegNumber = values.RegNumber;
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/search?SingleWindowNo=${singleWindowNo}&DateOfBirth=${dateOfBirth}`
+        `${process.env.REACT_APP_BASE_URL}/search?RegNumber=${RegNumber}&DateOfBirth=${dateOfBirth}`
       );
       if (isEmptyArray(response.data)) {
         showWarningDialog("You are not registered")
@@ -107,12 +107,12 @@ export default function Application() {
             </Typography>
             <TextField
               fullWidth
-              name="SingleWindowNo"
-              label="Single Window Appln. No"
+              name="RegNumber"
+              label="Register Number"
               type="text"
               onChange={handleChange}
-              error={touched.SingleWindowNo && Boolean(errors.SingleWindowNo)}
-              helperText={touched.SingleWindowNo && errors.SingleWindowNo}
+              error={touched.RegNumber && Boolean(errors.RegNumber)}
+              helperText={touched.RegNumber && errors.RegNumber}
               margin="normal"
             />
 
