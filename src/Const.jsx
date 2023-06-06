@@ -65,7 +65,6 @@ export const validationSchema = yup.object().shape({
   SingleWindowNo: yup
     .string()
     .required("Single Window number is required"),
-
   Board: yup.string().required("Name of qualifying examination is required"),
   RegNumber: yup
     .string()
@@ -397,7 +396,6 @@ export const communityValidationSchema = yup.object().shape({
     .min(10, "Whatsapp number must be at least 10 digits")
     .max(10, "Whatsapp number can be maximum 10 digits")
     .required("Whatsapp number is required"),
-  SingleWindowNo: yup.string().required("Single Window number is required"),
   Board: yup.string().required("Name of qualifying examination is required"),
   RegNumber: yup
     .string()

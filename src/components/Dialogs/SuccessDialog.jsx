@@ -21,6 +21,7 @@ function SuccessDialog(props) {
     >
       <DialogTitle>
         <CheckCircle color="primary" style={{ fontSize: 48 }} />
+        <Typography variant='h6'>{props.message}</Typography>
       </DialogTitle>
       {/***********************  Community Quota Section      ************************/}
 

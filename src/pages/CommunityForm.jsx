@@ -74,7 +74,6 @@ const CommunityForm = () => {
   //handling submit
   const handleSubmit = async (values) => {
     setLoading(true);
-    console.log("Sports State Level:", values.SportsStateLevel);
     const formattedValues = {
       Name: values.Name,
       MobileNumber: values.MobileNumber,
@@ -164,16 +163,17 @@ const CommunityForm = () => {
       Club: values.Club
 
     };
-    let singleWindowNo = values.SingleWindowNo;
+    let RegNumber = values.RegNumber;
     try {
       const response = await axios
         .get
-        (`${process.env.REACT_APP_COMMUNITY_LINK}/search?SingleWindowNo=${singleWindowNo}`
+        (`${process.env.REACT_APP_COMMUNITY_LINK}/search?RegNumber=${RegNumber}`
         );
       if (isEmptyArray(response.data)) {
         await axios
           .post(`${process.env.REACT_APP_COMMUNITY_LINK}`, formattedValues)
           .then((response) => {
+            showSuccessDialog("Application Form filled Successfully.")
             setQuota("community")
             setRegistered(true)
             setSubmit(true);

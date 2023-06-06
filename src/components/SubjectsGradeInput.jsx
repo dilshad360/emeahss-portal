@@ -47,7 +47,7 @@ export default function SubjectsGradeInput(props) {
             </TableRow>
           ))}
         </TableBody>:
-        syllabus === 'Others' ?
+        syllabus === 'Other' ?
         <TableBody>
           {subjects.map((subject, index) => (
             <TableRow key={index}>
