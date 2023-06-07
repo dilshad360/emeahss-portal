@@ -62,9 +62,6 @@ export const validationSchema = yup.object().shape({
     .min(10, "Whatsapp number must be at least 10 digits")
     .max(10, "Whatsapp number can be maximum 10 digits")
     .required("Whatsapp number is required"),
-  SingleWindowNo: yup
-    .string()
-    .required("Single Window number is required"),
   Board: yup.string().required("Name of qualifying examination is required"),
   RegNumber: yup
     .string()
@@ -82,8 +79,6 @@ export const validationSchema = yup.object().shape({
   Panchayath: yup.string().required("Panchayath is required"),
   Ward: yup.string().required("Ward is required"),
   coursePreference1: yup.string().required('Course preference 1 is required'),
-  coursePreference2: yup.string().required('Course preference 2 is required'),
-  coursePreference3: yup.string().required('Course preference 3 is required'),
 });
 
 //date
