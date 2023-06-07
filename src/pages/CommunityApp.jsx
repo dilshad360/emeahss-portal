@@ -29,6 +29,7 @@ const CommunityApp = () => {
   const [openWarningDialog, setOpenWarningDialog] = useState(false);
   const [openPdfDialog, setOpenPdfDialog] = useState(false);
   const [loading, setLoading] = useState(false);
+ 
   // Checking if the user is registered or not
 
   const handleChangeDate = (handleChange, event) => {

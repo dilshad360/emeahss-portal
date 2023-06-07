@@ -33,6 +33,7 @@ const CommunityForm = () => {
 
   const [openErrorDialog, setOpenErrorDialog] = useState(false);
   const [openInfoDialog, setOpenInfoDialog] = useState(false);
+  const [otherBoards,setOtherBoards] = useState(false)
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -60,6 +61,12 @@ const CommunityForm = () => {
   };
 
   const HandleExamChange = (value) => {
+    if(value === 'Other'){
+      setOtherBoards(true);
+    }
+    else{
+      setOtherBoards(false);
+    }
     setSyllabus(value);
   };
 
@@ -93,30 +100,18 @@ const CommunityForm = () => {
       /*
             for state subjects which do not appear 
             in CBSE will null in if syllabus is CBSE */
-      //grade section
-      Language1: syllabus === "STATE" ? values.statesubjectsMarks[0].grade : "",
-      Language2:
-        syllabus === "CBSE"
-          ? values.cbseMarks[0].grade
-          : values.statesubjectsMarks[1].grade,
-      English:
-        syllabus === "CBSE"
-          ? values.cbseMarks[1].grade
-          : values.statesubjectsMarks[2].grade,
-      Hindi: syllabus === "STATE" ? values.statesubjectsMarks[3].grade : "",
-      SocialScience:
-        syllabus === "CBSE"
-          ? values.cbseMarks[3].grade
-          : values.statesubjectsMarks[4].grade,
-      Physics: syllabus === "STATE" ? values.statesubjectsMarks[5].grade : "",
-      Chemistry: syllabus === "STATE" ? values.statesubjectsMarks[6].grade : "",
-      Biology: syllabus === "STATE" ? values.statesubjectsMarks[7].grade : "",
-      Maths:
-        syllabus === "CBSE"
-          ? values.cbseMarks[4].grade
-          : values.statesubjectsMarks[8].grade,
-      IT: syllabus === "STATE" ? values.statesubjectsMarks[9].grade : "",
-      Science: syllabus === "CBSE" ? values.cbseMarks[2].grade : "",
+      // Grade section
+      Language1: syllabus === "STATE" ? values.statesubjectsMarks[0].grade : syllabus === 'Other' ? values.otherBoardSubjects[0].grade : '',
+      Language2: syllabus === "CBSE" ? values.cbseMarks[0].grade : syllabus === 'Other' ? values.otherBoardSubjects[1].grade : values.statesubjectsMarks[1].grade,
+      English: syllabus === "CBSE" ? values.cbseMarks[1].grade : syllabus === 'Other' ? values.otherBoardSubjects[2].grade : values.statesubjectsMarks[2].grade,
+      Hindi: syllabus === "STATE" ? values.statesubjectsMarks[3].grade : syllabus === 'Other' ? values.otherBoardSubjects[3].grade : '',
+      SocialScience: syllabus === "CBSE" ? values.cbseMarks[3].grade : syllabus === 'Other' ? values.otherBoardSubjects[4].grade : values.statesubjectsMarks[4].grade,
+      Physics: syllabus === "STATE" ? values.statesubjectsMarks[5].grade : syllabus === 'Other' ? values.otherBoardSubjects[5].grade : '',
+      Chemistry: syllabus === "STATE" ? values.statesubjectsMarks[6].grade : syllabus === 'Other' ? values.otherBoardSubjects[6].grade : '',
+      Biology: syllabus === "STATE" ? values.statesubjectsMarks[7].grade : syllabus === 'Other' ? values.otherBoardSubjects[7].grade : '',
+      Maths: syllabus === "CBSE" ? values.cbseMarks[4].grade : syllabus === 'Other' ? values.otherBoardSubjects[8].grade : values.statesubjectsMarks[8].grade,
+      IT: syllabus === "STATE" ? values.statesubjectsMarks[9].grade : syllabus === 'Other' ? values.otherBoardSubjects[9].grade : '',
+      Science: syllabus === "CBSE" ? values.cbseMarks[2].grade : '',
 
       //course selection
       coursePreference1: values.coursePreference1,
@@ -275,6 +270,23 @@ const CommunityForm = () => {
                 onChange={HandleExamChange}
               />
             </Grid>
+            {otherBoards ?
+              <Grid item xs={12}>
+                <Field
+                  as={TextField}
+                  name="OtherBoard"
+                  label="Name of Qualifying Examination"
+                  type="text"
+                  fullWidth
+                  error={errors.OtherBoard && touched.OtherBoard}
+                  helperText={
+                    errors.OtherBoard &&
+                    touched.OtherBoard &&
+                    errors.OtherBoard
+                  }
+                />
+              </Grid> : ''
+            }
             <Grid item xs={12}>
               <Field
                 as={TextField}
