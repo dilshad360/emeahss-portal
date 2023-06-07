@@ -78,6 +78,8 @@ function Home() {
           <Typography variant="subtitle2">Sham K: 9447552750</Typography>
           <Typography variant="subtitle2">Mansoor: 9961441149</Typography>
           <Typography variant="subtitle2">Muhammed K: 9539142919</Typography>
+          <Typography variant="subtitle2">KT. Abdulla: 9446636393</Typography>
+          <Typography variant="subtitle2">Abdul Razzak: 9961888804</Typography>
           </div>
         </Paper>
       </Box>

@@ -43,7 +43,6 @@ export const initialValues = {
   ],
   coursePreference1: "",
   coursePreference2: "",
-  coursePreference3: ""
 };
 
 //Validation
