@@ -8,6 +8,7 @@ export const initialValues = {
   WhatsappNumber: "",
   SingleWindowNo: "",
   Board: "",
+  OtherBoard:"",
   RegNumber: "",
   Year: "",
   SchoolName: "",
@@ -33,6 +34,18 @@ export const initialValues = {
     { subject: 'Biology', grade: '' },
     { subject: 'Maths', grade: '' },
     { subject: 'IT', grade: '' },
+  ],
+  otherBoardSubjects:[
+    { subject: 'Language1', grade: '' },
+    { subject: 'Language2', grade: '' },
+    { subject: 'English', grade: '' },
+    { subject: 'Hindi', grade: '' },
+    { subject: 'SocialScience', grade: '' },
+    { subject: 'Physics', grade: '' },
+    { subject: 'Chemistry', grade: '' },
+    { subject: 'Biology', grade: '' },
+    { subject: 'Maths', grade: '' },
+    { subject: 'IT', grade: '' }
   ],
   cbseMarks: [
     { subject: 'Language2', grade: '' },

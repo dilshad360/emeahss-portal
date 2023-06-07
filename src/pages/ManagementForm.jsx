@@ -38,6 +38,7 @@ function ManagementForm() {
   const [pward, setPward] = useState(false);
   const [openErrorDialog, setOpenErrorDialog] = useState(false);
   const [openInfoDialog, setOpenInfoDialog] = useState(false);
+  const [otherBoards, setOtherBoards] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -65,6 +66,12 @@ function ManagementForm() {
   };
 
   const HandleExamChange = (value) => {
+    if (value === 'Other') {
+      setOtherBoards(true);
+    }
+    else {
+      setOtherBoards(false);
+    }
     setSyllabus(value);
   };
 
@@ -87,14 +94,17 @@ function ManagementForm() {
 
   //handling submit
   const handleSubmit = async (values) => {
+    // Close the info window
     handleInfoClose();
     setLoading(true);
+
+    // Format the values for submission
     const formattedValues = {
       Name: values.Name,
       MobileNumber: values.MobileNumber,
       WhatsappNumber: values.WhatsappNumber,
       SingleWindowNo: values.SingleWindowNo,
-      Board: values.Board,
+      Board: otherBoards ? values.BoardOther : values.Board,
       RegNumber: values.RegNumber,
       Year: values.Year,
       SchoolName: school ? values.SchoolNameOthers : values.SchoolName,
@@ -107,47 +117,36 @@ function ManagementForm() {
       PostOffice: values.PostOffice,
       Panchayath: values.Panchayath,
       Ward: values.Ward,
-      /*
-      for state subjects which do not appear 
-      in CBSE will null in if syllabus is CBSE */
-      //grade section
-      Language1: syllabus === "STATE" ? values.statesubjectsMarks[0].grade : "",
-      Language2:
-        syllabus === "CBSE"
-          ? values.cbseMarks[0].grade
-          : values.statesubjectsMarks[1].grade,
-      English:
-        syllabus === "CBSE"
-          ? values.cbseMarks[1].grade
-          : values.statesubjectsMarks[2].grade,
-      Hindi: syllabus === "STATE" ? values.statesubjectsMarks[3].grade : "",
-      SocialScience:
-        syllabus === "CBSE"
-          ? values.cbseMarks[3].grade
-          : values.statesubjectsMarks[4].grade,
-      Physics: syllabus === "STATE" ? values.statesubjectsMarks[5].grade : "",
-      Chemistry: syllabus === "STATE" ? values.statesubjectsMarks[6].grade : "",
-      Biology: syllabus === "STATE" ? values.statesubjectsMarks[7].grade : "",
-      Maths:
-        syllabus === "CBSE"
-          ? values.cbseMarks[4].grade
-          : values.statesubjectsMarks[8].grade,
-      IT: syllabus === "STATE" ? values.statesubjectsMarks[9].grade : "",
-      Science: syllabus === "CBSE" ? values.cbseMarks[2].grade : "",
 
-      //course selection
+      // Grade section
+      Language1: syllabus === "STATE" ? values.statesubjectsMarks[0].grade : syllabus === 'Other' ? values.otherBoardSubjects[0].grade : '',
+      Language2: syllabus === "CBSE" ? values.cbseMarks[0].grade : syllabus === 'Other' ? values.otherBoardSubjects[1].grade : values.statesubjectsMarks[1].grade,
+      English: syllabus === "CBSE" ? values.cbseMarks[1].grade : syllabus === 'Other' ? values.otherBoardSubjects[2].grade : values.statesubjectsMarks[2].grade,
+      Hindi: syllabus === "STATE" ? values.statesubjectsMarks[3].grade : syllabus === 'Other' ? values.otherBoardSubjects[3].grade : '',
+      SocialScience: syllabus === "CBSE" ? values.cbseMarks[3].grade : syllabus === 'Other' ? values.otherBoardSubjects[4].grade : values.statesubjectsMarks[4].grade,
+      Physics: syllabus === "STATE" ? values.statesubjectsMarks[5].grade : syllabus === 'Other' ? values.otherBoardSubjects[5].grade : '',
+      Chemistry: syllabus === "STATE" ? values.statesubjectsMarks[6].grade : syllabus === 'Other' ? values.otherBoardSubjects[6].grade : '',
+      Biology: syllabus === "STATE" ? values.statesubjectsMarks[7].grade : syllabus === 'Other' ? values.otherBoardSubjects[7].grade : '',
+      Maths: syllabus === "CBSE" ? values.cbseMarks[4].grade : syllabus === 'Other' ? values.otherBoardSubjects[8].grade : values.statesubjectsMarks[8].grade,
+      IT: syllabus === "STATE" ? values.statesubjectsMarks[9].grade : syllabus === 'Other' ? values.otherBoardSubjects[9].grade : '',
+      Science: syllabus === "CBSE" ? values.cbseMarks[2].grade : '',
+
+      // Course selection
       coursePreference1: values.coursePreference1,
       coursePreference2: values.coursePreference2,
     };
 
+    console.log(formattedValues);
+
     let RegNumber = values.RegNumber;
+
     try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/search?RegNumber=${RegNumber}`
-      );
+      // Check if the user is already registered
+      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/search?RegNumber=${RegNumber}`);
+
       if (isEmptyArray(response.data)) {
-        await axios
-          .post(`${process.env.REACT_APP_BASE_URL}`, formattedValues)
+        // Submit the form if the user is not registered
+        await axios.post(`${process.env.REACT_APP_BASE_URL}`, formattedValues)
           .then((response) => {
             showSuccessDialog("Application Form filled Successfully.");
             setSubmit(true);
@@ -158,11 +157,11 @@ function ManagementForm() {
         setLoading(false);
       }
     } catch (error) {
-      // console.log(error);
       showErrorDialog(error.message);
       setLoading(false);
     }
   };
+
 
   return (
     <Formik
@@ -256,6 +255,23 @@ function ManagementForm() {
                 onChange={HandleExamChange}
               />
             </Grid>
+            {otherBoards ?
+              <Grid item xs={12}>
+                <Field
+                  as={TextField}
+                  name="OtherBoard"
+                  label="Name of Qualifying Examination"
+                  type="text"
+                  fullWidth
+                  error={errors.OtherBoard && touched.OtherBoard}
+                  helperText={
+                    errors.OtherBoard &&
+                    touched.OtherBoard &&
+                    errors.OtherBoard
+                  }
+                />
+              </Grid> : ''
+            }
             <Grid item xs={12}>
               <Field
                 as={TextField}
