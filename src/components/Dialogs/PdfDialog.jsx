@@ -52,7 +52,7 @@ function PdfDialog(props) {
               return (
                 <>
                   <Button variant="contained" disabled>
-                    Loading...
+                    Loading... 
                   </Button>
                 </>
               );

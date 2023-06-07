@@ -1,10 +1,6 @@
 import Loader from "../components/Loader";
 import SuccessDialog from "../components/Dialogs/SuccessDialog";
-import {
-  schoolOptions,
-  communityReligion,
-  YesNo,
-} from "../Const";
+import { schoolOptions, communityReligion, YesNo } from "../Const";
 import ErrorDialog from "../components/Dialogs/ErrorDialog";
 import React from "react";
 import { Grid, TextField, Typography, Divider } from "@mui/material";
@@ -25,7 +21,7 @@ import { useState } from "react";
 import axios from "axios";
 import { SubmitButton, FormContainer } from "../styles/FormStyle";
 import Cocurricular from "../components/Co-curricular";
-
+import InfoDialog from "../components/Dialogs/InfoDialog";
 
 const CommunityForm = () => {
   const [, setSubmit] = useState(false);
@@ -34,10 +30,9 @@ const CommunityForm = () => {
   const [school, setSchool] = useState(false);
   const [open, setOpen] = React.useState(false);
   const [loading, setLoading] = useState(false);
-  const [quota,setQuota] = useState("");
-  const [registered,setRegistered] = useState(false)
 
   const [openErrorDialog, setOpenErrorDialog] = useState(false);
+  const [openInfoDialog, setOpenInfoDialog] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -46,6 +41,10 @@ const CommunityForm = () => {
   const handleClose = () => {
     setOpen(false);
     setOpenErrorDialog(false);
+  };
+
+  const handleInfoClose = () => {
+    setOpenInfoDialog(false);
   };
 
   //To show successful dialog with custom message
@@ -70,9 +69,9 @@ const CommunityForm = () => {
     }
   };
 
-
   //handling submit
   const handleSubmit = async (values) => {
+    handleInfoClose();
     setLoading(true);
     const formattedValues = {
       Name: values.Name,
@@ -160,22 +159,18 @@ const CommunityForm = () => {
       StateWorkExperienceFairC: values.StateWorkExperienceFair[2].count,
       StateWorkExperienceFairD: values.StateWorkExperienceFair[3].count,
       StateWorkExperienceFairE: values.StateWorkExperienceFair[4].count,
-      Club: values.Club
-
+      Club: values.Club,
     };
     let RegNumber = values.RegNumber;
     try {
-      const response = await axios
-        .get
-        (`${process.env.REACT_APP_COMMUNITY_LINK}/search?RegNumber=${RegNumber}`
-        );
+      const response = await axios.get(
+        `${process.env.REACT_APP_COMMUNITY_LINK}/search?RegNumber=${RegNumber}`
+      );
       if (isEmptyArray(response.data)) {
         await axios
           .post(`${process.env.REACT_APP_COMMUNITY_LINK}`, formattedValues)
           .then((response) => {
-            showSuccessDialog("Application Form filled Successfully.")
-            setQuota("community")
-            setRegistered(true)
+            showSuccessDialog("Application Form filled Successfully.");
             setSubmit(true);
             setLoading(false);
           });
@@ -194,11 +189,11 @@ const CommunityForm = () => {
       initialValues={communityInitialValues}
       validationSchema={communityValidationSchema}
       //on submit section
-      onSubmit={(values) => {
-        handleSubmit(values);
+      onSubmit={() => {
+        setOpenInfoDialog(true);
       }}
     >
-      {({ errors, touched }) => (
+      {({ errors, touched, values }) => (
         <FormContainer>
           <Loader open={loading} />
           <Typography
@@ -611,13 +606,22 @@ const CommunityForm = () => {
           <SubmitButton fullWidth variant="contained" type="submit">
             Submit
           </SubmitButton>
+
+          {/**** Dialogs ****/}
+
+          <InfoDialog
+            open={openInfoDialog}
+            finalSubmit={handleSubmit}
+            values={values}
+            onClose={handleInfoClose}
+            quota="community"
+          />
+
           <SuccessDialog
             open={open}
-            registered={registered}
             onClose={handleClose}
-            quota={quota}
             message={dialogMessage}
-            link='/community-application'
+            link="/community-application"
           />
           <ErrorDialog
             open={openErrorDialog}

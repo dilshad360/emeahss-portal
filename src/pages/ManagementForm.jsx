@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  Grid,
-  TextField,
-  Typography,
-  Divider,
-} from "@mui/material";
+import { Grid, TextField, Typography, Divider } from "@mui/material";
 import { Formik, Field, isEmptyArray } from "formik";
 import {
   initialValues,
@@ -24,78 +19,76 @@ import axios from "axios";
 import { SubmitButton, FormContainer } from "../styles/FormStyle";
 import Loader from "../components/Loader";
 import SuccessDialog from "../components/Dialogs/SuccessDialog";
-import { schoolOptions, kondottyWardOptions, pullikkalWardOptions } from "../Const";
+import {
+  schoolOptions,
+  kondottyWardOptions,
+  pullikkalWardOptions,
+} from "../Const";
 import ErrorDialog from "../components/Dialogs/ErrorDialog";
-
-
+import InfoDialog from "../components/Dialogs/InfoDialog";
 
 function ManagementForm() {
-
   const [, setSubmit] = useState(false);
   const [syllabus, setSyllabus] = useState("");
   const [dialogMessage, setDialogMesssage] = useState("");
-  const [school, setSchool] = useState(false)
+  const [school, setSchool] = useState(false);
   const [open, setOpen] = React.useState(false);
   const [loading, setLoading] = useState(false);
   const [kward, setKward] = useState(false);
-  const [pward, setPward] = useState(false)
+  const [pward, setPward] = useState(false);
   const [openErrorDialog, setOpenErrorDialog] = useState(false);
-  const [quota,setQuota] = useState("");
-  const [registered,setRegistered] = useState(false);
+  const [openInfoDialog, setOpenInfoDialog] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
-
 
   const handleClose = () => {
     setOpen(false);
     setOpenErrorDialog(false);
   };
 
+  const handleInfoClose = () => {
+    setOpenInfoDialog(false);
+  };
 
   //To show successful dialog with custom message
   const showSuccessDialog = (message) => {
     handleClickOpen();
-    setDialogMesssage(message)
-  }
+    setDialogMesssage(message);
+  };
 
   //To show error dialog with custom message
   const showErrorDialog = (message) => {
-    setOpenErrorDialog(true)
-    setDialogMesssage(message)
-  }
-
+    setOpenErrorDialog(true);
+    setDialogMesssage(message);
+  };
 
   const HandleExamChange = (value) => {
     setSyllabus(value);
   };
 
-
   const HandleSchoolChange = (value) => {
-    if (value === 'Others') {
-      setSchool(true)
+    if (value === "Others") {
+      setSchool(true);
     }
-  }
-
+  };
 
   const HandlePanchayathChange = (value) => {
-    if (value === 'Kondotty') {
-      setKward(true)
+    if (value === "Kondotty") {
+      setKward(true);
+    } else if (value === "Pulikkal") {
+      setPward(true);
+    } else {
+      setKward(false);
+      setPward(false);
     }
-    else if (value === 'Pulikkal') {
-      setPward(true)
-    }
-    else{
-      setKward(false)
-      setPward(false)
-    }
-  }
-
+  };
 
   //handling submit
   const handleSubmit = async (values) => {
-    setLoading(true)
+    handleInfoClose();
+    setLoading(true);
     const formattedValues = {
       Name: values.Name,
       MobileNumber: values.MobileNumber,
@@ -154,39 +147,33 @@ function ManagementForm() {
       );
       if (isEmptyArray(response.data)) {
         await axios
-          .post(
-            `${process.env.REACT_APP_BASE_URL}`,
-            formattedValues
-          )
+          .post(`${process.env.REACT_APP_BASE_URL}`, formattedValues)
           .then((response) => {
-            showSuccessDialog("Application Form filled Successfully.")
+            showSuccessDialog("Application Form filled Successfully.");
             setSubmit(true);
-            setQuota("management")
-            setRegistered(true)
-            setLoading(false)
+            setLoading(false);
           });
       } else {
-        showSuccessDialog("You are already registered")
-        setLoading(false)
+        showSuccessDialog("You are already registered");
+        setLoading(false);
       }
     } catch (error) {
       // console.log(error);
-      showErrorDialog(error.message)
-      setLoading(false)
+      showErrorDialog(error.message);
+      setLoading(false);
     }
   };
-
 
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
       //on submit section
-      onSubmit={(values) => {
-        handleSubmit(values);
+      onSubmit={() => {
+        setOpenInfoDialog(true);
       }}
     >
-      {({ errors, touched }) => (
+      {({ errors, touched, values }) => (
         <FormContainer>
           <Loader open={loading} />
           <Typography
@@ -299,17 +286,25 @@ function ManagementForm() {
                 onChange={HandleSchoolChange}
               />
             </Grid>
-            {school ? <Grid item xs={12}>
-              <Field
-                as={TextField}
-                name="SchoolNameOthers"
-                label="Name of school studied"
-                type="text"
-                fullWidth
-                error={errors.SchoolNameOthers && touched.SchoolNameOthers}
-                helperText={errors.SchoolNameOthers && touched.SchoolNameOthers && errors.SchoolNameOthers}
-              />
-            </Grid> : ''}
+            {school ? (
+              <Grid item xs={12}>
+                <Field
+                  as={TextField}
+                  name="SchoolNameOthers"
+                  label="Name of school studied"
+                  type="text"
+                  fullWidth
+                  error={errors.SchoolNameOthers && touched.SchoolNameOthers}
+                  helperText={
+                    errors.SchoolNameOthers &&
+                    touched.SchoolNameOthers &&
+                    errors.SchoolNameOthers
+                  }
+                />
+              </Grid>
+            ) : (
+              ""
+            )}
             <Grid item xs={6}>
               <SelectInput
                 name="Gender"
@@ -405,7 +400,7 @@ function ManagementForm() {
                 error={errors.Panchayath && touched.Panchayath}
               />
             </Grid>
-            {kward ?
+            {kward ? (
               <Grid item xs={6}>
                 <SelectInput
                   name="Ward"
@@ -413,26 +408,29 @@ function ManagementForm() {
                   options={kondottyWardOptions}
                   error={errors.Ward && touched.Ward}
                 />
-              </Grid> : pward ? <Grid item xs={6}>
+              </Grid>
+            ) : pward ? (
+              <Grid item xs={6}>
                 <SelectInput
                   name="Ward"
                   label="Ward"
                   options={pullikkalWardOptions}
                   error={errors.Ward && touched.Ward}
                 />
-              </Grid> :
-                <Grid item xs={6}>
-                  <Field
-                    as={TextField}
-                    name="Ward"
-                    label="Ward No"
-                    type="number"
-                    fullWidth
-                    error={errors.Ward && touched.Ward}
-                    helperText={errors.Ward && touched.Ward && errors.Ward}
-                  />
-                </Grid>
-            }
+              </Grid>
+            ) : (
+              <Grid item xs={6}>
+                <Field
+                  as={TextField}
+                  name="Ward"
+                  label="Ward No"
+                  type="number"
+                  fullWidth
+                  error={errors.Ward && touched.Ward}
+                  helperText={errors.Ward && touched.Ward && errors.Ward}
+                />
+              </Grid>
+            )}
           </Grid>
           <Typography variant="subtitle1" className="pt-4" gutterBottom>
             Marksheet
@@ -451,8 +449,27 @@ function ManagementForm() {
           <SubmitButton fullWidth variant="contained" type="submit">
             Submit
           </SubmitButton>
-          <SuccessDialog open={open} onClose={handleClose} message={dialogMessage} registered={registered} quota={quota} link='/management-application' />
-          <ErrorDialog open={openErrorDialog} onClose={handleClose} message={dialogMessage} />
+
+          {/**** Dialogs ****/}
+
+          <InfoDialog
+            open={openInfoDialog}
+            finalSubmit={handleSubmit}
+            values={values}
+            onClose={handleInfoClose}
+            quota="management"
+          />
+          <SuccessDialog
+            open={open}
+            onClose={handleClose}
+            message={dialogMessage}
+            link="/management-application"
+          />
+          <ErrorDialog
+            open={openErrorDialog}
+            onClose={handleClose}
+            message={dialogMessage}
+          />
         </FormContainer>
       )}
     </Formik>
