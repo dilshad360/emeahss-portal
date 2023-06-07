@@ -469,12 +469,6 @@ const CommunityPDF = (props) => {
                                 {formValues.coursePreference2}
                             </Text>
                         </View>
-                        <View style={styles.tableRow}>
-                            <Text style={styles.tableCellCourse1}>3</Text>
-                            <Text style={styles.tableCellCourse}>
-                                {formValues.coursePreference3}
-                            </Text>
-                        </View>
                     </View>
                     </View>
               
@@ -636,23 +630,6 @@ const CommunityPDF = (props) => {
                         <Text style={{ fontSize: "11px", marginTop: "30px" }}>
                             Signature of the Applicant :
                         </Text>
-                    </View>
-                    <View
-                        style={{
-                            borderBottomColor: "black",
-                            borderBottomWidth: 1,
-                            marginBottom: "20px",
-                            marginTop: "20px",
-                        }}
-                    />
-                    <View>
-                        <Text style={{ fontSize: "11px", marginBottom: "20px" , paddingLeft:'20px'}}>
-                            Name and Signature of the Management Committe Member
-                        </Text>
-                        <View style={styles.valuer}>
-                            <Text style={{ width: "50%", fontSize: "11px" , paddingLeft:'20px' }}>Name :</Text>
-                            <Text style={{ fontSize: "11px" }}>Signature :</Text>
-                        </View>
                     </View>
                 </View>
             </Page>

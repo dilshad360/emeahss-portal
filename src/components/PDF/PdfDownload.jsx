@@ -465,12 +465,6 @@ const PdfDownload = (props) => {
                 {formValues.coursePreference2}
               </Text>
             </View>
-            <View style={styles.tableRow}>
-              <Text style={styles.tableCellCourse1}>3</Text>
-              <Text style={styles.tableCellCourse}>
-                {formValues.coursePreference3}
-              </Text>
-            </View>
           </View>
           <View style={styles.valuer}>
             <Text style={{ width: "50%", fontSize: "11px", marginTop: "10px" }}>
