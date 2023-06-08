@@ -3,7 +3,13 @@ import SuccessDialog from "../components/Dialogs/SuccessDialog";
 import { schoolOptions, communityReligion, YesNo } from "../Const";
 import ErrorDialog from "../components/Dialogs/ErrorDialog";
 import React from "react";
-import { Grid, TextField, Typography, Divider } from "@mui/material";
+import {
+  Grid,
+  TextField,
+  Typography,
+  Divider,
+  FormHelperText,
+} from "@mui/material";
 import { Formik, Field, isEmptyArray } from "formik";
 import {
   communityInitialValues,
@@ -33,7 +39,7 @@ const CommunityForm = () => {
 
   const [openErrorDialog, setOpenErrorDialog] = useState(false);
   const [openInfoDialog, setOpenInfoDialog] = useState(false);
-  const [otherBoards,setOtherBoards] = useState(false)
+  const [otherBoards, setOtherBoards] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -61,10 +67,9 @@ const CommunityForm = () => {
   };
 
   const HandleExamChange = (value) => {
-    if(value === 'Other'){
+    if (value === "Other") {
       setOtherBoards(true);
-    }
-    else{
+    } else {
       setOtherBoards(false);
     }
     setSyllabus(value);
@@ -101,17 +106,67 @@ const CommunityForm = () => {
             for state subjects which do not appear 
             in CBSE will null in if syllabus is CBSE */
       // Grade section
-      Language1: syllabus === "STATE" ? values.statesubjectsMarks[0].grade : syllabus === 'Other' ? values.otherBoardSubjects[0].grade : '',
-      Language2: syllabus === "CBSE" ? values.cbseMarks[0].grade : syllabus === 'Other' ? values.otherBoardSubjects[1].grade : values.statesubjectsMarks[1].grade,
-      English: syllabus === "CBSE" ? values.cbseMarks[1].grade : syllabus === 'Other' ? values.otherBoardSubjects[2].grade : values.statesubjectsMarks[2].grade,
-      Hindi: syllabus === "STATE" ? values.statesubjectsMarks[3].grade : syllabus === 'Other' ? values.otherBoardSubjects[3].grade : '',
-      SocialScience: syllabus === "CBSE" ? values.cbseMarks[3].grade : syllabus === 'Other' ? values.otherBoardSubjects[4].grade : values.statesubjectsMarks[4].grade,
-      Physics: syllabus === "STATE" ? values.statesubjectsMarks[5].grade : syllabus === 'Other' ? values.otherBoardSubjects[5].grade : '',
-      Chemistry: syllabus === "STATE" ? values.statesubjectsMarks[6].grade : syllabus === 'Other' ? values.otherBoardSubjects[6].grade : '',
-      Biology: syllabus === "STATE" ? values.statesubjectsMarks[7].grade : syllabus === 'Other' ? values.otherBoardSubjects[7].grade : '',
-      Maths: syllabus === "CBSE" ? values.cbseMarks[4].grade : syllabus === 'Other' ? values.otherBoardSubjects[8].grade : values.statesubjectsMarks[8].grade,
-      IT: syllabus === "STATE" ? values.statesubjectsMarks[9].grade : syllabus === 'Other' ? values.otherBoardSubjects[9].grade : '',
-      Science: syllabus === "CBSE" ? values.cbseMarks[2].grade : '',
+      Language1:
+        syllabus === "STATE"
+          ? values.statesubjectsMarks[0].grade
+          : syllabus === "Other"
+          ? values.otherBoardSubjects[0].grade
+          : "",
+      Language2:
+        syllabus === "CBSE"
+          ? values.cbseMarks[0].grade
+          : syllabus === "Other"
+          ? values.otherBoardSubjects[1].grade
+          : values.statesubjectsMarks[1].grade,
+      English:
+        syllabus === "CBSE"
+          ? values.cbseMarks[1].grade
+          : syllabus === "Other"
+          ? values.otherBoardSubjects[2].grade
+          : values.statesubjectsMarks[2].grade,
+      Hindi:
+        syllabus === "STATE"
+          ? values.statesubjectsMarks[3].grade
+          : syllabus === "Other"
+          ? values.otherBoardSubjects[3].grade
+          : "",
+      SocialScience:
+        syllabus === "CBSE"
+          ? values.cbseMarks[3].grade
+          : syllabus === "Other"
+          ? values.otherBoardSubjects[4].grade
+          : values.statesubjectsMarks[4].grade,
+      Physics:
+        syllabus === "STATE"
+          ? values.statesubjectsMarks[5].grade
+          : syllabus === "Other"
+          ? values.otherBoardSubjects[5].grade
+          : "",
+      Chemistry:
+        syllabus === "STATE"
+          ? values.statesubjectsMarks[6].grade
+          : syllabus === "Other"
+          ? values.otherBoardSubjects[6].grade
+          : "",
+      Biology:
+        syllabus === "STATE"
+          ? values.statesubjectsMarks[7].grade
+          : syllabus === "Other"
+          ? values.otherBoardSubjects[7].grade
+          : "",
+      Maths:
+        syllabus === "CBSE"
+          ? values.cbseMarks[4].grade
+          : syllabus === "Other"
+          ? values.otherBoardSubjects[8].grade
+          : values.statesubjectsMarks[8].grade,
+      IT:
+        syllabus === "STATE"
+          ? values.statesubjectsMarks[9].grade
+          : syllabus === "Other"
+          ? values.otherBoardSubjects[9].grade
+          : "",
+      Science: syllabus === "CBSE" ? values.cbseMarks[2].grade : "",
 
       //course selection
       coursePreference1: values.coursePreference1,
@@ -270,7 +325,7 @@ const CommunityForm = () => {
                 onChange={HandleExamChange}
               />
             </Grid>
-            {otherBoards ?
+            {otherBoards ? (
               <Grid item xs={12}>
                 <Field
                   as={TextField}
@@ -280,13 +335,13 @@ const CommunityForm = () => {
                   fullWidth
                   error={errors.OtherBoard && touched.OtherBoard}
                   helperText={
-                    errors.OtherBoard &&
-                    touched.OtherBoard &&
-                    errors.OtherBoard
+                    errors.OtherBoard && touched.OtherBoard && errors.OtherBoard
                   }
                 />
-              </Grid> : ''
-            }
+              </Grid>
+            ) : (
+              ""
+            )}
             <Grid item xs={12}>
               <Field
                 as={TextField}
@@ -615,9 +670,16 @@ const CommunityForm = () => {
               fullWidth
             />
           </Grid>
+         
           <SubmitButton fullWidth variant="contained" type="submit">
             Submit
           </SubmitButton>
+          <FormHelperText error>
+          Note: Please ensure to fill in all the required details correctly before
+            submitting the form. Incomplete or inaccurate information may result
+            in delays or processing issues. Thank you for your
+            attention to detail.
+          </FormHelperText>
 
           {/**** Dialogs ****/}
 

@@ -17,6 +17,9 @@ function WarningDialog(props) {
             </DialogTitle>
             <DialogContent>
               <Typography variant='h6'>{props.message}</Typography>
+              <Typography variant="subtitle2">
+              Please ensure the details are entered correctly
+        </Typography>
             </DialogContent>
             <DialogActions>
             <Button><Link to={props.link}>Register</Link></Button>

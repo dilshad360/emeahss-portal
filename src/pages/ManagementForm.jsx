@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, TextField, Typography, Divider } from "@mui/material";
+import { Grid, TextField, Typography, Divider, FormHelperText } from "@mui/material";
 import { Formik, Field, isEmptyArray } from "formik";
 import {
   initialValues,
@@ -465,6 +465,12 @@ function ManagementForm() {
           <SubmitButton fullWidth variant="contained" type="submit">
             Submit
           </SubmitButton>
+          <FormHelperText error>
+          Note: Please ensure to fill in all the required details correctly before
+            submitting the form. Incomplete or inaccurate information may result
+            in delays or processing issues. Thank you for your
+            attention to detail.
+          </FormHelperText>
 
           {/**** Dialogs ****/}
 
