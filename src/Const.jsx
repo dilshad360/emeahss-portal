@@ -134,7 +134,7 @@ export const panchayatOptions = [
 ]
 
 export const cbseSubjects = [
-  'Optional(Hindi,Malayalam)', 'English', 'SocialScience', 'Maths', 'Science'
+  'Optional(Hindi,Malayalam)', 'English', 'Science','SocialScience', 'Maths'
 ]
 
 
@@ -162,7 +162,7 @@ export const cbseGradesOptions = [
   { value: '7', label: 'B2' },
   { value: '6', label: 'C1' },
   { value: '5', label: 'C2' },
-  { value: '4', label: 'D' },
+  { value: '4', label: 'D1' },
 ];
 
 

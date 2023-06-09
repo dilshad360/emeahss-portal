@@ -36,7 +36,6 @@ const CommunityApp = () => {
     const { name, value } = event.target;
     // Reformat the date value to MM/DD/YYYY format
     const formattedDate = value.split("-").reverse().join("/");
-    console.log(formattedDate);
     setDateOfBirth(formattedDate);
     handleChange({ target: { name, value: formattedDate } });
   };
