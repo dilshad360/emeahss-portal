@@ -462,15 +462,15 @@ function ManagementForm() {
             Course Preferences
           </Typography>
           <CourseInput />
-          <SubmitButton fullWidth variant="contained" type="submit">
-            Submit
-          </SubmitButton>
           <FormHelperText error>
-          Note: Please ensure to fill in all the required details correctly before
+            Note: Please ensure to fill in all the required details correctly before
             submitting the form. Incomplete or inaccurate information may result
             in delays or processing issues. Thank you for your
             attention to detail.
           </FormHelperText>
+          <SubmitButton fullWidth variant="contained" type="submit">
+            Submit
+          </SubmitButton>
 
           {/**** Dialogs ****/}
 

@@ -110,62 +110,62 @@ const CommunityForm = () => {
         syllabus === "STATE"
           ? values.statesubjectsMarks[0].grade
           : syllabus === "Other"
-          ? values.otherBoardSubjects[0].grade
-          : "",
+            ? values.otherBoardSubjects[0].grade
+            : "",
       Language2:
         syllabus === "CBSE"
           ? values.cbseMarks[0].grade
           : syllabus === "Other"
-          ? values.otherBoardSubjects[1].grade
-          : values.statesubjectsMarks[1].grade,
+            ? values.otherBoardSubjects[1].grade
+            : values.statesubjectsMarks[1].grade,
       English:
         syllabus === "CBSE"
           ? values.cbseMarks[1].grade
           : syllabus === "Other"
-          ? values.otherBoardSubjects[2].grade
-          : values.statesubjectsMarks[2].grade,
+            ? values.otherBoardSubjects[2].grade
+            : values.statesubjectsMarks[2].grade,
       Hindi:
         syllabus === "STATE"
           ? values.statesubjectsMarks[3].grade
           : syllabus === "Other"
-          ? values.otherBoardSubjects[3].grade
-          : "",
+            ? values.otherBoardSubjects[3].grade
+            : "",
       SocialScience:
         syllabus === "CBSE"
           ? values.cbseMarks[3].grade
           : syllabus === "Other"
-          ? values.otherBoardSubjects[4].grade
-          : values.statesubjectsMarks[4].grade,
+            ? values.otherBoardSubjects[4].grade
+            : values.statesubjectsMarks[4].grade,
       Physics:
         syllabus === "STATE"
           ? values.statesubjectsMarks[5].grade
           : syllabus === "Other"
-          ? values.otherBoardSubjects[5].grade
-          : "",
+            ? values.otherBoardSubjects[5].grade
+            : "",
       Chemistry:
         syllabus === "STATE"
           ? values.statesubjectsMarks[6].grade
           : syllabus === "Other"
-          ? values.otherBoardSubjects[6].grade
-          : "",
+            ? values.otherBoardSubjects[6].grade
+            : "",
       Biology:
         syllabus === "STATE"
           ? values.statesubjectsMarks[7].grade
           : syllabus === "Other"
-          ? values.otherBoardSubjects[7].grade
-          : "",
+            ? values.otherBoardSubjects[7].grade
+            : "",
       Maths:
         syllabus === "CBSE"
           ? values.cbseMarks[4].grade
           : syllabus === "Other"
-          ? values.otherBoardSubjects[8].grade
-          : values.statesubjectsMarks[8].grade,
+            ? values.otherBoardSubjects[8].grade
+            : values.statesubjectsMarks[8].grade,
       IT:
         syllabus === "STATE"
           ? values.statesubjectsMarks[9].grade
           : syllabus === "Other"
-          ? values.otherBoardSubjects[9].grade
-          : "",
+            ? values.otherBoardSubjects[9].grade
+            : "",
       Science: syllabus === "CBSE" ? values.cbseMarks[2].grade : "",
 
       //course selection
@@ -652,13 +652,15 @@ const CommunityForm = () => {
                 fullWidth
               />
             </Grid>
-            <Grid item xs={12}>
-              <SelectInput
-                name="NationalStateLevelExamination"
-                label="Qualified in National/State Level Examination"
-                options={YesNo}
-              />
-            </Grid>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <Field
+              as={TextField}
+              name="NationalStateLevelExamination"
+              label="Name of Qualified National/State Level Examination"
+              type='text'
+              fullWidth
+            />
           </Grid>
           <Cocurricular />
           <Grid item xs={6}>
@@ -670,12 +672,12 @@ const CommunityForm = () => {
               fullWidth
             />
           </Grid>
-         
+
           <SubmitButton fullWidth variant="contained" type="submit">
             Submit
           </SubmitButton>
           <FormHelperText error>
-          Note: Please ensure to fill in all the required details correctly before
+            Note: Please ensure to fill in all the required details correctly before
             submitting the form. Incomplete or inaccurate information may result
             in delays or processing issues. Thank you for your
             attention to detail.
