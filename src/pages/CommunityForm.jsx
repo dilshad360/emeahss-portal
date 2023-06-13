@@ -1,6 +1,6 @@
 import Loader from "../components/Loader";
 import SuccessDialog from "../components/Dialogs/SuccessDialog";
-import { schoolOptions, communityReligion, YesNo } from "../Const";
+import { schoolOptions, communityReligion } from "../Const";
 import ErrorDialog from "../components/Dialogs/ErrorDialog";
 import React from "react";
 import {
@@ -680,7 +680,7 @@ const CommunityForm = () => {
             Note: Please ensure to fill in all the required details correctly before
             submitting the form. Incomplete or inaccurate information may result
             in delays or processing issues. Thank you for your
-            attention to detail.
+            attention to detail.
           </FormHelperText>
 
           {/**** Dialogs ****/}
