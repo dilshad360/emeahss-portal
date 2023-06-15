@@ -3,15 +3,17 @@
 @tailwind utilities;
 
 
-& input::-webkit-outer-spin-button,
-& input::-webkit-inner-spin-button {
+/* Works for Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-/* & input[type="number"] {
+/* Works for Firefox */
+input[type="number"] {
   -moz-appearance: textfield;
-} */
+}
 
 
 body {
