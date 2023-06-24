@@ -40,7 +40,7 @@ function Home() {
             EMEAHSS - Portal
           </Typography>
           <Divider className="font-semibold">Registration</Divider>
-          <ButtonGroup orientation="vertical" variant="outlined">
+          {/* <ButtonGroup orientation="vertical" variant="outlined" disabled>
             <Button
               onClick={() => {
                 navigate("/management-form");
@@ -55,7 +55,8 @@ function Home() {
             >
               Community
             </Button>
-          </ButtonGroup>
+          </ButtonGroup> */}
+          <Typography variant="" className="text-red-600 font-bold" >Sorry, Registration Closed</Typography>
           <Divider className="font-semibold">Download Application</Divider>
           <ButtonGroup orientation="vertical" variant="outlined">
             <Button
