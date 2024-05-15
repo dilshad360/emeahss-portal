@@ -26,6 +26,7 @@ import {
 } from "../Const";
 import ErrorDialog from "../components/Dialogs/ErrorDialog";
 import InfoDialog from "../components/Dialogs/InfoDialog";
+import moment from "moment";
 
 function ManagementForm() {
   const [, setSubmit] = useState(false);
@@ -110,7 +111,7 @@ function ManagementForm() {
       SchoolName: school ? values.SchoolNameOthers : values.SchoolName,
       Gender: values.Gender,
       Religion: values.Religion,
-      DateOfBirth: values.DateOfBirth,
+      DateOfBirth: moment(values.DateOfBirth ).format('DD/MM/YYYY'),
       MotherName: values.MotherName,
       FatherName: values.FatherName,
       HouseName: values.HouseName,
@@ -151,6 +152,7 @@ function ManagementForm() {
             showSuccessDialog("Application Form filled Successfully.");
             setSubmit(true);
             setLoading(false);
+            console.log(formattedValues)
           });
       } else {
         showSuccessDialog("You are already registered");

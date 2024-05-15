@@ -30,17 +30,17 @@ function Home() {
           className="flex justify-center items-center flex-col gap-4 px-6 py-6"
         >
           <img className="w-20" src={logo} alt="logo"></img>
-          <Typography
-            variant="h4"
-            style={{
-              fontWeight: "bold",
-              color: "darkgreen",
-            }}
-          >
-            EMEAHSS - Portal
-          </Typography>
+
+
+<div>
+
+          <h4 className="text-4xl font-bold text-green-800 pb-0">EMEAHSS - Portal</h4>
+          <h2 className="text-2xl font-bold text-green-800">Admission 2024-25</h2>
+</div>
+          
           <Divider className="font-semibold">Registration</Divider>
-          {/* <ButtonGroup orientation="vertical" variant="outlined" disabled>
+
+          {/* <ButtonGroup orientation="vertical" variant="outlined">
             <Button
               onClick={() => {
                 navigate("/management-form");
@@ -56,8 +56,11 @@ function Home() {
               Community
             </Button>
           </ButtonGroup> */}
-          <Typography variant="" className="text-red-600 font-bold" >Sorry, Registration Closed</Typography>
-          <Divider className="font-semibold">Download Application</Divider>
+
+          {/* <Typography variant="" className="text-red-600 font-bold" >Sorry, Registration Closed</Typography> */}
+          <Typography variant="" className="text-purple-600 font-bold" >Registration will open soon. Stay tuned!</Typography>
+
+          {/* <Divider className="font-semibold">Download Application</Divider>
           <ButtonGroup orientation="vertical" variant="outlined">
             <Button
               onClick={() => {
@@ -73,7 +76,7 @@ function Home() {
             >
               Community
             </Button>
-          </ButtonGroup>
+          </ButtonGroup> */}
           <div className="w-full">
             <Divider className="text-green-700 font-semibold underline pb-3">
               Help Desk
