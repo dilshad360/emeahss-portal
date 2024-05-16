@@ -60,7 +60,7 @@ const Cocurricular = () => {
                         </Grid>
                     </TableCell>
                     <TableCell>
-                        <Grid item width={'100%'}>
+                        <Grid item width={'100%'} >
                             <Field
                                 as={TextField}
                                 name={`${coCurricular}[1].count`}
@@ -70,7 +70,7 @@ const Cocurricular = () => {
                             />
                         </Grid>
                     </TableCell>
-                    <TableCell>
+                    <TableCell  >
                         <Grid item width={'100%'}>
                             <Field
                                 as={TextField}

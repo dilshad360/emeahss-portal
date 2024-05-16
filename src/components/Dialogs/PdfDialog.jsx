@@ -45,7 +45,7 @@ function PdfDialog(props) {
               />
             )
           }
-          fileName="EMEAHSS_Admission_Application.pdf"
+          fileName={`EMEAHSS_Admission_Application.pdf`}
         >
           {({ blob, url, loading, error }) => {
             if (loading) {
@@ -67,7 +67,7 @@ function PdfDialog(props) {
                     fullWidth
                     variant="contained"
                     href={url}
-                    download="EMEAHSS_Admission_Application.pdf"
+                    download={`EMEAHSS_AppNo_${props.registered.AppNo}.pdf`}
                   >
                     Download
                   </Button>

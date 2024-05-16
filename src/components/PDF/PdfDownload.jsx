@@ -77,16 +77,14 @@ const PdfDownload = (props) => {
       marginRight: "20px",
       display: "flex",
       flexDirection: "row",
+      border: "1px solid #CCCCCC",
     },
 
     tableHeader: {
       display: "flex",
       flexDirection: "column",
       backgroundColor: "#EEEEEE",
-      padding: "5px 0",
-      borderBottom: "1px solid #CCCCCC",
-      borderLeft: "1px solid #CCCCCC",
-      width: "85px",
+      width: "90px",
       height: "90px",
       fontFamily: "Helvetica-Bold",
     },
@@ -94,9 +92,6 @@ const PdfDownload = (props) => {
     tableColumn: {
       display: "flex",
       flexDirection: "column",
-      padding: "5px 0",
-
-      borderRight: "1px solid #CCCCCC",
       width: "90px",
       height: "90px",
     },
@@ -104,9 +99,10 @@ const PdfDownload = (props) => {
     tableCell: {
       flex: 2,
       fontSize: "11px",
-      textAlign: "left",
-      paddingLeft: "5px",
+      textAlign: "center",
+      paddingTop: "5px",
       borderBottom: "1px solid #CCCCCC",
+      borderRight: "1px solid #CCCCCC",
     },
 
     tableContainerCourse: {
@@ -161,7 +157,7 @@ const PdfDownload = (props) => {
         </View>
           <Text style={styles.header}>
             EMEA HSS KONDOTTY THURAKKAL PO {"\n"}APPLICATION FOR PLUS ONE
-            ADMISSION 2023-24 {"\n"}(Management Quota)
+            ADMISSION 2024-25 {"\n"}(Management Quota)
           </Text>
           <View
             style={{

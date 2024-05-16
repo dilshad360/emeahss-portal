@@ -26,7 +26,6 @@ import {
 } from "../Const";
 import ErrorDialog from "../components/Dialogs/ErrorDialog";
 import InfoDialog from "../components/Dialogs/InfoDialog";
-import moment from "moment";
 
 function ManagementForm() {
   const [, setSubmit] = useState(false);
@@ -111,7 +110,7 @@ function ManagementForm() {
       SchoolName: school ? values.SchoolNameOthers : values.SchoolName,
       Gender: values.Gender,
       Religion: values.Religion,
-      DateOfBirth: moment(values.DateOfBirth ).format('DD/MM/YYYY'),
+      DateOfBirth: values.DateOfBirth,
       MotherName: values.MotherName,
       FatherName: values.FatherName,
       HouseName: values.HouseName,
@@ -139,11 +138,11 @@ function ManagementForm() {
 
     console.log(formattedValues);
 
-    let RegNumber = values.RegNumber;
+    let MobileNumber = values.MobileNumber;
 
     try {
       // Check if the user is already registered
-      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/search?RegNumber=${RegNumber}`);
+      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/search?MobileNumber=${MobileNumber}`);
 
       if (isEmptyArray(response.data)) {
         // Submit the form if the user is not registered
@@ -185,7 +184,7 @@ function ManagementForm() {
               color: "#006666",
             }}
           >
-            EMEA HSS Application for PlusOne Admission 2023-24 (Management
+            EMEA HSS Application for PlusOne Admission 2024-25 (Management
             Quota)
           </Typography>
           <Typography variant="subtitle1" gutterBottom>

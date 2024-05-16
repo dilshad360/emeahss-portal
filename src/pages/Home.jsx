@@ -27,9 +27,9 @@ function Home() {
       <Box>
         <Paper
           elevation={3}
-          className="flex justify-center items-center flex-col gap-4 px-6 py-6"
+          className="flex justify-center items-center flex-col gap-2 px-6 py-6"
         >
-          <img className="w-20" src={logo} alt="logo"></img>
+          <img className="w-16" src={logo} alt="logo"></img>
 
 
 <div>
@@ -40,7 +40,7 @@ function Home() {
           
           <Divider className="font-semibold">Registration</Divider>
 
-          {/* <ButtonGroup orientation="vertical" variant="outlined">
+          <ButtonGroup orientation="vertical" variant="outlined">
             <Button
               onClick={() => {
                 navigate("/management-form");
@@ -55,12 +55,12 @@ function Home() {
             >
               Community
             </Button>
-          </ButtonGroup> */}
+          </ButtonGroup>
 
           {/* <Typography variant="" className="text-red-600 font-bold" >Sorry, Registration Closed</Typography> */}
-          <Typography variant="" className="text-purple-600 font-bold" >Registration will open soon. Stay tuned!</Typography>
+          {/* <Typography variant="" className="text-purple-600 font-bold" >Registration will open soon. Stay tuned!</Typography> */}
 
-          {/* <Divider className="font-semibold">Download Application</Divider>
+          <Divider className="font-semibold">Download Application</Divider>
           <ButtonGroup orientation="vertical" variant="outlined">
             <Button
               onClick={() => {
@@ -76,7 +76,7 @@ function Home() {
             >
               Community
             </Button>
-          </ButtonGroup> */}
+          </ButtonGroup>
           <div className="w-full">
             <Divider className="text-green-700 font-semibold underline pb-3">
               Help Desk

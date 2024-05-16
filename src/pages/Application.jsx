@@ -11,12 +11,12 @@ import WarningDialog from "../components/Dialogs/WarningDialog";
 import PdfDialog from "../components/Dialogs/PdfDialog";
 
 const validationSchema = yup.object().shape({
-  RegNumber: yup.string().required("Register number is required"),
+  MobileNumber: yup.string().required("Mobile number is required"),
   DateOfBirth: yup.string().required("Date of birth is required"),
 });
 
 const initialValue = {
-  RegNumber: "",
+  MobileNumber: "",
   DateOfBirth: "",
 };
 
@@ -62,10 +62,10 @@ export default function Application() {
     setLoading(true);
     let dateOfBirth = values.DateOfBirth;
     setDateOfBirth(dateOfBirth);
-    let RegNumber = values.RegNumber;
+    let MobileNumber = values.MobileNumber;
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/search?RegNumber=${RegNumber}&DateOfBirth=${dateOfBirth}`
+        `${process.env.REACT_APP_BASE_URL}/search?MobileNumber=${MobileNumber}&DateOfBirth=${dateOfBirth}`
       );
       if (isEmptyArray(response.data)) {
         showWarningDialog("You are not registered")
@@ -107,12 +107,12 @@ export default function Application() {
             </Typography>
             <TextField
               fullWidth
-              name="RegNumber"
-              label="Register Number"
+              name="MobileNumber"
+              label="Mobile Number"
               type="text"
               onChange={handleChange}
-              error={touched.RegNumber && Boolean(errors.RegNumber)}
-              helperText={touched.RegNumber && errors.RegNumber}
+              error={touched.MobileNumber && Boolean(errors.MobileNumber)}
+              helperText={touched.MobileNumber && errors.MobileNumber}
               margin="normal"
             />
 

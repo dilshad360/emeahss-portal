@@ -211,10 +211,10 @@ const CommunityForm = () => {
       StateWorkExperienceFairE: values.StateWorkExperienceFair[4].count,
       Club: values.Club,
     };
-    let RegNumber = values.RegNumber;
+    let MobileNumber = values.MobileNumber;
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_COMMUNITY_LINK}/search?RegNumber=${RegNumber}`
+        `${process.env.REACT_APP_COMMUNITY_LINK}/search?MobileNumber=${MobileNumber}`
       );
       if (isEmptyArray(response.data)) {
         await axios
@@ -254,7 +254,7 @@ const CommunityForm = () => {
               color: "#006666",
             }}
           >
-            EMEA HSS Application for PlusOne Admission 2023-24 (Community Quota)
+            EMEA HSS Application for PlusOne Admission 2024-25 (Community Quota)
           </Typography>
           <Typography variant="subtitle1" gutterBottom>
             Student's Details
@@ -653,7 +653,7 @@ const CommunityForm = () => {
               />
             </Grid>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={6} className="pt-3" >
             <Field
               as={TextField}
               name="NationalStateLevelExamination"

@@ -12,10 +12,10 @@ function App() {
       <Routes>
       <Route path='*' element={<Home/>}/>
       <Route path='/' element={<Home/>} />
-      {/* <Route path='/management-form' element={<ManagementForm/>} /> */}
-      {/* <Route path='/community-form' element={<CommunityForm/>} /> */}
-      {/* <Route path='/community-application' element={<CommunityApp/>} /> */}
-      {/* <Route path='/management-application' element={<Application/>} /> */}
+      <Route path='/management-form' element={<ManagementForm/>} />
+      <Route path='/community-form' element={<CommunityForm/>} />
+      <Route path='/community-application' element={<CommunityApp/>} />
+      <Route path='/management-application' element={<Application/>} />
     </Routes>
     </div>
   );
