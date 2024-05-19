@@ -31,16 +31,18 @@ function Home() {
         >
           <img className="w-16" src={logo} alt="logo"></img>
 
+          <div>
+            <h4 className="text-4xl font-bold text-green-800 pb-0">
+              EMEAHSS - Portal
+            </h4>
+            <h2 className="text-2xl font-bold text-green-800">
+              Admission 2024-25
+            </h2>
+          </div>
 
-<div>
-
-          <h4 className="text-4xl font-bold text-green-800 pb-0">EMEAHSS - Portal</h4>
-          <h2 className="text-2xl font-bold text-green-800">Admission 2024-25</h2>
-</div>
-          
           <Divider className="font-semibold">Registration</Divider>
 
-          <ButtonGroup orientation="vertical" variant="outlined">
+          {/* <ButtonGroup orientation="vertical" variant="outlined">
             <Button
               onClick={() => {
                 navigate("/management-form");
@@ -55,12 +57,12 @@ function Home() {
             >
               Community
             </Button>
-          </ButtonGroup>
+          </ButtonGroup> */}
 
           {/* <Typography variant="" className="text-red-600 font-bold" >Sorry, Registration Closed</Typography> */}
-          {/* <Typography variant="" className="text-purple-600 font-bold" >Registration will open soon. Stay tuned!</Typography> */}
+          <Typography variant="" className="text-purple-600 font-bold" >Registration will open soon. Stay tuned!</Typography>
 
-          <Divider className="font-semibold">Download Application</Divider>
+          {/* <Divider className="font-semibold">Download Application</Divider>
           <ButtonGroup orientation="vertical" variant="outlined">
             <Button
               onClick={() => {
@@ -76,7 +78,7 @@ function Home() {
             >
               Community
             </Button>
-          </ButtonGroup>
+          </ButtonGroup> */}
           <div className="w-full">
             <Divider className="text-green-700 font-semibold underline pb-3">
               Help Desk
@@ -90,19 +92,25 @@ function Home() {
             </Typography>
           </div>
           <div className="w-full">
-            <Divider className="text-green-700 font-semibold underline pb-2">For any complaints </Divider>
+            <Divider className="text-green-700 font-semibold underline pb-2">
+              For any complaints{" "}
+            </Divider>
             <div className="flex flex-col">
-            <Typography variant="" className="text-sm italic">
-              please contact us at
-            </Typography>
-            <Typography variant="" className="text-sm italic">
-              <a href="mailto:app_hss@emeacollege.ac.in" className="font-semibold text-blue-700">app_hss@emeacollege.ac.in</a>
-            </Typography>
-         <Typography variant="" className="text-sm italic">
-        kindly provide your
-               Application.No. or Registration.No.
-            </Typography>
-         </div>
+              <Typography variant="" className="text-sm italic">
+                please contact us at
+              </Typography>
+              <Typography variant="" className="text-sm italic">
+                <a
+                  href="mailto:app_hss@emeacollege.ac.in"
+                  className="font-semibold text-blue-700"
+                >
+                  app_hss@emeacollege.ac.in
+                </a>
+              </Typography>
+              <Typography variant="" className="text-sm italic">
+                kindly provide your Application.No. or Registration.No.
+              </Typography>
+            </div>
           </div>
         </Paper>
       </Box>
