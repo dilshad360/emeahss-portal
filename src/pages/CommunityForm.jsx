@@ -236,6 +236,7 @@ const CommunityForm = () => {
   };
   return (
     <Formik
+      validateOnChange={false}
       initialValues={communityInitialValues}
       validationSchema={communityValidationSchema}
       //on submit section

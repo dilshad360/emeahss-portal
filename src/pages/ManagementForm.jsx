@@ -82,6 +82,8 @@ function ManagementForm() {
   };
 
   const HandlePanchayathChange = (value) => {
+      setKward(false);
+      setPward(false);
     if (value === "Kondotty") {
       setKward(true);
     } else if (value === "Pulikkal") {
