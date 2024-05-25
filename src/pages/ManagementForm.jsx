@@ -37,7 +37,7 @@ function ManagementForm() {
   const [kward, setKward] = useState(false);
   const [pward, setPward] = useState(false);
   const [openErrorDialog, setOpenErrorDialog] = useState(false);
-  const [openInfoDialog, setOpenInfoDialog] = useState(false);
+  const [openInfoDialog, setOpenInfoDialog] = useState(true);
   const [otherBoards, setOtherBoards] = useState(false);
 
   const handleClickOpen = () => {
@@ -78,6 +78,8 @@ function ManagementForm() {
   const HandleSchoolChange = (value) => {
     if (value === "Others") {
       setSchool(true);
+    } else {
+      setSchool(false);
     }
   };
 
@@ -197,7 +199,7 @@ function ManagementForm() {
               <Field
                 as={TextField}
                 name="Name"
-                label="Name of Applicant"
+                label="Name of Applicant *"
                 type="text"
                 fullWidth
                 error={errors.Name && touched.Name}
@@ -208,8 +210,9 @@ function ManagementForm() {
               <Field
                 as={TextField}
                 name="MobileNumber"
-                label="Mobile Number"
-                type="number"
+                label="Mobile Number *"
+                type="text"
+                inputProps={{ inputMode: 'numeric'}}
                 fullWidth
                 error={errors.MobileNumber && touched.MobileNumber}
                 helperText={
@@ -223,8 +226,9 @@ function ManagementForm() {
               <Field
                 as={TextField}
                 name="WhatsappNumber"
-                label="Whatsapp Number"
-                type="number"
+                label="Whatsapp Number *"
+                type="text"
+                inputProps={{ inputMode: 'numeric'}}
                 fullWidth
                 error={errors.WhatsappNumber && touched.WhatsappNumber}
                 helperText={
@@ -252,7 +256,7 @@ function ManagementForm() {
             <Grid item xs={12}>
               <SelectInput
                 name="Board"
-                label="Board of qualifying examination"
+                label="Board of qualifying examination *"
                 options={examOptions}
                 error={errors.Board && touched.Board}
                 onChange={HandleExamChange}
@@ -279,8 +283,9 @@ function ManagementForm() {
               <Field
                 as={TextField}
                 name="RegNumber"
-                label="Register Number"
-                type="number"
+                label="Register Number *"
+                type="text"
+                inputProps={{ inputMode: 'numeric'}}
                 fullWidth
                 error={errors.RegNumber && touched.RegNumber}
                 helperText={
@@ -288,10 +293,10 @@ function ManagementForm() {
                 }
               />
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={6}>
               <SelectInput
                 name="Year"
-                label="Year"
+                label="Year of passing *"
                 options={years}
                 error={errors.Year && touched.Year}
               />
@@ -299,7 +304,7 @@ function ManagementForm() {
             <Grid item xs={12}>
               <SelectInput
                 name="SchoolName"
-                label="Name of school studied"
+                label="Name of school studied *"
                 options={schoolOptions}
                 error={errors.SchoolName && touched.SchoolName}
                 onChange={HandleSchoolChange}
@@ -310,7 +315,7 @@ function ManagementForm() {
                 <Field
                   as={TextField}
                   name="SchoolNameOthers"
-                  label="Name of school studied"
+                  label="Name of school studied *"
                   type="text"
                   fullWidth
                   error={errors.SchoolNameOthers && touched.SchoolNameOthers}
@@ -327,7 +332,7 @@ function ManagementForm() {
             <Grid item xs={6}>
               <SelectInput
                 name="Gender"
-                label="Gender"
+                label="Gender *"
                 options={genderOptions}
                 error={errors.Gender && touched.Gender}
               />
@@ -335,7 +340,7 @@ function ManagementForm() {
             <Grid item xs={6}>
               <SelectInput
                 name="Religion"
-                label="Religion"
+                label="Religion *"
                 options={religionOptions}
                 error={errors.Religion && touched.Religion}
               />
@@ -344,7 +349,7 @@ function ManagementForm() {
               <Field
                 as={TextField}
                 name="DateOfBirth"
-                label="Date of Birth"
+                label="Date of Birth *"
                 type="date"
                 InputLabelProps={{
                   shrink: true,
@@ -362,7 +367,7 @@ function ManagementForm() {
               <Field
                 as={TextField}
                 name="FatherName"
-                label="Name of Father"
+                label="Name of Father *"
                 type="text"
                 fullWidth
                 error={errors.FatherName && touched.FatherName}
@@ -375,7 +380,7 @@ function ManagementForm() {
               <Field
                 as={TextField}
                 name="MotherName"
-                label="Name of Mother"
+                label="Name of Mother *"
                 type="text"
                 fullWidth
                 error={errors.MotherName && touched.MotherName}
@@ -388,7 +393,7 @@ function ManagementForm() {
               <Field
                 as={TextField}
                 name="HouseName"
-                label="House Name"
+                label="House Name *"
                 type="text"
                 fullWidth
                 error={errors.HouseName && touched.HouseName}
@@ -401,7 +406,7 @@ function ManagementForm() {
               <Field
                 as={TextField}
                 name="PostOffice"
-                label="Post Office"
+                label="Post Office *"
                 type="text"
                 fullWidth
                 error={errors.PostOffice && touched.PostOffice}
@@ -413,7 +418,7 @@ function ManagementForm() {
             <Grid item xs={6}>
               <SelectInput
                 name="Panchayath"
-                label="Panchayath"
+                label="Panchayath *"
                 onChange={HandlePanchayathChange}
                 options={panchayatOptions}
                 error={errors.Panchayath && touched.Panchayath}
@@ -423,7 +428,7 @@ function ManagementForm() {
               <Grid item xs={6}>
                 <SelectInput
                   name="Ward"
-                  label="Ward"
+                  label="Ward *"
                   options={kondottyWardOptions}
                   error={errors.Ward && touched.Ward}
                 />
@@ -432,7 +437,7 @@ function ManagementForm() {
               <Grid item xs={6}>
                 <SelectInput
                   name="Ward"
-                  label="Ward"
+                  label="Ward *"
                   options={pullikkalWardOptions}
                   error={errors.Ward && touched.Ward}
                 />
@@ -442,8 +447,9 @@ function ManagementForm() {
                 <Field
                   as={TextField}
                   name="Ward"
-                  label="Ward No"
-                  type="number"
+                  label="Ward No *"
+                  type="text"
+                  inputProps={{ inputMode: 'numeric'}}
                   fullWidth
                   error={errors.Ward && touched.Ward}
                   helperText={errors.Ward && touched.Ward && errors.Ward}
@@ -471,7 +477,7 @@ function ManagementForm() {
             in delays or processing issues. Thank you for your
             attention to detail.
           </FormHelperText>
-          <SubmitButton fullWidth variant="contained" type="submit">
+          <SubmitButton fullWidth variant="contained" size="large" type="submit">
             Submit
           </SubmitButton>
 

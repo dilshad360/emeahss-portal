@@ -83,15 +83,8 @@ function InfoDialog(props) {
             className="w-11/12 sm:w-8/12 text-left  font-semibold "
           >
             <Typography variant="">
-              1. കമ്മ്യൂണിറ്റി quota യിലേക്കും മാനേജ്മെന്റ് കോട്ടയിലേക്കും
-              വെവ്വേറെ അപേക്ഷകൾ സമർപ്പിക്കേണ്ടതാണ്.
-            </Typography>
-            <Typography variant="">
-              2. മാനേജ്മെന്റ് അഡ്മിഷൻ റാങ്കലിസ്റ്റ് അടിസ്ഥാനത്തിലായിരുക്കും.
-            </Typography>
-            <Typography variant="">
-              3. മാനേജ്മെന്റ് കമ്മിറ്റി അംഗം ഒപ്പ് വെച് അപേക്ഷ സ്കൂളിൽ നേരിട്ട്
-              സമർപ്പിക്കുന്നത് മാത്രമേ റാങ്ക് ലിസ്റ്റിൽ ഉൾപെടുത്തുകയുള്ളു.{" "}
+              1. മാനേജ്മെന്റ് കമ്മിറ്റി അംഗം ഒപ്പ് വെച്ച അപേക്ഷ സ്കൂളിൽ നേരിട്ട്
+              സമർപ്പിക്കുന്നത് മാത്രമേ അഡ്മിഷനിൽ പരിഗണിക്കുകയുള്ളൂ .{" "}
             </Typography>
             <FormControlLabel
               control={
@@ -117,11 +110,13 @@ function InfoDialog(props) {
           />
         </DialogContent>
       )}
-      <DialogActions>  
+      <DialogActions className="p-10">  
           <Button
             variant="contained"
             disabled={!isChecked}
             color="success"
+            size="large"
+            fullWidth
             onClick={() => {
               props.finalSubmit(values);
             }}

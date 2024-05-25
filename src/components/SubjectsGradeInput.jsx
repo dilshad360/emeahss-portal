@@ -33,7 +33,7 @@ export default function SubjectsGradeInput(props) {
               <TableCell>
                 <SelectInput
                   name={`cbseMarks[${index}].grade`}
-                  label="Grade"
+                  label="Grade *"
                   required
                   {...rest}
                   options={cbseGradesOptions}
@@ -56,7 +56,7 @@ export default function SubjectsGradeInput(props) {
                 <SelectInput
                   defaultValue="" 
                   name={`otherBoardSubjects[${index}].grade`}
-                  label="Grade"
+                  label="Grade *"
                   {...rest}
                   options={gradesOptions}
                 />
@@ -72,7 +72,7 @@ export default function SubjectsGradeInput(props) {
                   defaultValue="" 
                   name={`statesubjectsMarks[${index}].grade`}
                   required
-                  label="Grade"
+                  label="Grade *" 
                   {...rest}
                   options={gradesOptions}
                   error={

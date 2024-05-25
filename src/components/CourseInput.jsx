@@ -7,11 +7,11 @@ export default function CourseInput(params) {
   return (
     <div className="flex flex-col gap-3">
       <FormControl fullWidth error={Boolean(errors.coursePreference1 && touched.coursePreference1)}>
-        <InputLabel>Course Preference 1</InputLabel>
+        <InputLabel>Course Preference 1 *</InputLabel>
         <Field
           name="coursePreference1"
           as={Select}
-          label="Course Preference 1"
+          label="Course Preference 1 * "
           variant="outlined"
         >
           {courseOptions.map((option) => (

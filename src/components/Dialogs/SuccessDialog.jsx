@@ -28,7 +28,7 @@ function SuccessDialog(props) {
         </Typography>
       </DialogContent>
       <DialogActions>
-        <Button>
+        <Button >
           <Link to={props.link}>Download</Link>
         </Button>
       </DialogActions>

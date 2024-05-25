@@ -4,7 +4,6 @@ import {
   Paper,
   Box,
   Divider,
-  ButtonGroup,
 } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -36,49 +35,35 @@ function Home() {
               EMEAHSS - Portal
             </h4>
             <h2 className="text-2xl font-bold text-green-800">
+              Management Quota
+            </h2>
+            <h2 className="text-xl font-bold text-gray-600">
               Admission 2024-25
             </h2>
           </div>
 
-          <Divider className="font-semibold">Registration</Divider>
-
-          <ButtonGroup orientation="vertical" variant="outlined">
+          <div className="flex flex-col py-6 gap-2">
             <Button
+              variant="contained"
               onClick={() => {
                 navigate("/management-form");
               }}
             >
-              Management
+              Register
             </Button>
             <Button
-              onClick={() => {
-                navigate("/community-form");
-              }}
-            >
-              Community
-            </Button>
-          </ButtonGroup>
-
-          {/* <Typography variant="" className="text-red-600 font-bold" >Sorry, Registration Closed</Typography> */}
-          {/* <Typography variant="" className="text-purple-600 font-bold" >Registration will open soon. Stay tuned!</Typography> */}
-
-          <Divider className="font-semibold">Download Application</Divider>
-          <ButtonGroup orientation="vertical" variant="outlined">
-            <Button
+              variant="outlined"
               onClick={() => {
                 navigate("/management-application");
               }}
             >
-              Management
+              Download Application
             </Button>
-            <Button
-              onClick={() => {
-                navigate("/community-application");
-              }}
-            >
-              Community
-            </Button>
-          </ButtonGroup>
+          </div>
+
+          {/* <Typography variant="" className="text-red-600 font-bold" >Sorry, Registration Closed</Typography> */}
+          {/* <Typography variant="" className="text-purple-600 font-bold" >Registration will open soon. Stay tuned!</Typography> */}
+
           <div className="w-full">
             <Divider className="text-green-700 font-semibold underline pb-3">
               Help Desk

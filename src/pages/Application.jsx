@@ -108,8 +108,9 @@ export default function Application() {
             <TextField
               fullWidth
               name="MobileNumber"
-              label="Mobile Number"
-              type="text"
+              label="Mobile Number *"
+              type="text" 
+              inputProps={{ inputMode: 'numeric'}}
               onChange={handleChange}
               error={touched.MobileNumber && Boolean(errors.MobileNumber)}
               helperText={touched.MobileNumber && errors.MobileNumber}
@@ -119,7 +120,7 @@ export default function Application() {
             <TextField
               fullWidth
               name="DateOfBirth"
-              label="Date of Birth"
+              label="Date of Birth *"
               type="date"
               onChange={(event) => handleChangeDate(handleChange, event)}
               error={touched.DateOfBirth && Boolean(errors.DateOfBirth)}
