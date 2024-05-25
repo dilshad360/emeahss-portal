@@ -8,7 +8,7 @@ import {
   Button,
 } from "@mui/material";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
-import { PDFDownloadLink } from "@react-pdf/renderer";
+import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 import PdfDownload from "../PDF/PdfDownload";
 import CommunityPDF from "../PDF/CommunityPDF";
 
@@ -21,6 +21,12 @@ function PdfDialog(props) {
       fullWidth
       className="text-center"
     >
+      <PDFViewer className="h-[600px]">
+        <PdfDownload
+                formValues={props.registered}
+                syllabus={props.registered[0]?.Board}
+              />
+  </PDFViewer>
       <DialogTitle>
         <PictureAsPdfIcon color="success" style={{ fontSize: 48 }} />
       </DialogTitle>

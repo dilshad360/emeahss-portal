@@ -37,7 +37,7 @@ function ManagementForm() {
   const [kward, setKward] = useState(false);
   const [pward, setPward] = useState(false);
   const [openErrorDialog, setOpenErrorDialog] = useState(false);
-  const [openInfoDialog, setOpenInfoDialog] = useState(true);
+  const [openInfoDialog, setOpenInfoDialog] = useState(false);
   const [otherBoards, setOtherBoards] = useState(false);
 
   const handleClickOpen = () => {

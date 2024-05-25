@@ -1,9 +1,9 @@
 import React from "react";
-import { Page, Text, Document, StyleSheet, View , Image } from "@react-pdf/renderer";
+import { Page, Text, Document, StyleSheet, View, Image } from "@react-pdf/renderer";
 import logo from "../../assets/emea_logo.jpeg";
 
 
-import { markToGrade,cbseMarkToGrade } from "../../Const";
+import { markToGrade, cbseMarkToGrade } from "../../Const";
 
 const watermarkLogo = (
   <Image src={logo} style={{ width: '300px', height: '400px' }} />
@@ -35,8 +35,6 @@ const PdfDownload = (props) => {
       color: "#000000",
       textAlign: "center",
       fontFamily: "Helvetica-Bold",
-      height: "64px",
-      padding: "5px",
     },
 
     field: {
@@ -85,7 +83,7 @@ const PdfDownload = (props) => {
       flexDirection: "column",
       backgroundColor: "#EEEEEE",
       width: "90px",
-      height: "90px",
+      height: "40px",
       fontFamily: "Helvetica-Bold",
     },
 
@@ -93,7 +91,7 @@ const PdfDownload = (props) => {
       display: "flex",
       flexDirection: "column",
       width: "90px",
-      height: "90px",
+      height: "40px",
     },
 
     tableCell: {
@@ -140,24 +138,36 @@ const PdfDownload = (props) => {
       paddingLeft: "5px",
     },
     watermark: {
-    position: 'absolute',
-    opacity: 0.1,
-    width: '50%',
-    height: '50%',
-    top: '23%',
-    left: '25%',
+      position: 'absolute',
+      opacity: 0.1,
+      width: '50%',
+      height: '50%',
+      top: '23%',
+      left: '25%',
     },
   });
   return (
     <Document>
       <Page size="A4" style={styles.page}>
         <View style={styles.section}>
-        <View style={styles.watermark}>
-        {watermarkLogo}
-        </View>
+          <View style={styles.watermark}>
+            {watermarkLogo}
+          </View>
+          <Text style={[styles.header, { fontSize: "22px", fontFamily: "Times-Bold", }]} >
+            EMEA HIGHER SECONDARY SCHOOL
+          </Text>
           <Text style={styles.header}>
-            EMEA HSS KONDOTTY THURAKKAL PO {"\n"}APPLICATION FOR PLUS ONE
-            ADMISSION 2024-25 {"\n"}(Management Quota)
+            KONDOTTY THURAKKAL PO
+          </Text>
+          <View
+            style={{
+              borderBottomColor: "black",
+              borderBottomWidth: 1,
+              marginBottom: "5px",
+            }}
+          />
+          <Text style={[styles.header, { fontSize: "12px" }]}>
+            APPLICATION FOR PLUS ONE ADMISSION 2024-25 (Management Quota)
           </Text>
           <View
             style={{
@@ -313,7 +323,7 @@ const PdfDownload = (props) => {
 
           <View style={styles.valuer}>
             <View style={styles.fieldg}>
-              <View style={{ width: "54%" , fontFamily: "Helvetica-Bold" }}>
+              <View style={{ width: "54%", fontFamily: "Helvetica-Bold" }}>
                 <Text>Panchayath</Text>
               </View>
               <View>
@@ -321,7 +331,7 @@ const PdfDownload = (props) => {
               </View>
             </View>
             <View style={styles.fieldg}>
-              <View style={{ width: "54%" , fontFamily: "Helvetica-Bold" }}>
+              <View style={{ width: "54%", fontFamily: "Helvetica-Bold" }}>
                 <Text>Ward</Text>
               </View>
               <View>
@@ -486,6 +496,40 @@ const PdfDownload = (props) => {
               <Text style={{ width: "50%", fontSize: "11px" }}>Name :</Text>
               <Text style={{ fontSize: "11px" }}>Signature :</Text>
             </View>
+          </View>
+          <View
+            style={{
+              borderBottomColor: "black",
+              borderBottomWidth: 2,
+              borderStyle: 'dashed',
+              marginBottom: "6px",
+              marginTop: "24px",
+            }}
+          />
+          <Text style={[styles.header, { fontSize: "14px", backgroundColor: "#2a2a2a", color: "#ffffff", marginBottom: "10px", }]} >
+            AKNOWLEDGEMENT
+          </Text>
+          <Text style={{ fontSize: "12px", marginBottom: "2px", }}>
+            Recieved the application from : {formValues.Name}
+          </Text>
+          <Text style={{ fontSize: "12px", marginBottom: "10px", }}>
+            with the Application No : {formValues.AppNo}
+          </Text>
+          <View style={styles.valuer}>
+            <View style={{ width: "30%", }}>
+              <Text style={{ fontSize: "11px" }}>
+                Place :
+              </Text>
+              <Text style={{ fontSize: "11px" }}>
+                Date :
+              </Text>
+            </View>
+            <Text style={{ fontSize: "11px" , width: "40%" }}>
+              (School Seal)
+            </Text>
+            <Text style={{ fontSize: "11px" }}>
+              Name & Signature of the Principal
+            </Text>
           </View>
         </View>
       </Page>
