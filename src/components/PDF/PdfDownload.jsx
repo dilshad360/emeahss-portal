@@ -9,6 +9,10 @@ const watermarkLogo = (
   <Image src={logo} style={{ width: '300px', height: '400px' }} />
 );
 
+const Logo = (
+  <Image src={logo} style={{ width: '38px', height: '50px' }} />
+);
+
 
 const PdfDownload = (props) => {
   const formValues = props.formValues;
@@ -145,6 +149,13 @@ const PdfDownload = (props) => {
       top: '23%',
       left: '25%',
     },
+    logo: {
+      position: 'absolute',
+      width: 10,
+      height: 50,
+      top: "10px",
+      left: '16px',
+    },
   });
   return (
     <Document>
@@ -152,6 +163,9 @@ const PdfDownload = (props) => {
         <View style={styles.section}>
           <View style={styles.watermark}>
             {watermarkLogo}
+          </View>
+          <View style={styles.logo} >
+            {Logo}
           </View>
           <Text style={[styles.header, { fontSize: "22px", fontFamily: "Times-Bold", }]} >
             EMEA HIGHER SECONDARY SCHOOL
