@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import InfoIcon from "@mui/icons-material/Info";
 import CloseIcon from "@mui/icons-material/Close";
+import Notice from "../../assets/Notice.jpg"
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -44,7 +45,7 @@ function InfoDialog(props) {
       </Toolbar>
       <DialogTitle>
         <InfoIcon color="yellow" style={{ fontSize: 48, color: "orange" }} />
-        <Typography variant="h6">{props.message}</Typography>
+        <Typography variant="h4" color={"error"} >Important Notice</Typography>
       </DialogTitle>
       {/***********************  Community Quota Section      ************************/}
 
@@ -80,12 +81,9 @@ function InfoDialog(props) {
         <DialogContent className="flex justify-center">
           <Stack
             spacing={2}
-            className="w-11/12 sm:w-8/12 text-left  font-semibold "
+            className="w-full sm:w-6/12 text-left  font-semibold "
           >
-            <Typography variant="">
-              1. മാനേജ്മെന്റ് കമ്മിറ്റി അംഗം ഒപ്പ് വെച്ച അപേക്ഷ സ്കൂളിൽ നേരിട്ട്
-              സമർപ്പിക്കുന്നത് മാത്രമേ അഡ്മിഷനിൽ പരിഗണിക്കുകയുള്ളൂ .{" "}
-            </Typography>
+            <img className="" src={Notice} alt="logo"></img>
             <FormControlLabel
               control={
                 <Checkbox checked={isChecked} onChange={handleCheckboxChange} />
@@ -110,19 +108,19 @@ function InfoDialog(props) {
           />
         </DialogContent>
       )}
-      <DialogActions className="p-10">  
-          <Button
-            variant="contained"
-            disabled={!isChecked}
-            color="success"
-            size="large"
-            fullWidth
-            onClick={() => {
-              props.finalSubmit(values);
-            }}
-          >
-            Final Submit
-          </Button>
+      <DialogActions className="p-10">
+        <Button
+          variant="contained"
+          disabled={!isChecked}
+          color="success"
+          size="large"
+          fullWidth
+          onClick={() => {
+            props.finalSubmit(values);
+          }}
+        >
+          Final Submit
+        </Button>
       </DialogActions>
     </Dialog>
   );

@@ -170,7 +170,8 @@ export const courseOptions = [
   { value: '1 - Physics, Chemistry, Biology,Mathematics', label: '1 - Physics, Chemistry, Biology,Mathematics' },
   { value: '11 - History, Economics, Political Science, Sociology', label: '11 - History, Economics, Political Science, Sociology' },
   { value: '35 - Journalism, English Literature, Communicative English, Psychology', label: '35 - Journalism, English Literature, Communicative English, Psychology' },
-  { value: '37 - Business Studies, Accountancy, Economics,Statistics', label: '37 - Business Studies, Accountancy, Economics,Statistics' }
+  { value: '37 - Business Studies, Accountancy, Economics,Statistics', label: '37 - Business Studies, Accountancy, Economics,Statistics' },
+  { value: '39 - Business Studies, Accountancy, Economics,Computer Application', label: '39 - Business Studies, Accountancy, Economics,Computer Application' }
 ]
 
 
@@ -185,7 +186,8 @@ export const codeToCourse = {
   '1': '1 - Physics, Chemistry, Biology,Mathematics',
   '11': '11 - History, Economics, Political Science, Sociology',
   '35': '35 - Journalism, English Literature, Communicative English, Psychology',
-  '37': '37 - Business Studies, Accountancy, Economics,Statistics'
+  '37': '37 - Business Studies, Accountancy, Economics,Statistics',
+  '39': '39 - Business Studies, Accountancy, Economics,Computer Application'
 }
 
 //School options
