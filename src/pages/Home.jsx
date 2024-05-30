@@ -42,7 +42,7 @@ function Home() {
             </h2>
           </div>
 
-          <div className="flex flex-col py-6 gap-2">
+          {/* <div className="flex flex-col py-6 gap-2">
             <Button
               variant="contained"
               onClick={() => {
@@ -59,10 +59,10 @@ function Home() {
             >
               Download Application
             </Button>
-          </div>
+          </div> */}
 
           {/* <Typography variant="" className="text-red-600 font-bold" >Sorry, Registration Closed</Typography> */}
-          {/* <Typography variant="" className="text-purple-600 font-bold" >Registration will open soon. Stay tuned!</Typography> */}
+          <Typography variant="" className="text-purple-600 font-bold" >Registration will open soon. Stay tuned!</Typography>
 
           <div className="w-full">
             <Divider className="text-green-700 font-semibold underline pb-3">
