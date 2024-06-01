@@ -151,7 +151,6 @@ export const gradesOptions = [
   { value: '5', label: 'C+' },
   { value: '4', label: 'C' },
   { value: '3', label: 'D+' },
-  { value: ' ', label: 'None' },
 ];
 
 // cbse grades
@@ -178,7 +177,7 @@ export const courseOptions = [
 export const examOptions = [
   { value: 'STATE', label: 'STATE' },
   { value: 'CBSE', label: 'CBSE' },
-  { value: 'Other', label:'Other' }
+  // { value: 'Other', label:'Other' }
 ]
 
 
