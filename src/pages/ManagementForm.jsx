@@ -142,11 +142,11 @@ function ManagementForm() {
 
     console.log(formattedValues);
 
-    let MobileNumber = values.MobileNumber;
+    let RegNo = values.RegNumber;
 
     try {
       // Check if the user is already registered
-      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/search?MobileNumber=${MobileNumber}`);
+      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/search?RegNumber=${RegNo}`);
 
       if (isEmptyArray(response.data)) {
         // Submit the form if the user is not registered
