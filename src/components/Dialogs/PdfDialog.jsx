@@ -21,12 +21,12 @@ function PdfDialog(props) {
       fullWidth
       className="text-center"
     >
-      <PDFViewer className="h-[600px]">
+      {/* <PDFViewer className="h-[600px]">
         <PdfDownload
                 formValues={props.registered}
                 syllabus={props.registered[0]?.Board}
               />
-  </PDFViewer>
+  </PDFViewer> */}
       <DialogTitle>
         <PictureAsPdfIcon color="success" style={{ fontSize: 48 }} />
       </DialogTitle>
