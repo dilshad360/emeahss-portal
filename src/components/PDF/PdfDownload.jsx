@@ -521,7 +521,7 @@ const PdfDownload = (props) => {
             }}
           />
           <Text style={[styles.header, { fontSize: "14px", backgroundColor: "#2a2a2a", color: "#ffffff", marginBottom: "10px", }]} >
-            AKNOWLEDGEMENT
+            ACKNOWLEDGEMENT
           </Text>
           <Text style={{ fontSize: "12px", marginBottom: "2px", }}>
             Recieved the application from : {formValues.Name}
