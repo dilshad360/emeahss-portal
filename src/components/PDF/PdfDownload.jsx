@@ -524,7 +524,7 @@ const PdfDownload = (props) => {
             ACKNOWLEDGEMENT
           </Text>
           <Text style={{ fontSize: "12px", marginBottom: "2px", }}>
-            Recieved the application from : {formValues.Name}
+          Received the application from : {formValues.Name}
           </Text>
           <Text style={{ fontSize: "12px", marginBottom: "10px", }}>
             with the Application No : {formValues.AppNo}
