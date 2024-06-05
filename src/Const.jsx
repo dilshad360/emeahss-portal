@@ -60,8 +60,10 @@ export const initialValues = {
 
 //Validation
 export const validationSchema = yup.object().shape({
-  Name: yup.string().required("Name of Applicant is required"),
-
+  Name: yup.string().required("Name of Applicant is required")
+  .matches(/^[^\d]*$/, 'Should not contain numbers'),
+  SingleWindowNo: yup.number()
+  .typeError('Only numbers are allowed'),
   MobileNumber: yup
     .string()
     .matches(/^\d+$/, "Mobile number must be a valid number")
