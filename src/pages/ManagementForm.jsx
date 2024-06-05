@@ -31,6 +31,7 @@ function ManagementForm() {
   const [, setSubmit] = useState(false);
   const [syllabus, setSyllabus] = useState("");
   const [dialogMessage, setDialogMesssage] = useState("");
+  const [dialogNote, setDialogNote] = useState("");
   const [school, setSchool] = useState(false);
   const [open, setOpen] = React.useState(false);
   const [loading, setLoading] = useState(false);
@@ -54,9 +55,10 @@ function ManagementForm() {
   };
 
   //To show successful dialog with custom message
-  const showSuccessDialog = (message) => {
+  const showSuccessDialog = (message,note) => {
     handleClickOpen();
     setDialogMesssage(message);
+    setDialogNote(note);
   };
 
   //To show error dialog with custom message
@@ -143,22 +145,24 @@ function ManagementForm() {
     console.log(formattedValues);
 
     let RegNo = values.RegNumber;
+    let MobileNumber = values.MobileNumber;
 
     try {
       // Check if the user is already registered
-      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/search?RegNumber=${RegNo}`);
+      const regNumberResponse = await axios.get(`${process.env.REACT_APP_BASE_URL}/search?RegNumber=${RegNo}`);
+      const mobileNumberResponse = await axios.get(`${process.env.REACT_APP_BASE_URL}/search?MobileNumber=${MobileNumber}`);
 
-      if (isEmptyArray(response.data)) {
+      if (isEmptyArray(regNumberResponse.data) && isEmptyArray(mobileNumberResponse.data)) {
         // Submit the form if the user is not registered
         await axios.post(`${process.env.REACT_APP_BASE_URL}`, formattedValues)
           .then((response) => {
-            showSuccessDialog("Application Form filled Successfully.");
+            showSuccessDialog("Application form successfully completed.");
             setSubmit(true);
             setLoading(false);
             console.log(formattedValues)
           });
       } else {
-        showSuccessDialog("You are already registered");
+        showSuccessDialog("You are already registered ","Note: The same mobile no. and register no. cannot be used twice.");
         setLoading(false);
       }
     } catch (error) {
@@ -494,6 +498,7 @@ function ManagementForm() {
             open={open}
             onClose={handleClose}
             message={dialogMessage}
+            note={dialogNote}
             link="/management-application"
           />
           <ErrorDialog

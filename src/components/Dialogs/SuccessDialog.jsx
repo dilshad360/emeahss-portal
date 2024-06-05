@@ -23,6 +23,7 @@ function SuccessDialog(props) {
       </DialogTitle>
       <DialogContent>
         <Typography variant="h6">{props.message}</Typography>
+        <p className="text-center text-gray-500" >{props.note}</p>
         <Typography variant="subtitle2">
           Please download the PDF and get ApplicationNo
         </Typography>
