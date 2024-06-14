@@ -29,6 +29,7 @@ function Home() {
           className="flex justify-center items-center flex-col gap-2 px-6 py-6"
         >
           <img className="w-16" src={logo} alt="logo"></img>
+        
 
           <div>
             <h4 className="text-4xl font-bold text-green-800 pb-0">
@@ -43,14 +44,15 @@ function Home() {
           </div>
 
           <div className="flex flex-col py-6 gap-2">
-            <Button
+          <Typography variant="" className="text-red-600 font-bold" >Sorry, Registration Closed</Typography>
+            {/* <Button
               variant="contained"
               onClick={() => {
                 navigate("/management-form");
               }}
             >
               Register
-            </Button>
+            </Button> */}
             <Button
               variant="outlined"
               onClick={() => {
@@ -61,7 +63,6 @@ function Home() {
             </Button>
           </div>
 
-          {/* <Typography variant="" className="text-red-600 font-bold" >Sorry, Registration Closed</Typography> */}
           {/* <Typography variant="" className="text-purple-600 font-bold" >Registration will open soon. Stay tuned!</Typography> */}
 
           <div className="w-full">
