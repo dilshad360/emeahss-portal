@@ -1,7 +1,7 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-// import ManagementForm from './pages/ManagementForm';
+import ManagementForm from './pages/ManagementForm';  
 import Application from './pages/Application';
 // import CommunityForm from './pages/CommunityForm';
 // import CommunityApp from './pages/CommunityApp';
@@ -12,7 +12,7 @@ function App() {
       <Routes>
       <Route path='*' element={<Home/>}/>
       <Route path='/' element={<Home/>} />
-      {/* <Route path='/management-form' element={<ManagementForm/>} /> */}
+      <Route path='/management-form' element={<ManagementForm/>} />
       <Route path='/management-application' element={<Application/>} />
 
 
